@@ -21,16 +21,23 @@ class User
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
+    #[Assert\Length(max: 50)]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 50)]
     #[Assert\NotBlank()]
+    #[Assert\Length(max: 50)]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank()]
     #[Assert\Email()]
     private ?string $email = null;
+
+    #[ORM\Column(length: 40)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(max: 40)]
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank()]
@@ -44,9 +51,6 @@ class User
 
     #[ORM\OneToOne(targetEntity: Questionnaire::class,mappedBy: 'questionnaire')]
     private ?Questionnaire $questionnaire = null;
-
-    #[ORM\Column(length: 40)]
-    private ?string $telephone = null;
 
     public function getId(): ?int
     {
@@ -101,16 +105,14 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
+    public function getRole(): array
     {
         return $this->role;
     }
 
-    public function setRole(string $role): static
+    public function setRole(array $role): void
     {
         $this->role = $role;
-
-        return $this;
     }
 
     public function getQuestionnaire(): ?Questionnaire

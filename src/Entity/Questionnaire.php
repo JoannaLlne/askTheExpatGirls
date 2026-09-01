@@ -7,6 +7,7 @@ use App\Repository\QuestionnaireRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: QuestionnaireRepository::class)]
 class Questionnaire
@@ -17,15 +18,19 @@ class Questionnaire
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
     private ?string $nationality = null;
 
     #[ORM\Column(enumType: Situation::class)]
     private ?string $situation = null;
 
-    #[ORM\Column(type: Types::TEXT)]
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    #[Assert\Length(max: 180)]
     private ?string $helpReason = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(length: 255)]
+    #[Assert\Length(max: 255)]
     private ?string $additionalInfo = null;
 
     #[ORM\Column]

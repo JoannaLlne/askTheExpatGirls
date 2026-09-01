@@ -7,6 +7,7 @@ use App\Enum\ServiceTiming;
 use App\Repository\ServiceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
 class Service
@@ -17,12 +18,16 @@ class Service
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    #[Assert\length(max: 180)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank()]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank()]
     private ?int $price = null;
 
     #[ORM\Column(enumType: ServiceCategory::class)]
