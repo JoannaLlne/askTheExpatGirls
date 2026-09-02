@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -105,16 +105,6 @@ class User
         return $this;
     }
 
-    public function getRole(): array
-    {
-        return $this->role;
-    }
-
-    public function setRole(array $role): void
-    {
-        $this->role = $role;
-    }
-
     public function getQuestionnaire(): ?Questionnaire
     {
         return $this->questionnaire;
@@ -137,5 +127,26 @@ class User
         $this->telephone = $telephone;
 
         return $this;
+    }
+
+    #[\Deprecated]
+    public function eraseCredentials(): void
+    {
+        // @deprecated, to be removed when upgrading to Symfony 8
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->email;
+    }
+
+    public function getRoles(): array
+    {
+        return $this->role;
+    }
+
+    public function setRole(array $role): void
+    {
+        $this->role = $role;
     }
 }
