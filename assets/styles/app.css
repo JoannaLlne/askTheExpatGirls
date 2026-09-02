@@ -1,3 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background-color: skyblue;
+    background-color: #FEF1F2;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#logo {
+    height: 80px;
+    width: auto;
 }
