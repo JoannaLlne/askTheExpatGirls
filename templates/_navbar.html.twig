@@ -76,8 +76,28 @@
             <label for="search">
                 <input type="search" name="search" id="search" placeholder="Search...">
             </label>
-            <button class="btn btnOK">OK</button>
+            <button class="btn btnOK" id="searchOK">OK</button>
             </div>
             </div>
 </nav>
+
+<script>
+    const input = document.getElementById('search');
+    const button = document.getElementById('searchOK');
+
+    // Track value changes in the input field and ENTER
+    input.addEventListener('change', (event) => {
+        console.log('Input value committed:', event.target.value);
+    });
+
+    // Trigger search action when the button OK is clicked
+    button.addEventListener('click', () => {
+        performSearch(input.value);
+    });
+
+    function performSearch(query) {
+        console.log('Searching for:', query);
+        // Add your search logic here
+    }
+</script>
 
