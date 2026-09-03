@@ -42,8 +42,12 @@ li {
     align-items: center;
     justify-content: center;
     gap: 30px;
-
     padding-top: 20px;
+}
+
+.btnSave:disabled {
+    background-color: darkgrey;
+    cursor: not-allowed;
 }
 
 .checkbox {
@@ -62,6 +66,16 @@ li {
     align-items: center;
     justify-content: center;
     gap: 10px;
+}
+
+.error {
+    color: red;
+    font-size: 0.875rem;
+}
+
+.success {
+    color: green;
+    font-size: 0.875rem;
 }
 
 #user_password_first {

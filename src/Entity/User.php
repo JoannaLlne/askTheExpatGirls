@@ -49,7 +49,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $role = [];
 
-    #[ORM\OneToOne(targetEntity: Questionnaire::class,mappedBy: 'questionnaire')]
+    #[ORM\OneToOne(targetEntity: Questionnaire::class, mappedBy: 'user')]
     private ?Questionnaire $questionnaire = null;
 
     public function getId(): ?int

@@ -1,8 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}">
 {% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('styles/js/password-check.js') }}" defer></script>
+{% endblock %}
+
 
 {% block title %}Sign in{% endblock %}
 
@@ -34,6 +40,7 @@
             {{ form_row(userForm.password) }}
         </li>
     </ul>
+    <span id="passwordError" class="error"></span>
 
     <div class="btnList">
         <button class="btn btnSave">Save</button>
@@ -48,4 +55,5 @@
     {{ form_end(userForm) }}
 
 </div>
+
 {% endblock %}

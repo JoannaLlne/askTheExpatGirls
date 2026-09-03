@@ -22,7 +22,7 @@ final class UserController extends AbstractController
     }
 
      #[Route('/createUser', name: 'user_create', methods: ['GET', 'POST'])]
-    public function create(Request $request, UserRepository $userRepository, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em): Response
     {
         // notre entité vide
         $user = new User();
@@ -30,13 +30,14 @@ final class UserController extends AbstractController
         // notre formulaire, associée à l'entité vide
         $userForm = $this->createForm(UserType::class, $user);
 
-        // récupère les données du form et les injecte dans notre $sortie
+        // récupère les données du form et les injecte dans notre $user
         $userForm->handleRequest($request);
 
         // si le formulaire est soumis et est valide
         if ($userForm->isSubmitted() && $userForm->isValid()) {
 
-            $user->setRole('ROLE_USER');
+            $roleDefault = array('ROLE_USER');
+            $user->setRole($roleDefault);
 
             // sauvegarde en bdd
             $em->persist($user);
@@ -45,7 +46,9 @@ final class UserController extends AbstractController
             // affiche un message sur la prochaine page si soumission
             $this->addFlash('success', 'A new user has been created.');
             // redirige vers la page de détails de l'idée fraîchement créée
-            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
+            return $this->redirectToRoute('main_index');
+
+            // return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         // affiche le formulaire
