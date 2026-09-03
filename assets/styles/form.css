@@ -6,7 +6,6 @@ h1 {
 input {
     width: 250px;
     height: 30px;
-    margin-bottom: 10px;
 }
 
 input[type="checkbox"] {
@@ -17,17 +16,34 @@ label {
     text-align: left;
 }
 
-.h1 {
-    padding-bottom: 50px;
+li {
+    list-style: none;
 }
 
-.btn-submit {
+.containerForm {
+    height: 70vh;
+}
+
+.btnSubmit, .btnSave, .btnReturn {
     background-color: #890000  ;
     color: #fff;
     padding: 15px 25px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.btnReturn a {
+    color: #fff;
+}
+
+.btnList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    padding-top: 20px;
 }
 
 .checkbox {
@@ -38,6 +54,18 @@ label {
 
 .checkbox input {
     margin-top: 9px;
+}
+
+.containerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#user_password_first {
+    margin-bottom: 15px;
 }
 
 #inputContainer {
@@ -54,3 +82,16 @@ label {
     align-items: center;
     justify-content: center;
 }
+
+#containerCreateUser li {
+    margin-bottom: 15px;
+}
+
+#containerCreateUser input{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+

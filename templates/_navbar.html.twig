@@ -2,12 +2,13 @@
 
         <div class="logo">
             <img id="logo" src="{{ asset('images/Logo-ATEG.png') }}" alt="logo">
-            <h2>Ask the Expat Girls</h2>
+            <!-- <h2>Ask the Expat Girls</h2> -->
         </div>
 
 
-        <div class="navbar-ul">
-            <ul class="nav-ul">
+
+            <div class="nav-menu">
+            <ul>
                 {% if app.user %}
                 {% if is_granted("ROLE_ADMIN") %}
                 <li class="nav-li">
@@ -51,17 +52,27 @@
                 <li class="nav-li">
                     <a class="nav-link" href="{{ path('profil_show', {id:app.user.id}) }}"
                        title="Voir mon profil">
-                        Mon profil
+                        My profil
                     </a>
                 </li>
 
                 <li class="nav-li">
                     <a class="nav-link" href="{{ path('app_logout') }}" data-turbo-prefetch="false" title="Se déconnecter">
-                        Se déconnecter
+                        Logout
                     </a>
                 </li>
+            {% endif %}
             </ul>
-        </div>
-    {% endif %}
+            </div>
+
+            <div class="nav-btn">
+            <button class="btn btnLogin">Login</button>
+            <div class="btnSearch">
+            <label for="search">
+                <input type="search" name="search" id="search" placeholder="Search...">
+            </label>
+            <button class="btn btnOK">OK</button>
+            </div>
+            </div>
 </nav>
-</nav>
+
