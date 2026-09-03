@@ -44,7 +44,7 @@ final class UserController extends AbstractController
             $em->flush();
 
             // affiche un message sur la prochaine page si soumission
-            $this->addFlash('success', 'A new user has been created.');
+            $this->addFlash('success', 'Your profile was successfully created.');
             // redirige vers la page de détails de l'idée fraîchement créée
             return $this->redirectToRoute('main_index');
 
