@@ -30,9 +30,6 @@ class UserType extends AbstractType
             ->add('phone', TextType::class, [
                 'label' => 'Phone'
             ])
-            ->add('password', TextType::class, [
-                'label' => 'Password'
-            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les mots de passe ne correspondent pas.',

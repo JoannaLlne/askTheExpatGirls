@@ -9,6 +9,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class UserController extends AbstractController
@@ -22,7 +23,7 @@ final class UserController extends AbstractController
     }
 
      #[Route('/createUser', name: 'user_create', methods: ['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $em): Response
+    public function create(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
         // notre entité vide
         $user = new User();
@@ -38,6 +39,8 @@ final class UserController extends AbstractController
 
             $roleDefault = array('ROLE_USER');
             $user->setRole($roleDefault);
+            $user->setPassword(
+                $passwordHasher->hashPassword($user,$userForm->get('password')->getData()));
 
             // sauvegarde en bdd
             $em->persist($user);

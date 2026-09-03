@@ -5,7 +5,10 @@ security:
 
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
     providers:
-        users_in_memory: { memory: null }
+        app_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
 
     firewalls:
         dev:
@@ -14,7 +17,16 @@ security:
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: app_user_provider
+
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                enable_csrf: true
+                # by default, the feature is enabled by checking a
+                # checkbox in the login form (see below), uncomment the
+                # following line to always enable it.
+                #always_remember_me: true
 
             logout:
                 path: app_logout
@@ -26,14 +38,6 @@ security:
             remember_me:
                 secret: '%kernel.secret%'
                 lifetime: 604800 # 1 week in seconds
-            form_login:
-                login_path: app_login
-                check_path: app_login
-                enable_csrf: true
-                # by default, the feature is enabled by checking a
-                # checkbox in the login form (see below), uncomment the
-                # following line to always enable it.
-                #always_remember_me: true
 
             # Activate different ways to authenticate:
             # https://symfony.com/doc/current/security.html#the-firewall

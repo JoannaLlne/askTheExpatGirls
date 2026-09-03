@@ -41,8 +41,12 @@ a {
     cursor: pointer;
 }
 
-.btnLogin {
+.btnLogin, .btnLogout {
     padding: 7px 20px;
+}
+
+.btnLogin, .btnLogout a {
+    color: #fff;
 }
 
 .btnOK {

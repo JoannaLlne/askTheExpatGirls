@@ -22,14 +22,14 @@
 
                 <li class="nav-li">
                     <a class="nav-link" href="{{ path('main_index') }}"
-                       title="Allez à l'accueil">
+                       title="Go to home page">
                         Home
                     </a>
                 </li>
 
                 <li class="nav-li">
                     <a class="nav-link" href="{{ path('main_index') }}"
-                       title="Voir les services">
+                       title="See services">
                         Services
                     </a>
                 </li>
@@ -43,30 +43,35 @@
 
                 <li class="nav-li">
                     <a class="nav-link" href="{{ path('main_index') }}"
-                       title="Voir le contact">
+                       title="See contact">
                         Contact
                     </a>
                 </li>
 
                 {% if app.user %}
                 <li class="nav-li">
-                    <a class="nav-link" href="{{ path('profil_show', {id:app.user.id}) }}"
-                       title="Voir mon profil">
+                    <a class="nav-link" href="{{ path('main_index', {id:app.user.id}) }}"
+                       title="See my profil">
                         My profil
                     </a>
                 </li>
 
-                <li class="nav-li">
-                    <a class="nav-link" href="{{ path('app_logout') }}" data-turbo-prefetch="false" title="Se déconnecter">
+                {# <li class="nav-li">
+                    <a class="nav-link" href="{{ path('app_logout') }}" data-turbo-prefetch="false" title="Logout">
                         Logout
                     </a>
-                </li>
+                </li>  #}
             {% endif %}
             </ul>
             </div>
 
             <div class="nav-btn">
-            <button class="btn btnLogin">Login</button>
+                {% if not app.user %}
+            <button class="btn btnLogin"><a href="{{ path('app_login') }}">Login</a></button>
+                {% else %}
+            <button class="btn btnLogout"><a href="{{ path('app_logout') }}">Logout</a></button>
+                {% endif %}
+
             <div class="btnSearch">
             <label for="search">
                 <input type="search" name="search" id="search" placeholder="Search...">
