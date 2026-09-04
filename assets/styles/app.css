@@ -51,7 +51,7 @@ a {
     padding: 7px 20px;
 }
 
-.btnLogin, .btnLogout a {
+.btnLogin a, .btnLogout a {
     color: #fff;
 }
 

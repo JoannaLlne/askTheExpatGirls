@@ -19,7 +19,7 @@
         {% endif %}
 
         <div id="logForm">
-        <h1 class="h1">Please sign in</h1>
+        <h1 class="h1">Please enter your login details</h1>
 
         <div id="inputContainer">
         <label for="username">Email</label>
@@ -34,9 +34,10 @@
             </div>
         </div>
 
-        <button class="btn btnSubmit" type="submit">
-            Sign in
-        </button>
+    <div class="containerProfile-btn">
+        <button class="btn btnSubmit" type="submit">Login</button>
+            <button class="btn btnSign"><a href="{{ path('user_create') }}"> Sign in</a></button>
         </div>
+    </div>
     </form>
 {% endblock %}

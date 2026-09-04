@@ -36,7 +36,7 @@
 
                 <li class="nav-li">
                     <a class="nav-link" href="{{ path('main_index') }}"
-                       title="Voir les Expat Packages">
+                       title="See Expat Packages">
                         Expat Packages
                     </a>
                 </li>
@@ -50,9 +50,9 @@
 
                 {% if app.user %}
                 <li class="nav-li">
-                    <a class="nav-link" href="{{ path('main_index', {id:app.user.id}) }}"
-                       title="See my profil">
-                        My profil
+                    <a class="nav-link" href="{{ path('user_profile', {id:app.user.id}) }}"
+                       title="See my profile">
+                        My profile
                     </a>
                 </li>
 
@@ -67,21 +67,21 @@
 
             <div class="nav-btn">
                 {% if not app.user %}
-            <button class="btn btnLogin"><a href="{{ path('app_login') }}">Login</a></button>
+            <button class="btn btnLogin"><a href="{{ path('app_login') }}">Login/Sign In</a></button>
                 {% else %}
             <button class="btn btnLogout"><a href="{{ path('app_logout') }}">Logout</a></button>
                 {% endif %}
 
-            <div class="btnSearch">
+           <!-- <div class="btnSearch">
             <label for="search">
                 <input type="search" name="search" id="search" placeholder="Search...">
             </label>
             <button class="btn btnOK" id="searchOK">OK</button>
-            </div>
-            </div>
+            </div> -->
+        </div>
 </nav>
 
-<script>
+<!-- <script>
     const input = document.getElementById('search');
     const button = document.getElementById('searchOK');
 
@@ -99,5 +99,5 @@
         console.log('Searching for:', query);
         // Add your search logic here
     }
-</script>
+</script> -->
 
