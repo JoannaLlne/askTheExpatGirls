@@ -33,11 +33,19 @@ final class QuestionnaireController extends AbstractController
             /** @var User|null $user */
             $user = $this->getUser();
 
+            $existingQuestionnaire = $em->getRepository(Questionnaire::class)->findOneBy(['user' => $user]);
+
+            if ($existingQuestionnaire) {
+                $this->addFlash('info', 'Sorry but you already sent your infos!');
+                return $this->redirectToRoute('main_index');
+            }
+
         // notre entité vide
         $questionnaire = new Questionnaire();
+        $questionnaire->setUser($user);
 
         // notre formulaire, associée à l'entité vide
-        $questionnaireForm = $this->createForm(QuestionnaireType::class);
+        $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire);
 
         // récupère les données du form et les injecte dans notre $questionnaire
         $questionnaireForm->handleRequest($request);

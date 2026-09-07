@@ -8,46 +8,50 @@
 
 {% block body %}
 
-    <h1 class="h1">Hello {{ app.user.firstName }}</h1>
-    <h2 class="h2">Fill out the form</h2>
+    <h1 id="h1-quest">Hello {{ app.user.firstName }}</h1>
 
-    <div class="containerForm">
+    <div class="questContainer">
+    <div class="questForm">
         {{ form_start(questionnaireForm) }}
-
         <ul id="containerQuestionnaire">
-            <li class="input1">
+            <li class="input">
                 Name : {{ app.user.firstName }}
             </li>
 
-            <li class="input2">
+            <li class="input">
                 Last name : {{ app.user.lastName }}
             </li>
 
-            <li class="input3">
+            <li class="input">
                 {{ form_row(questionnaireForm.nationality) }}
             </li>
 
-            <li class="input4">
+            <li class="input">
                 {{ form_row(questionnaireForm.situation) }}
             </li>
 
-            <li class="input5">
+            <li class="input">
                 {{ form_row(questionnaireForm.helpReason) }}
             </li>
 
-            <li class="input5">
+            <li class="textarea">
                 {{ form_row(questionnaireForm.additionalInfo) }}
             </li>
         </ul>
 
         <div class="btnList">
-            <button class="btn btnSave">Save</button>
+            <button class="btn btnSubmit">Submit</button>
 
             <button class="btn btnReturn">
                 <a href="{{ path('main_index') }}">Retour</a>
             </button>
         </div>
+    </div>
         {{ form_end(questionnaireForm) }}
 
+        <div class="textForm">
+            <h2 class="h2">Your questionnaire</h2>
+            <p>Fill out the form with all your information <br> and we'll come back to you as soon as possible</p>
+        </div>
     </div>
 {% endblock %}

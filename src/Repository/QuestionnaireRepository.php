@@ -16,6 +16,13 @@ class QuestionnaireRepository extends ServiceEntityRepository
         parent::__construct($registry, Questionnaire::class);
     }
 
+    public function findById(int $id): ?Questionnaire {
+        $qb = $this->createQueryBuilder('q');
+        $qb->where('q.id = :id')
+            ->setParameter('id', $id);
+        return $qb->getQuery()->getResult();
+    }
+
     //    /**
     //     * @return Questionnaire[] Returns an array of Questionnaire objects
     //     */

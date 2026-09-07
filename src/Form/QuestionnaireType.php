@@ -35,6 +35,7 @@ class QuestionnaireType extends AbstractType
             ])
             ->add('additionalInfo', TextareaType::class, [
                 'label' => 'Additional Info',
+                'required'   => false,
                 'attr' => [
                     'rows' => 10,
                     'cols'=>50,
