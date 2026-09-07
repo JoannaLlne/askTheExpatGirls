@@ -4,8 +4,6 @@ namespace App\Controller\Dashboard;
 
 use App\Controller\Admin\QuestionnaireCrudController;
 use App\Controller\Admin\UserCrudController;
-use App\Entity\User;
-use App\Entity\Questionnaire;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -36,5 +34,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Gestion');
         yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-tags')->setAction(Action::INDEX);;
         yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-tags')->setAction(Action::INDEX);;
+        yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Services', 'fa fa-tags')->setAction(Action::INDEX);;
+
     }
 }

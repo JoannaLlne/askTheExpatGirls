@@ -13,7 +13,7 @@ enum ServiceCategory: string
     {
         return match($this) {
             self::StayImmigration => 'Stay & Immigration',
-            self::WorkStudy => 'Already In France',
+            self::WorkStudy => 'Work & Study',
             self::Healthcare => 'Healthcare',
             self::Other => 'Other',
         };

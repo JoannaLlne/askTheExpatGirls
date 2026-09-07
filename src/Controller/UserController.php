@@ -54,7 +54,6 @@ final class UserController extends AbstractController
 
             // return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
-
         // affiche le formulaire
         return $this->render('user/create_user.html.twig', [
             'userForm' => $userForm,
@@ -101,5 +100,4 @@ final class UserController extends AbstractController
             'userForm' => $userForm,
         ]);
     }
-
 }

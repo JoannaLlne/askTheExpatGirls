@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}">
+{% endblock %}
+
+{% block title %}Questionnaire{% endblock %}
+
+{% block body %}
+
+    <h1 class="h1">Hello {{ app.user.firstName }}</h1>
+    <h2 class="h2">Fill out the form</h2>
+
+    <div class="containerForm">
+        {{ form_start(questionnaireForm) }}
+
+        <ul id="containerQuestionnaire">
+            <li class="input1">
+                Name : {{ app.user.firstName }}
+            </li>
+
+            <li class="input2">
+                Last name : {{ app.user.lastName }}
+            </li>
+
+            <li class="input3">
+                {{ form_row(questionnaireForm.nationality) }}
+            </li>
+
+            <li class="input4">
+                {{ form_row(questionnaireForm.situation) }}
+            </li>
+
+            <li class="input5">
+                {{ form_row(questionnaireForm.helpReason) }}
+            </li>
+
+            <li class="input5">
+                {{ form_row(questionnaireForm.additionalInfo) }}
+            </li>
+        </ul>
+
+        <div class="btnList">
+            <button class="btn btnSave">Save</button>
+
+            <button class="btn btnReturn">
+                <a href="{{ path('main_index') }}">Retour</a>
+            </button>
+        </div>
+        {{ form_end(questionnaireForm) }}
+
+    </div>
+{% endblock %}
