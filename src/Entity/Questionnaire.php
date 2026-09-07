@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\ServiceCategory;
 use App\Enum\Situation;
 use App\Repository\QuestionnaireRepository;
 use Doctrine\DBAL\Types\Types;
@@ -22,14 +23,13 @@ class Questionnaire
     private ?string $nationality = null;
 
     #[ORM\Column(enumType: Situation::class)]
-    private ?string $situation = null;
+    private ?Situation $situation = null;
 
-    #[ORM\Column(length: 180)]
+    #[ORM\Column(enumType: ServiceCategory::class)]
     #[Assert\NotBlank()]
-    #[Assert\Length(max: 180)]
-    private ?string $helpReason = null;
+    private ?ServiceCategory $helpReason = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     #[Assert\Length(max: 255)]
     private ?string $additionalInfo = null;
 
@@ -45,16 +45,26 @@ class Questionnaire
         return $this->id;
     }
 
-    public function getSituation(): ?string
+    public function getSituation(): ?Situation
     {
         return $this->situation;
     }
 
-    public function setSituation(string $situation): static
+    public function setSituation(Situation $situation): static
     {
         $this->situation = $situation;
 
         return $this;
+    }
+
+    public function getSituationLabel(): ?string
+    {
+        return $this->situation?->label();
+    }
+
+    public function getHelpReasonLabel(): ?string
+    {
+        return $this->helpReason?->label();
     }
 
     public function getNationality(): ?string
@@ -69,16 +79,15 @@ class Questionnaire
         return $this;
     }
 
-    public function getHelpReason(): ?string
+    public function getHelpReason(): ?ServiceCategory
     {
         return $this->helpReason;
     }
 
-    public function setHelpReason(string $helpReason): static
+    public function setHelpReason(ServiceCategory $helpReason): static
     {
         $this->helpReason = $helpReason;
-
-        return $this;
+       return $this;
     }
 
     public function getAdditionalInfo(): ?string
@@ -115,5 +124,14 @@ class Questionnaire
         $this->user = $user;
     }
 
+    public function getUserFirstName(): ?string
+    {
+        return $this->user?->getFirstName();
+    }
+
+    public function getUserLastName(): ?string
+    {
+        return $this->user?->getLastName();
+    }
 
 }

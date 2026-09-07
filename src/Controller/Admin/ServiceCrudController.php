@@ -15,14 +15,17 @@ class ServiceCrudController extends AbstractCrudController
         return Service::class;
     }
 
-    /*
+
     public function configureFields(string $pageName): iterable
     {
-        return [
-            IdField::new('id'),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-        ];
+        yield IdField::new('id', 'ID');
+        yield TextField::new('name', 'Name');
+        yield TextField::new('description', 'Description');
+        yield TextField::new('price', 'Price');
+
+        yield TextField::new('serviceCategory', 'Service Category');
+        yield TextField::new('serviceTiming', 'Service Timing');
+
     }
-    */
+
 }

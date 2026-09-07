@@ -3,6 +3,7 @@
 namespace App\Controller\Dashboard;
 
 use App\Controller\Admin\QuestionnaireCrudController;
+use App\Controller\Admin\ServiceCrudController;
 use App\Controller\Admin\UserCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -32,9 +33,9 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Home', 'fa fa-home');
         yield MenuItem::section('Gestion');
-        yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-tags')->setAction(Action::INDEX);;
-        yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-tags')->setAction(Action::INDEX);;
-        yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Services', 'fa fa-tags')->setAction(Action::INDEX);;
+        yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-tags')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-tags')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(ServiceCrudController::class, 'Services', 'fa fa-tags')->setAction(Action::INDEX);
 
     }
 }

@@ -43,6 +43,8 @@ final class QuestionnaireController extends AbstractController
         // notre entité vide
         $questionnaire = new Questionnaire();
         $questionnaire->setUser($user);
+        $createdAt = new \DateTimeImmutable();
+        $questionnaire->setSubmittedAt($createdAt);
 
         // notre formulaire, associée à l'entité vide
         $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire);
@@ -60,7 +62,7 @@ final class QuestionnaireController extends AbstractController
             // affiche un message sur la prochaine page si soumission
             $this->addFlash('success', 'The questionnaire was successfully sent');
             // redirige vers la page de détails de l'idée fraîchement créée
-            return $this->redirectToRoute('user_profile');
+            return $this->redirectToRoute('user_profile', ['id' => $user->getId()]);
         }
         // affiche le formulaire
         return $this->render('questionnaire/questionnaire.html.twig', [

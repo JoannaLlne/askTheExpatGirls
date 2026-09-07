@@ -1,3 +1,6 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
 h1 {
     padding: 50px 15px 5px;
     text-align: center;
@@ -58,7 +61,7 @@ th {
     align-items: center;
     justify-content: center;
     gap: 30px;
-    padding-top: 20px;
+    padding: 20px 0 20px;
 }
 
 .btnSave:disabled {
@@ -125,28 +128,31 @@ th {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
 
     background-color: #F5F8FF;
     box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
-    padding: 72px 32px 58px;
-    width: 600px;
-    height: 600px;
+    margin: 50px 0;
+    padding: 100px 50px;
+
+    width: 580px;
+    max-height: 580px;
 }
 
 .textForm {
-    background-color: #acc6fe;
+    background-color: #890000;
+    color: #F5F8FF;
+    border: 1px solid #890000;
     box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
     padding: 72px 32px 58px;
-    width: 380px;
-    height: 300px;
+    width: 250px;
+    height: 520px;
 
     position: relative;
     left: -65px;
 }
 
 .textForm p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     text-align: right;
     line-height: 23px;
 }
@@ -208,10 +214,18 @@ th {
 }
 
 #h1-quest {
-    margin-bottom: 60px;
+    margin-bottom: 20px;
     font-size: 2.2rem;
     letter-spacing: 2px;
 }
 
+#signature {
+    text-align: right;
+    font-family: "Indie Flower", cursive;
+    font-size: 0.75rem;
+    margin-top: 30px;
+}
 
-
+#inputName {
+    padding-top: 60px;
+}

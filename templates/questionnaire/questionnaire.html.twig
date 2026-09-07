@@ -14,7 +14,7 @@
     <div class="questForm">
         {{ form_start(questionnaireForm) }}
         <ul id="containerQuestionnaire">
-            <li class="input">
+            <li class="input" id="inputName">
                 Name : {{ app.user.firstName }}
             </li>
 
@@ -52,6 +52,7 @@
         <div class="textForm">
             <h2 class="h2">Your questionnaire</h2>
             <p>Fill out the form with all your information <br> and we'll come back to you as soon as possible</p>
+            <div id="signature">The Expat Girls</div>
         </div>
     </div>
 {% endblock %}
