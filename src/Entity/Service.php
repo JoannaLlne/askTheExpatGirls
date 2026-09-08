@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
+#[ORM\HasLifecycleCallbacks]
 class Service
 {
     #[ORM\Id]
@@ -19,7 +20,7 @@ class Service
 
     #[ORM\Column(length: 180)]
     #[Assert\NotBlank()]
-    #[Assert\length(max: 180)]
+    #[Assert\Length(max: 180)]
     private ?string $name = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -30,11 +31,11 @@ class Service
     #[Assert\NotBlank()]
     private ?int $price = null;
 
-    #[ORM\Column(enumType: ServiceCategory::class)]
-    private ?string $ServiceCategory = null;
+    #[ORM\Column(type: 'json')]
+    private array $serviceCategory = [];
 
-    #[ORM\Column(enumType: ServiceTiming::class)]
-    private ?string $ServiceTiming = null;
+    #[ORM\Column(type: 'json')]
+    private array $serviceTiming = [];
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -80,28 +81,44 @@ class Service
         return $this;
     }
 
-    public function getServiceCategory(): ?string
+    public function getServiceCategory(): array
     {
-        return $this->ServiceCategory;
+        return $this->serviceCategory;
     }
 
-    public function setServiceCategory(string $ServiceCategory): static
+    public function setServiceCategory(array $serviceCategory): static
     {
-        $this->ServiceCategory = $ServiceCategory;
+        $this->serviceCategory = array_map(
+            fn ($c) => $c instanceof ServiceCategory ? $c->value : $c,
+            $serviceCategory
+        );
 
         return $this;
     }
 
-    public function getServiceTiming(): ?string
+    public function getServiceCategoryEnums(): array
     {
-        return $this->ServiceTiming;
+        return array_map(fn (string $v) => ServiceCategory::from($v), $this->serviceCategory);
     }
 
-    public function setServiceTiming(string $ServiceTiming): static
+    public function getServiceTiming(): array
     {
-        $this->ServiceTiming = $ServiceTiming;
+        return $this->serviceTiming;
+    }
+
+    public function setServiceTiming(array $serviceTiming): static
+    {
+        $this->serviceTiming = array_map(
+            fn ($t) => $t instanceof ServiceTiming ? $t->value : $t,
+            $serviceTiming
+        );
 
         return $this;
+    }
+
+    public function getServiceTimingEnums(): array
+    {
+        return array_map(fn (string $v) => ServiceTiming::from($v), $this->serviceTiming);
     }
 
     public function getCreatedAt(): ?\DateTimeImmutable
@@ -109,10 +126,9 @@ class Service
         return $this->createdAt;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    #[ORM\PrePersist]
+    public function setCreatedAtValue(): void
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
+        $this->createdAt = new \DateTimeImmutable();
     }
 }

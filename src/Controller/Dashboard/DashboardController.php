@@ -36,6 +36,5 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-tags')->setAction(Action::INDEX);
         yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-tags')->setAction(Action::INDEX);
         yield MenuItem::linkTo(ServiceCrudController::class, 'Services', 'fa fa-tags')->setAction(Action::INDEX);
-
     }
 }
