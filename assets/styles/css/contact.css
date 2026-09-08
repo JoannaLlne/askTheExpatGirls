@@ -20,6 +20,12 @@ h3 {
     justify-content: center;
 }
 
+.alert {
+    color: #27500A;
+    padding: 20px 40px;
+    font-size: 1.5rem;
+}
+
 #join {
     background-color: #890000;
     border-radius: 4px;

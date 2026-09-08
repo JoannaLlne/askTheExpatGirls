@@ -135,16 +135,6 @@
     margin: 0;
 }
 
-.qr-flash-success {
-    max-width: 720px;
-    margin: 0 auto 20px;
-    background: #EAF3DE;
-    color: #27500A;
-    border-radius: 8px;
-    padding: 14px 18px;
-    font-size: 14px;
-}
-
 #signature {
     font-family: "Indie Flower", cursive;
     font-size: 0.75rem;

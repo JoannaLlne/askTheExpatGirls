@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -49,8 +51,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $role = [];
 
-    #[ORM\OneToOne(targetEntity: Questionnaire::class, mappedBy: 'user')]
-    private ?Questionnaire $questionnaire = null;
+    #[ORM\OneToMany(targetEntity: Questionnaire::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $questionnaire;
+
+    public function __construct()
+    {
+        $this->questionnaire = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection<int, Questionnaire>
+     */
+    public function getQuestionnaire(): Collection
+    {
+        return $this->questionnaire;
+    }
+
+    public function addQuestionnaire(Questionnaire $questionnaire): static
+    {
+        if (!$this->questionnaire->contains($questionnaire)) {
+            $this->questionnaire->add($questionnaire);
+            $questionnaire->setUser($this);
+        }
+        return $this;
+    }
+
+    public function removeQuestionnaire(Questionnaire $questionnaire): static
+    {
+        if ($this->questionnaire->removeElement($questionnaire)) {
+            // set the owning side to null (unless already changed)
+            if ($questionnaire->getUser() === $this) {
+                $questionnaire->setUser(null);
+            }
+        }
+
+        return $this;
+    }
 
     public function getId(): ?int
     {
@@ -101,18 +137,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getQuestionnaire(): ?Questionnaire
-    {
-        return $this->questionnaire;
-    }
-
-    public function setQuestionnaire(?Questionnaire $questionnaire): static
-    {
-        $this->questionnaire = $questionnaire;
 
         return $this;
     }

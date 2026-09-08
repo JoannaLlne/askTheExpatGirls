@@ -7,13 +7,9 @@
 <div class="qr-page">
     {#  <h1 id="qr-title">Hello {{ app.user.firstName }}</h1> #}
 
-    {% for message in app.flashes('success') %}
-        <div class="qr-flash-success">{{ message }}</div>
-    {% endfor %}
-
     <div class="questContainer">
     <div class="questForm">
-        {{ form_start(questionnaireForm) }}
+        {{ form_start(questionnaireForm, {'action': path('new_questionnaire')}) }}
 
             <div class="qr-field">
                 <p>First name : {{ app.user.firstName }}</p>
@@ -46,16 +42,13 @@
         <div class="btnList">
             <button class="btn btnSubmit">Submit</button>
 
-            <button class="btn btnReturn">
-                <a href="{{ path('main_index') }}">Back</a>
-            </button>
+            <a class="btn btnReturn" href="{{ path('main_index') }}">Back</a>
+
         </div>
 
         <p class="qr-confidentiality">Your information stays confidential and is only used to process your request.</p>
         {{ form_end(questionnaireForm) }}
     </div>
-
-        {{ form_end(questionnaireForm) }}
 
         <div class="textForm">
             <div>

@@ -33,12 +33,12 @@ final class QuestionnaireController extends AbstractController
             /** @var User|null $user */
             $user = $this->getUser();
 
-            $existingQuestionnaire = $em->getRepository(Questionnaire::class)->findOneBy(['user' => $user]);
+           /*$existingQuestionnaire = $em->getRepository(Questionnaire::class)->findOneBy(['user' => $user]);
 
             if ($existingQuestionnaire) {
                 $this->addFlash('info', 'Sorry but you already sent your infos!');
                 return $this->redirectToRoute('main_index');
-            }
+            }*/
 
         // notre entité vide
         $questionnaire = new Questionnaire();

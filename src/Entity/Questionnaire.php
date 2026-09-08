@@ -36,7 +36,7 @@ class Questionnaire
     #[ORM\Column]
     private ?\DateTimeImmutable $submittedAt = null;
 
-    #[ORM\OneToOne(targetEntity: User::class, inversedBy: 'questionnaire')]
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'questionnaire')]
     #[JoinColumn(nullable: false)]
     private User $user;
 
@@ -119,9 +119,10 @@ class Questionnaire
         return $this->user;
     }
 
-    public function setUser(User $user): void
+    public function setUser(User $user): static
     {
         $this->user = $user;
+        return $this;
     }
 
     public function getUserFirstName(): ?string
