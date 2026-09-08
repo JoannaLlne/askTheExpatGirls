@@ -1,3 +1,11 @@
+:root {
+    --primary: #14213D;
+    --secondary: #7A1F2B;
+    --back: #F5F1EA;
+    --beige: #C9A24B;
+    --grey: #3D4552;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +13,7 @@
 }
 
 body {
-    background-color: #f2f1f1 ;
+    background-color: var(--back) ;
 }
 
 a {

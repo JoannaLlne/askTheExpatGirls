@@ -1,58 +1,73 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/questionnaire.css') }}">
 {% endblock %}
 
 {% block title %}Questionnaire{% endblock %}
 
 {% block body %}
+<div class="qr-page">
+    <h1 id="qr-title">Hello {{ app.user.firstName }}</h1>
 
-    <h1 id="h1-quest">Hello {{ app.user.firstName }}</h1>
+    {% for message in app.flashes('success') %}
+        <div class="qr-flash-success">{{ message }}</div>
+    {% endfor %}
 
     <div class="questContainer">
     <div class="questForm">
         {{ form_start(questionnaireForm) }}
-        <ul id="containerQuestionnaire">
-            <li class="input" id="inputName">
-                Name : {{ app.user.firstName }}
-            </li>
 
-            <li class="input">
-                Last name : {{ app.user.lastName }}
-            </li>
+            <div class="qr-field">
+                <p>First name : {{ app.user.firstName }}</p>
+            </div>
+            <div class="qr-field">
+                <p>Last name : {{ app.user.lastName }}</p>
+            </div>
+            <div class="qr-field">
+                {{ form_label(questionnaireForm.nationality) }}
+                {{ form_widget(questionnaireForm.nationality) }}
+                {{ form_errors(questionnaireForm.nationality) }}
+            </div>
+            <div class="qr-field">
+                {{ form_label(questionnaireForm.situation) }}
+                {{ form_widget(questionnaireForm.situation) }}
+                {{ form_errors(questionnaireForm.situation) }}
+            </div>
+            <div class="qr-field">
+                {{ form_label(questionnaireForm.helpReason) }}
+                {{ form_widget(questionnaireForm.helpReason) }}
+                {{ form_errors(questionnaireForm.helpReason) }}
+            </div>
+            <div class="qr-field">
+                {{ form_label(questionnaireForm.additionalInfo) }}
+                {{ form_widget(questionnaireForm.additionalInfo) }}
+                {{ form_errors(questionnaireForm.additionalInfo) }}
+            </div>
 
-            <li class="input">
-                {{ form_row(questionnaireForm.nationality) }}
-            </li>
-
-            <li class="input">
-                {{ form_row(questionnaireForm.situation) }}
-            </li>
-
-            <li class="input">
-                {{ form_row(questionnaireForm.helpReason) }}
-            </li>
-
-            <li class="textarea">
-                {{ form_row(questionnaireForm.additionalInfo) }}
-            </li>
-        </ul>
 
         <div class="btnList">
             <button class="btn btnSubmit">Submit</button>
 
             <button class="btn btnReturn">
-                <a href="{{ path('main_index') }}">Retour</a>
+                <a href="{{ path('main_index') }}">Back</a>
             </button>
         </div>
+
+        <p class="qr-confidentiality">Your information stays confidential and is only used to process your request.</p>
+        {{ form_end(questionnaireForm) }}
     </div>
+
         {{ form_end(questionnaireForm) }}
 
         <div class="textForm">
-            <h2 class="h2">Your questionnaire</h2>
-            <p>Fill out the form with all your information <br> and we'll come back to you as soon as possible</p>
-            <div id="signature">The Expat Girls</div>
+            <div>
+                <h2>Your questionnaire</h2>
+                <p class="panel-text">Fill out the form with all your information and we will get back to you as soon as possible.</p>
+            </div>
+            <p id="signature">The Expat Girls</p>
         </div>
     </div>
+</div>
 {% endblock %}
+

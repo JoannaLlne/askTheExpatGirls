@@ -1,6 +1,4 @@
 
-@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
-
 h1 {
     padding: 50px 15px 5px;
     text-align: center;
@@ -114,7 +112,7 @@ th {
     flex-direction: column;
 }
 
-.questContainer {
+/* .questContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -139,9 +137,9 @@ th {
 }
 
 .textForm {
-    background-color: #890000;
+    background-color: var(--secondary);
     color: #F5F8FF;
-    border: 1px solid #890000;
+    border: 1px solid var(--secondary);
     box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
     padding: 72px 32px 58px;
     width: 250px;
@@ -161,6 +159,7 @@ th {
     text-align: right;
     margin-bottom: 20px;
 }
+ */
 
 #user_password_first {
     margin-bottom: 15px;
@@ -211,19 +210,6 @@ th {
 
 #questionnaire_additionalInfo {
     margin-top: 7px;
-}
-
-#h1-quest {
-    margin-bottom: 20px;
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-}
-
-#signature {
-    text-align: right;
-    font-family: "Indie Flower", cursive;
-    font-size: 0.75rem;
-    margin-top: 30px;
 }
 
 #inputName {

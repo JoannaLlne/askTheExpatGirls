@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+.qr-page {
+    background: #F5F1EA;
+    border-radius: 12px;
+    padding: 40px 32px;
+}
+
+.qr-title {
+    text-align: center;
+    color: #14213D;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 32px;
+}
+
+.questContainer {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    border-radius: 12px;
+    overflow: hidden;
+
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.questForm {
+    background: #ffffff;
+
+    border: 0.5px solid #ddd6c7;
+    box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
+    margin: 50px 0;
+    padding: 50px 50px;
+
+    width: 580px;
+    max-height: 600px;
+}
+
+.textForm {
+    background: #7A1F2B;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 72px 32px 58px;
+    width: 250px;
+    height: 420px;
+    position: relative;
+    left: -65px;
+    top: 150px;
+}
+
+.textForm h2 {
+    color: #F5F1EA;
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 14px;
+    line-height: 1.4;
+}
+
+.textForm {
+    color: #F0DCDC;
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+    text-align: right;
+}
+
+.textForm h2 {
+    font-size: 1.35rem;
+}
+
+.qr-field {
+    margin-bottom: 12px;
+}
+
+.qr-field label {
+    display: block;
+    color: #14213D;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.qr-field input[type="text"],
+.qr-field select,
+.qr-field textarea {
+    width: 80%;
+    background: #ffffff;
+    border: 1px solid #cfc9ba;
+    border-radius: 6px;
+    padding: 0 14px;
+    font-size: 0.8rem;
+    color: #14213D;
+    box-sizing: border-box;
+    height: 30px;
+}
+
+.qr-field textarea {
+    height: auto;
+    resize: vertical;
+}
+
+.qr-field .form-error {
+    color: #7A1F2B;
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.btnSubmit, .btnReturn {
+    background-color: #890000  ;
+    color: #ffffff;
+    padding: 11px 25px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.btnReturn a {
+    color: #ffffff;
+}
+
+.btnSubmit:hover, .btnReturn:hover {
+    background: #F5F1EA;
+    border: 1px solid #661925;
+    color: black;
+}
+
+.btnReturn:hover a {
+    color: black;
+}
+
+.qr-confidentiality {
+    text-align: center;
+    color: #8a8578;
+    font-size: 12px;
+    margin: 18px 0 0;
+}
+
+.qr-panel .cr-panel-signature {
+    color: #C9A24B;
+    font-size: 13px;
+    margin: 0;
+}
+
+.qr-flash-success {
+    max-width: 720px;
+    margin: 0 auto 20px;
+    background: #EAF3DE;
+    color: #27500A;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+}
+
+#signature {
+    font-family: "Indie Flower", cursive;
+    font-size: 0.75rem;
+    margin-top: 30px;
+}
+
+@media (max-width: 640px) {
+    .questContainer {
+        grid-template-columns: 1fr;
+    }
+}
