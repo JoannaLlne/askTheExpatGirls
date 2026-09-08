@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/contact.css') }}">
+{% endblock %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+
+    <section class="page-header">
+        <div class="container1">
+            <h1>Contact</h1>
+            <p>You have a question ? We are ready to help !</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container2">
+            <div class="contact-grid">
+                <div class="contact-information">
+                    <h2>Here our information</h2>
+
+                    <div class="contact-information-item">
+                        <h3>Phone / Whatsapp</h3>
+                        <p>+33 67 17 94 386</p>
+                    </div>
+
+                    <div class="contact-information-item">
+                        <h3>Email</h3>
+                        <p><a href="mailto:info@asktheexpatgirls.com">info@asktheexpatgirls.com</a></p>
+                    </div>
+
+                    <div class="contact-information-item">
+                        <h3>Opening hours</h3>
+                        <p>Monday - Friday<br>9am - 7pm</p>
+                    </div>
+                </div>
+
+
+                <div class="contact-quest">
+                    <p id="contactP">If you want to ask us about a service, <br> you can create an account and fill out a form to leave us your information </p>
+                    {% if is_granted('ROLE_USER') %}
+                        {{ render(controller('App\\Controller\\QuestionnaireController::create')) }}
+                    {% else %}
+                    <a href="{{ path('app_login') }}" id="join">Join us here</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+{% endblock %}

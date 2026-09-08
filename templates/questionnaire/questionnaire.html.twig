@@ -1,14 +1,11 @@
-{% extends 'base.html.twig' %}
-
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('styles/css/questionnaire.css') }}">
 {% endblock %}
 
-{% block title %}Questionnaire{% endblock %}
 
 {% block body %}
 <div class="qr-page">
-    <h1 id="qr-title">Hello {{ app.user.firstName }}</h1>
+    {#  <h1 id="qr-title">Hello {{ app.user.firstName }}</h1> #}
 
     {% for message in app.flashes('success') %}
         <div class="qr-flash-success">{{ message }}</div>

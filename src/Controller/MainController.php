@@ -15,4 +15,10 @@ final class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    #[Route('/contact', name: 'contact_page')]
+    public function contact(): Response
+    {
+        return $this->render('contact.html.twig');
+    }
 }

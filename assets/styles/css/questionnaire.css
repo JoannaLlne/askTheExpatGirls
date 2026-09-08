@@ -3,16 +3,15 @@
 .qr-page {
     background: #F5F1EA;
     border-radius: 12px;
-    padding: 40px 32px;
 }
 
-.qr-title {
-    text-align: center;
+/* .qr-title {
     color: #14213D;
     font-size: 22px;
     font-weight: 500;
     margin: 0 0 32px;
 }
+ */
 
 .questContainer {
     display: grid;
@@ -27,7 +26,6 @@
 
 .questForm {
     background: #ffffff;
-
     border: 0.5px solid #ddd6c7;
     box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
     margin: 50px 0;
@@ -39,36 +37,29 @@
 
 .textForm {
     background: #7A1F2B;
+    color: #F0DCDC;
+
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
     padding: 72px 32px 58px;
-    width: 250px;
+    width: auto;
     height: 420px;
     position: relative;
     left: -65px;
-    top: 150px;
-}
+    top: 105px;
 
-.textForm h2 {
-    color: #F5F1EA;
-    font-size: 19px;
-    font-weight: 500;
-    margin: 0 0 14px;
-    line-height: 1.4;
-}
-
-.textForm {
-    color: #F0DCDC;
-    font-size: 14px;
     line-height: 1.6;
-    margin: 0;
     text-align: right;
 }
 
 .textForm h2 {
+    color: #F5F1EA;
     font-size: 1.35rem;
+    font-weight: 500;
+    margin: 0 0 14px;
+    line-height: 1.4;
 }
 
 .qr-field {
@@ -123,7 +114,7 @@
 
 .btnSubmit:hover, .btnReturn:hover {
     background: #F5F1EA;
-    border: 1px solid #661925;
+    border: 1px solid #7A1F2B;
     color: black;
 }
 
@@ -158,6 +149,10 @@
     font-family: "Indie Flower", cursive;
     font-size: 0.75rem;
     margin-top: 30px;
+}
+
+#qr-title {
+    text-align: center;
 }
 
 @media (max-width: 640px) {
