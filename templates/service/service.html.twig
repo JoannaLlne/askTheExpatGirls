@@ -18,37 +18,41 @@
     <img id="photo" src="{{ asset('images/photo4.jpg') }}" alt="Patisserie terrace">
     </div>
 
-    <section id="filters">
-        <h2>Filters</h2>
-        <div class="filters-choices">
-            {# get all cases of an enum #}
-            {% for case in enum_cases('App\\Enum\\serviceCategory') %}
-                <label for="{{ case.value }}">
-                    <input type="checkbox" name="{{ case.value }}" value="{{ case.value }}">
-                        {{ case.label() }}
-                </label>
-            {% endfor %}
 
-            <label for="serviceTiming">
-                <select id="serviceTiming" name="serviceTiming">
-                {% for case in enum_cases('App\\Enum\\serviceTiming') %}
-                            <option value="{{ case.value }}">{{ case.label() }}</option>
-                {% endfor %}
-                </select>
-            </label>
-        </div>
-    </section>
+    {{ form_start(form) }}
+    <div class="filter-select">
+        {{ form_label(form.timing) }}
+        {{ form_widget(form.timing) }}
+    </div>
 
-    <section class="service-grid">
-        {% for service in service %}
-        <div class="service-card">
-            <h3>{{ service.name }}</h3>
-            <p id="service-description">{{ service.description }}</p>
-            <p id="service-price">{{ service.price }}</p>
-        </div>
+    <div class="filter-checkboxes">
+        <label>Catégories</label>
+        {% for child in form.categories %}
+            <div class="form-check">
+                {{ form_widget(child) }}
+                {{ form_label(child) }}
+            </div>
         {% endfor %}
+    </div>
 
-    </section>
+    <button type="submit">Filtrer</button>
+    {{ form_end(form) }}
 
+    <div class="services-list">
+        {% for service in services %}
+            <div class="service-card">
+                <h3>{{ service.name }}</h3>
+                {% for t in service.serviceTimingEnums %}
+                    <span>{{ t.label }}</span>
+                {% endfor %}
+
+                {% for c in service.serviceCategoryEnums %}
+                    <span>{{ c.label }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Aucun service ne correspond à ces critères.</p>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}
