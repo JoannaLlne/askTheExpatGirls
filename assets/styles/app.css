@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --primary: #14213D;
     --secondary: #7A1F2B;
@@ -14,6 +16,11 @@
 
 body {
     background-color: var(--back) ;
+    font-family: "Roboto", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Lora", serif;
 }
 
 a {
