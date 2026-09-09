@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/service.css') }}">
+{% endblock %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+
+<div class="service-container">
+    <h1>Expat Services</h1>
+
+    <div class="caroussel-img">
+    <img id="photo" src="{{ asset('images/photo1.jpg') }}" alt="Vew over Paris">
+    <img id="photo" src="{{ asset('images/photo2.jpg') }}" alt="Paris's street">
+    <img id="photo" src="{{ asset('images/photo3.jpg') }}" alt="Picnic">
+    <img id="photo" src="{{ asset('images/photo4.jpg') }}" alt="Patisserie terrace">
+    </div>
+
+    <section id="filters">
+        <h2>Filters</h2>
+        <div class="filters-choices">
+            {# get all cases of an enum #}
+            {% for case in enum_cases('App\\Enum\\serviceCategory') %}
+                <label for="{{ case.value }}">
+                    <input type="checkbox" name="{{ case.value }}" value="{{ case.value }}">
+                        {{ case.label() }}
+                </label>
+            {% endfor %}
+
+            <label for="serviceTiming">
+                <select id="serviceTiming" name="serviceTiming">
+                {% for case in enum_cases('App\\Enum\\serviceTiming') %}
+                            <option value="{{ case.value }}">{{ case.label() }}</option>
+                {% endfor %}
+                </select>
+            </label>
+        </div>
+    </section>
+
+    <section class="service-grid">
+        {% for service in service %}
+        <div class="service-card">
+            <h3>{{ service.name }}</h3>
+            <p id="service-description">{{ service.description }}</p>
+            <p id="service-price">{{ service.price }}</p>
+        </div>
+        {% endfor %}
+
+    </section>
+
+</div>
+{% endblock %}
