@@ -64,6 +64,11 @@ a {
     cursor: pointer;
 }
 
+.btn:hover {
+    background-color: var(--beige);
+    color: var(--primary);
+}
+
 .btnLogin, .btnLogout {
     padding: 7px 20px;
 }
@@ -92,7 +97,6 @@ a {
 
 .img {
     width: 100%;
-
 }
 
 .img1 {
@@ -164,6 +168,11 @@ a {
     cursor: pointer;
 }
 
+.newsletter-subscribe-btn:hover {
+    background-color: var(--beige);
+    color: var(--secondary);
+}
+
 .services-container {
     display: grid;
     grid-template-columns: 50% 35%;
@@ -204,7 +213,7 @@ a {
     margin-bottom: 15px;
 }
 
-.footer-right button{
+.footer-right button {
     margin-left: 20px
 }
 
