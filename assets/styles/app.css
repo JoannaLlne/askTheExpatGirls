@@ -73,10 +73,6 @@ a {
     padding: 7px 20px;
 }
 
-.btnLogin a, .btnLogout a {
-    color: #fff;
-}
-
 .btnOK {
     padding: 7px 10px;
 }
@@ -86,6 +82,15 @@ a {
     width: 100px;
     text-align: center;
     padding: 10px 5px;
+}
+
+.btnSubmit {
+    background-color: var(--primary)  ;
+    color: var(--beige);
+    padding: 11px 25px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
 }
 
 .nav-btn {

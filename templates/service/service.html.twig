@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<div class="service-container">
+<section class="service-container">
     <h1>Expat Services</h1>
 
     <div class="caroussel-img">
@@ -18,8 +18,9 @@
     <img id="photo" src="{{ asset('images/photo4.jpg') }}" alt="Patisserie terrace">
     </div>
 
-
+    <div id="service-description">
     {{ form_start(form) }}
+        <div class="filter-container">
     <div class="filter-select">
         {{ form_label(form.timing) }}
         {{ form_widget(form.timing) }}
@@ -27,32 +28,31 @@
 
     <div class="filter-checkboxes">
         <label>Catégories</label>
+        <div class="filter-checkbox-container">
         {% for child in form.categories %}
             <div class="form-check">
                 {{ form_widget(child) }}
                 {{ form_label(child) }}
             </div>
         {% endfor %}
+        </div>
     </div>
 
-    <button type="submit">Filtrer</button>
-    {{ form_end(form) }}
 
-    <div class="services-list">
+    <button class="btn btnSubmit" type="submit">Filtrer</button>
+    {{ form_end(form) }}
+    </div>
+
+    <div class="service-list">
         {% for service in services %}
             <div class="service-card">
                 <h3>{{ service.name }}</h3>
-                {% for t in service.serviceTimingEnums %}
-                    <span>{{ t.label }}</span>
-                {% endfor %}
-
-                {% for c in service.serviceCategoryEnums %}
-                    <span>{{ c.label }}</span>
-                {% endfor %}
+                <p>{{ service.description }}</p>
+                <p id="card-price">{{ service.price }} €</p>
             </div>
-        {% else %}
-            <p>Aucun service ne correspond à ces critères.</p>
         {% endfor %}
     </div>
 </div>
+</section>
 {% endblock %}
+
