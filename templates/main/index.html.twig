@@ -21,24 +21,27 @@
 </section>
 
     <section id="newsletter-band">
-        <p>Get practical visa updates, moving to France tips, French admin guidance and exclusive resources – straight to your inbox! Sign up to our Newsletter for FREE today</p>
+        <p>Get practical visa updates, moving to France tips, French admin guidance and exclusive resources – straight to your inbox!
+            <br> Sign up to our Newsletter for FREE today</p>
         <label for="newsletter-subscribe">
-        <input id="newsletter-subscribe" type="text" placeholder="Enter your email address">
+        <input class="newsletter-subscribe" type="text" placeholder="Enter your email address">
         </label>
-        <button id="newsletter-subscribe-btn">Subscribe</button>
+        <button class="newsletter-subscribe-btn">Subscribe</button>
     </section>
 
     <section id="main-content">
+        <div class="contactUs">
         <div class="contactUs-text">
             <h2>Ready to move in France ?</h2>
             <p>We are here to help! We will hold your hand every step of the way, and help you to get settled into France.
                 Fill out a form to give us your infos and we’ll contact you</p>
         </div>
         <div class="contactUs-btn">
-            <a href="{{ path('contact_page') }}">Contact us</a>
+            <a class="btn btnContact" href="{{ path('contact_page') }}">Contact us</a>
+        </div>
         </div>
 
-        <div class="our-services">
+        <div id="our-services">
             <h2>Our Services</h2>
             <div class="services-container">
                 <div class="services-txt">
@@ -47,19 +50,18 @@
                         application, to general living advice, We’re here to answer all your
                         question</p>
                 </div>
-                <img class="img" src="{{ asset('images/drapeau.jpg') }}" alt="French flag">
+                <img class="img img1" src="{{ asset('images/drapeau.jpg') }}" alt="French flag">
             </div>
 
-            <div class="services-container">
+            <div class="services-container2">
+                <img class="img img2" src="{{ asset('images/ZoeVicky.jpg') }}" alt="French flag">
                 <div class="services-txt">
-                    <h3>About us</h3>
-                    <p>Vicky and Zoe, the owners of Ask the Expat Girls, have lived in
-                        France for over ten years and know first hand how tricky and
-                        over whelming settling into a new country can be. We’ve set up this
-                        business to help ot her expats like us adapt to French lifestyle more
-                        easily!</p>
+                <h3>About us</h3>
+                <p>Vicky and Zoe, the owners of Ask the Expat Girls, have lived in
+                   France for over ten years and know first hand how tricky and
+                   over whelming settling into a new country can be. We’ve set up this business to help ot her expats like us adapt to French lifestyle more
+                   easily!</p>
                 </div>
-                <img class="img" src="{{ asset('images/ZoeVicky.jpg') }}" alt="French flag">
             </div>
 
             <div class="services-container">
@@ -70,7 +72,7 @@
                         fluent French speakers and can offer guided translations of
                         documents and ot her demands.</p>
                 </div>
-                <img class="img" src="{{ asset('images/books.jpg') }}" alt="French flag">
+                <img class="img img1" src="{{ asset('images/books.jpg') }}" alt="French flag">
             </div>
         </div>
     </section>
