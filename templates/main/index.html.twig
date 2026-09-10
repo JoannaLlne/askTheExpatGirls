@@ -4,13 +4,75 @@
 
 {% block body %}
 
-<div id="example-wrapper">
-    <h1>Welcome {{ controller_name }}! ✅</h1>
+<section id="header">
+    <div class="header-container">
+    <h1>Moving to France doesn’t need to be so difficult. </h1>
+    <h2>We help you to deal with French bureaucracy</h2>
+    <p>The French bureaucratic system can be over whelming, especially if you don’t have a
+        high level of French. We’re here to take the hassle of the French administration process
+        away from you!</p>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/Applications/MAMP/htdocs/askTheExpatGirls/src/Controller/MainController.php</code></li>
-        <li>Your template at <code>/Applications/MAMP/htdocs/askTheExpatGirls/templates/main/index.html.twig</code></li>
-    </ul>
-</div>
+
+    <div class="header-btn">
+        <a class="btn btnHeader" href="{{ path('main_service') }}">Learn more</a>
+        <a class="btn btnHeader" href="{{ path('contact_page') }}">Contact</a>
+    </div>
+    </div>
+</section>
+
+    <section id="newsletter-band">
+        <p>Get practical visa updates, moving to France tips, French admin guidance and exclusive resources – straight to your inbox! Sign up to our Newsletter for FREE today</p>
+        <label for="newsletter-subscribe">
+        <input id="newsletter-subscribe" type="text" placeholder="Enter your email address">
+        </label>
+        <button id="newsletter-subscribe-btn">Subscribe</button>
+    </section>
+
+    <section id="main-content">
+        <div class="contactUs-text">
+            <h2>Ready to move in France ?</h2>
+            <p>We are here to help! We will hold your hand every step of the way, and help you to get settled into France.
+                Fill out a form to give us your infos and we’ll contact you</p>
+        </div>
+        <div class="contactUs-btn">
+            <a href="{{ path('contact_page') }}">Contact us</a>
+        </div>
+
+        <div class="our-services">
+            <h2>Our Services</h2>
+            <div class="services-container">
+                <div class="services-txt">
+                    <h3>Expat services to help you settle into France easier</h3>
+                    <p>We’re here to help you with whatever your query is, from visa
+                        application, to general living advice, We’re here to answer all your
+                        question</p>
+                </div>
+                <img class="img" src="{{ asset('images/drapeau.jpg') }}" alt="French flag">
+            </div>
+
+            <div class="services-container">
+                <div class="services-txt">
+                    <h3>About us</h3>
+                    <p>Vicky and Zoe, the owners of Ask the Expat Girls, have lived in
+                        France for over ten years and know first hand how tricky and
+                        over whelming settling into a new country can be. We’ve set up this
+                        business to help ot her expats like us adapt to French lifestyle more
+                        easily!</p>
+                </div>
+                <img class="img" src="{{ asset('images/ZoeVicky.jpg') }}" alt="French flag">
+            </div>
+
+            <div class="services-container">
+                <div class="services-txt">
+                    <h3>We offer guided translations</h3>
+                    <p>Moving to a new country is hard enough, but if you don’t speak the
+                        language it can make every thing seem over whelming. We are both
+                        fluent French speakers and can offer guided translations of
+                        documents and ot her demands.</p>
+                </div>
+                <img class="img" src="{{ asset('images/books.jpg') }}" alt="French flag">
+            </div>
+        </div>
+    </section>
+
 {% endblock %}

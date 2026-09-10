@@ -65,9 +65,9 @@
 
             <div class="nav-btn">
                 {% if not app.user %}
-            <button class="btn btnLogin"><a href="{{ path('app_login') }}">Login/Sign In</a></button>
+            <a class="btn btnLogin" href="{{ path('app_login') }}">Login/Sign In</a>
                 {% else %}
-            <button class="btn btnLogout"><a href="{{ path('app_logout') }}">Logout</a></button>
+            <a class="btn btnLogout" href="{{ path('app_logout') }}">Logout</a>
                 {% endif %}
 
            <!-- <div class="btnSearch">

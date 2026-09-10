@@ -29,7 +29,8 @@ a {
 }
 
 .navbar {
-    padding: 20px 25px;
+    background-color: var(--back);
+    padding: 10px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -42,7 +43,7 @@ a {
 }
 
 .nav-menu a {
-    font-size: 1rem;
+    font-size: 0.9rem;
     letter-spacing: 1.2px;
     font-weight: 600;
 }
@@ -56,7 +57,8 @@ a {
 
 .btn {
     background-color: #890000;
-    color: #fff;
+    color: var(--beige);
+    font-size: 0.85rem;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -74,6 +76,13 @@ a {
     padding: 7px 10px;
 }
 
+.btnHeader {
+    height: 35px;
+    width: 100px;
+    text-align: center;
+    padding: 10px 5px;
+}
+
 .nav-btn {
     display: flex;
     align-items: center;
@@ -81,8 +90,37 @@ a {
     gap: 5px;
 }
 
+.img {
+    width: 250px;
+    height: auto;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 70%;
+    margin: 0 auto;
+    padding: 50px;
+    text-align: center;
+}
+
+.header-container p {
+    margin: 20px 0 50px;
+}
+
+.header-btn {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
 #logo {
-    height: 80px;
+    height: 50px;
     width: auto;
 }
 
@@ -92,9 +130,7 @@ a {
     padding: 0 5px 0 5px;
 }
 
-/* Style appliqué au texte recherché */
-.highlight {
-    background-color: transparent; /* Supprime le fond jaune par défaut si vous n'en voulez pas */
-    font-weight: bold;
-    font-size: 1.2rem;
+#header {
+    background: url('../images/bg3.jpg') center/cover no-repeat;
+    height: 65vh;
 }
