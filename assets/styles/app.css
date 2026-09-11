@@ -130,6 +130,14 @@ a {
     margin: 20px 0 50px;
 }
 
+.header-container h1 {
+    letter-spacing: 1px;
+}
+
+.header-container h2 {
+    font-weight: 550;
+}
+
 .header-btn {
     display: flex;
     flex-direction: row;

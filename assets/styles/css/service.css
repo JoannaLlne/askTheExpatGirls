@@ -73,6 +73,7 @@ h1 {
 #service_filter_timing {
     height: 30px;
     width: 200px;
+    border: 1px solid var(--grey);
     padding: 5px 2px;
     background: transparent;
 }
