@@ -105,12 +105,10 @@ a {
 }
 
 .img1 {
-    border-right : 5px double var(--primary);
     padding-right: 15px;
 }
 
 .img2 {
-    border-left : 5px double var(--primary);
     padding-left: 15px;
 }
 
@@ -190,6 +188,7 @@ a {
     display: grid;
     grid-template-columns: 50% 35%;
     align-items: center;
+    justify-content: space-between;
     height: 60vh;
     gap: 30px;
 }
