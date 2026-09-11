@@ -73,9 +73,7 @@ th {
 
 .input {
     display: flex;
-    align-items: center;
     justify-content: left;
-    margin-bottom: 5px;
 }
 
 .containerForm {
@@ -108,6 +106,10 @@ th {
 .textarea div{
     display: flex;
     flex-direction: column;
+}
+
+#create-user {
+    height: 90vh;
 }
 
 #user_password_first {
