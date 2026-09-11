@@ -89,7 +89,6 @@ a {
     color: var(--beige);
     padding: 11px 25px;
     border: none;
-    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -102,6 +101,7 @@ a {
 
 .img {
     width: 100%;
+    height: auto;
 }
 
 .img1 {

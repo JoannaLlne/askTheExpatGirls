@@ -5,14 +5,6 @@
     border-radius: 12px;
 }
 
-/* .qr-title {
-    color: #14213D;
-    font-size: 22px;
-    font-weight: 500;
-    margin: 0 0 32px;
-}
- */
-
 .questContainer {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -28,11 +20,11 @@
     background: #ffffff;
     border: 0.5px solid #ddd6c7;
     box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
-    margin: 50px 0;
-    padding: 50px 50px;
+    margin: 40px 0;
+    padding: 40px 50px;
 
     width: 580px;
-    max-height: 600px;
+    max-height: 650px;
 }
 
 .textForm {
@@ -63,7 +55,7 @@
 }
 
 .qr-field {
-    margin-bottom: 12px;
+    margin-bottom: 10px;
 }
 
 .qr-field label {
@@ -100,8 +92,8 @@
 }
 
 .btnSubmit, .btnReturn {
-    background-color: #890000  ;
-    color: #ffffff;
+    background-color: var(--secondary);
+    color: var(--back);
     padding: 11px 25px;
     border: none;
     border-radius: 15px;
@@ -109,12 +101,12 @@
 }
 
 .btnReturn a {
-    color: #ffffff;
+    color: var(--back);
 }
 
 .btnSubmit:hover, .btnReturn:hover {
-    background: #F5F1EA;
-    border: 1px solid #7A1F2B;
+    background: var(--back);
+    border: 1px solid var(--secondary);
     color: black;
 }
 
@@ -130,7 +122,7 @@
 }
 
 .qr-panel .cr-panel-signature {
-    color: #C9A24B;
+    color: var(--beige);
     font-size: 13px;
     margin: 0;
 }
