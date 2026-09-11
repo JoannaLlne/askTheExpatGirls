@@ -1,0 +1,23 @@
+section {
+    margin-top: 30px;
+}
+
+p, li {
+    font-size:
+        0.9rem;
+}
+
+ul {
+    list-style-position: inside;
+    padding-inline-start: 40px;
+    margin: 5px 0 10px;
+}
+
+h2, h3 {
+    margin-top: 18px;
+}
+
+.legal-container {
+    margin: 50px 80px;
+}
+

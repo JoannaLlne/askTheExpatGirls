@@ -36,10 +36,11 @@
                 {{ form_label(questionnaireForm.additionalInfo) }}
                 {{ form_widget(questionnaireForm.additionalInfo) }}
                 {{ form_errors(questionnaireForm.additionalInfo) }}
+                <br><span class="qr-confidentiality">Please only share information relevant to your request. Do not include sensitive personal information.</span>
             </div>
 
 
-        <div class="btnList">
+        <div class="btns">
             <button class="btn btnSubmit">Submit</button>
 
             <a class="btn btnReturn" href="{{ path('main_index') }}">Back</a>

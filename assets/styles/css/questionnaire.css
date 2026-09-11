@@ -117,7 +117,7 @@
 .qr-confidentiality {
     text-align: center;
     color: #8a8578;
-    font-size: 12px;
+    font-size: 0.55rem;
     margin: 18px 0 0;
 }
 
@@ -125,6 +125,12 @@
     color: var(--beige);
     font-size: 13px;
     margin: 0;
+}
+
+.btns {
+    display: flex;
+    justify-content: start;
+    gap: 20px;
 }
 
 #signature {
