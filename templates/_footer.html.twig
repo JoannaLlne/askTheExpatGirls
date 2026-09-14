@@ -1,3 +1,7 @@
+{% block javascripts %}
+    <script src="{{ asset('js/newsletter.js') }}" defer></script>
+{% endblock %}
+
 <div id="footer">
     <div class="footer-left">
         <img id="logo" src="{{ asset('images/Logo-ATEG.png') }}" alt="logo">
@@ -27,9 +31,11 @@
 
     <div class="footer-right">
         <h3>Get the tips you need in your inbox</h3>
-        <label for="newsletter-subscribe">
+        <!-- <label for="newsletter-subscribe">
             <input class="newsletter-subscribe" type="text" placeholder="Enter your email address">
         </label>
-        <button class="newsletter-subscribe-btn">Subscribe</button>
+        <button class="newsletter-subscribe-btn">Subscribe</button> -->
+        {{ render(controller('App\\Controller\\NewsletterController::subscribe', {placement: 'footer'})) }}
+
     </div>
 </div>

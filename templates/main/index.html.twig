@@ -1,5 +1,10 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/newsletter.js') }}" defer></script>
+{% endblock %}
+
 {% block title %}Ask the Expat Girls{% endblock %}
 
 {% block body %}
@@ -22,10 +27,12 @@
     <section id="newsletter-band">
         <p>Get practical visa updates, moving to France tips, French admin guidance and exclusive resources – straight to your inbox!
             <br> Sign up to our Newsletter for FREE today</p>
-        <label for="newsletter-subscribe">
+        {{ render(controller('App\\Controller\\NewsletterController::subscribe', {placement: 'home_middle'})) }}
+
+        <!-- <label for="newsletter-subscribe">
         <input class="newsletter-subscribe" type="text" placeholder="Enter your email address">
         </label>
-        <button class="newsletter-subscribe-btn">Subscribe</button>
+        <button class="newsletter-subscribe-btn">Subscribe</button>-->
     </section>
 
     <section id="main-content">
@@ -48,7 +55,8 @@
                     <p>We’re here to help you with whatever your query is, from visa
                         application, to general living advice, We’re here to answer all your
                         question</p>
-                    <i class="fa-solid fa-right-long"></i>
+
+                        <a class="seeMore" href="{{ path('main_service') }}">See more<i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <img class="img img1" src="{{ asset('images/drapeau.jpg') }}" alt="French flag">
             </div>
@@ -61,7 +69,9 @@
                    France for over ten years and know first hand how tricky and
                    over whelming settling into a new country can be. We’ve set up this business to help ot her expats like us adapt to French lifestyle more
                    easily!</p>
-                    <i class="fa-solid fa-right-long"></i>
+
+                    <a class="seeMore" href="{{ path('about_page') }}">See more<i class="fa-solid fa-arrow-right"></i></a>
+
                 </div>
             </div>
 
@@ -72,7 +82,8 @@
                         language it can make every thing seem over whelming. We are both
                         fluent French speakers and can offer guided translations of
                         documents and ot her demands.</p>
-                    <i class="fa-solid fa-right-long"></i>
+
+                    <a class="seeMore" href="{{ path('main_service') }}">See more<i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <img class="img img1" src="{{ asset('images/books.jpg') }}" alt="French flag">
             </div>

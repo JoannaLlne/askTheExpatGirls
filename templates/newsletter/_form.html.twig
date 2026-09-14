@@ -1,8 +1,8 @@
-<section id="newsletter-band" data-newsletter>
+<div class="newsletter-container" data-newsletter>
     <div class="newsletter-messages" data-newsletter-messages></div>
 
     {{ form_start(newsletterForm, {attr: {class: 'newsletter-subscribe', 'data-newsletter-form': ''}}) }}
     {{ form_widget(newsletterForm.email) }}
     <button class="newsletter-subscribe-btn" type="submit">Subscribe</button>
     {{ form_end(newsletterForm) }}
-</section>
+</div>
