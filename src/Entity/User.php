@@ -36,11 +36,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Email()]
     private ?string $email = null;
 
-    #[ORM\Column(length: 40)]
-    #[Assert\NotBlank()]
-    #[Assert\Length(max: 40)]
-    private ?string $phone = null;
-
     #[ORM\Column(length: 100)]
     #[Assert\NotBlank()]
     private ?string $password = null;
@@ -137,18 +132,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
-        return $this;
-    }
-
-    public function getPhone(): ?string
-    {
-        return $this->phone;
-    }
-
-    public function setPhone(string $phone): static
-    {
-        $this->phone = $phone;
 
         return $this;
     }

@@ -17,16 +17,57 @@ h3 {
 
 .contact-grid {
     display: grid;
-    grid-template-columns: 30% 60%;
+    grid-template-columns: 20% 60%;
     align-items: start;
     justify-content: space-between;
+}
+
+@media screen and (max-width: 1060px) {
+    .qr-page .questForm {
+        width: 410px;
+    }
+
+    .qr-page .textForm {
+        padding: 60px 12px 45px;
+        font-size: 0.85rem;
+    }
+
+    .questContainer .textForm {
+        left: -35px;
+    }
+
+    .contact-information-item {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 842px) {
+    .contact-grid {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .questForm .qr-confidentiality {
+        font-size: 0.55rem;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .qr-page .questForm{
+        width: 300px;
+    }
+
+    .qr-page .questContainer {
+        display: flex;
+        flex-direction: row;
+    }
+
 }
 
 .contact-quest {
     display: grid;
     grid-template-rows: auto auto auto;
     justify-content: center;
-    border-left: 1px solid var(--grey);
 }
 
 .alert {
@@ -63,8 +104,21 @@ h3 {
     font-weight: 550;
 }
 
+@media screen and (max-width: 800px) {
+    .container2 p {
+        font-size: 0.9rem;
+    }
+
+    #contactP {
+        font-size: 0.9rem;
+    }
+
+    .contact-quest #join {
+        padding: 8px 13px;
+        font-size: 0.8rem;
+    }
+}
+
 #hours {
     margin: 5px 0;
 }
-
-

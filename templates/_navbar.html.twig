@@ -47,8 +47,9 @@
                 </li>
 
                 {% if app.user %}
+                {% if is_granted("ROLE_ADMIN") %}
                 <li class="nav-li">
-                    <a class="nav-link" href="{{ path('user_profile', {id:app.user.id}) }}"
+                    <a class="nav-link" href="{{ path('admin_profile', {id:app.user.id}) }}"
                        title="See my profile">
                         My profile
                     </a>
@@ -60,42 +61,15 @@
                     </a>
                 </li>  #}
             {% endif %}
+            {% endif %}
             </ul>
             </div>
 
             <div class="nav-btn">
                 {% if not app.user %}
-            <a class="btn btnLogin" href="{{ path('app_login') }}">Login/Sign In</a>
+            <a class="btn btnLogin" href="{{ path('app_login') }}">Login</a>
                 {% else %}
             <a class="btn btnLogout" href="{{ path('app_logout') }}">Logout</a>
                 {% endif %}
-
-           <!-- <div class="btnSearch">
-            <label for="search">
-                <input type="search" name="search" id="search" placeholder="Search...">
-            </label>
-            <button class="btn btnOK" id="searchOK">OK</button>
-            </div> -->
         </div>
 </nav>
-
-<!-- <script>
-    const input = document.getElementById('search');
-    const button = document.getElementById('searchOK');
-
-    // Track value changes in the input field and ENTER
-    input.addEventListener('change', (event) => {
-        console.log('Input value committed:', event.target.value);
-    });
-
-    // Trigger search action when the button OK is clicked
-    button.addEventListener('click', () => {
-        performSearch(input.value);
-    });
-
-    function performSearch(query) {
-        console.log('Searching for:', query);
-        // Add your search logic here
-    }
-</script> -->
-

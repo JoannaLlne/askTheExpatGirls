@@ -40,11 +40,7 @@
 
                 <div class="contact-quest">
                     <p id="contactP">If you want to ask us about a service, <br> you can create an account and fill out a form to leave us your information </p>
-                    {% if is_granted('ROLE_USER') %}
                         {{ render(controller('App\\Controller\\QuestionnaireController::create')) }}
-                    {% else %}
-                    <a href="{{ path('app_login') }}" id="join">Join us here</a>
-                    {% endif %}
                 </div>
             </div>
         </div>

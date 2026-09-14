@@ -15,7 +15,8 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class UserController extends AbstractController
 {
-    #[Route('/user/{id}', name: 'user_profile', requirements: ['id'=>'\d+'], methods: ['GET'])]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/user/{id}', name: 'admin_profile', requirements: ['id'=>'\d+'], methods: ['GET'])]
     public function show(User $user): Response
     {
         return $this->render('user/profile.html.twig', [
@@ -23,46 +24,9 @@ final class UserController extends AbstractController
         ]);
     }
 
-     #[Route('/createUser', name: 'user_create', methods: ['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
-    {
-        // notre entité vide
-        $user = new User();
-
-        // notre formulaire, associée à l'entité vide
-        $userForm = $this->createForm(UserType::class, $user);
-
-        // récupère les données du form et les injecte dans notre $user
-        $userForm->handleRequest($request);
-
-        // si le formulaire est soumis et est valide
-        if ($userForm->isSubmitted() && $userForm->isValid()) {
-
-            $roleDefault = array('ROLE_USER');
-            $user->setRole($roleDefault);
-            $user->setPassword(
-                $passwordHasher->hashPassword($user,$userForm->get('password')->getData()));
-
-            // sauvegarde en bdd
-            $em->persist($user);
-            $em->flush();
-
-            // affiche un message sur la prochaine page si soumission
-            $this->addFlash('success', 'Your profile was successfully created.');
-            // redirige vers la page de détails de l'idée fraîchement créée
-            return $this->redirectToRoute('main_index');
-
-            // return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
-        }
-        // affiche le formulaire
-        return $this->render('user/create_user.html.twig', [
-            'userForm' => $userForm,
-        ]);
-    }
-
     //modification de son profil
-    #[Route('/update/{id}', name: 'user_update', requirements: ['id'=>'\d+'], methods: ['GET','POST'])]
-    #[IsGranted('ROLE_USER')]
+    #[IsGranted('ROLE_ADMIN')]
+    #[Route('/update/{id}', name: 'admin_update', requirements: ['id'=>'\d+'], methods: ['GET','POST'])]
     public function update(int $id, UserRepository $userRepository, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
         //récupération de l'utilisateur connecté
@@ -87,12 +51,14 @@ final class UserController extends AbstractController
 
         // si le formulaire est soumis et valide
         if ($userForm->isSubmitted() && $userForm->isValid()) {
-            $user->setPassword(
-                $passwordHasher->hashPassword($user,$userForm->get('password')->getData()));
+            $plainPassword = $userForm->get('password')->getData();
 
-            $em->persist($user);
+            if (!empty($plainPassword)) {
+                $user->setPassword($passwordHasher->hashPassword($user, $plainPassword));
+            }
+
             $em->flush();
-            return $this->redirectToRoute('user_profile', ['id' => $user->getId()]);
+            return $this->redirectToRoute('admin_profile', ['id' => $user->getId()]);
         }
 
         // affiche le formulaire

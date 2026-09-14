@@ -25,13 +25,10 @@ final class QuestionnaireController extends AbstractController
         ]);
     } */
 
-    #[IsGranted('ROLE_USER')]
+
     #[Route('/questionnaire', name: 'new_questionnaire', methods: ['GET', 'POST'])]
     public function create(Request $request, EntityManagerInterface $em): Response
     {
-            //récupération de l'utilisateur connecté
-            /** @var User|null $user */
-            $user = $this->getUser();
 
            /*$existingQuestionnaire = $em->getRepository(Questionnaire::class)->findOneBy(['user' => $user]);
 
@@ -42,7 +39,6 @@ final class QuestionnaireController extends AbstractController
 
         // notre entité vide
         $questionnaire = new Questionnaire();
-        $questionnaire->setUser($user);
         $createdAt = new \DateTimeImmutable();
         $questionnaire->setSubmittedAt($createdAt);
 

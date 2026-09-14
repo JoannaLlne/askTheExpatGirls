@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Length;
 
 class UserType extends AbstractType
 {
@@ -27,14 +28,16 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email'
             ])
-            ->add('phone', TextType::class, [
-                'label' => 'Phone'
-            ])
+
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'Les mots de passe ne correspondent pas.',
+                'invalid_message' => 'Passwords do not match.',
                 'options' => ['attr' => ['class' => 'password']],
-                'required' => true,
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new Length(['min' => 8, 'minMessage' => 'Password need to be at least {{ limit }} characters.']),
+                ],
                 'first_options'  => ['label' => 'Password'],
                 'second_options' => ['label' => 'Confirmation'],
             ])
