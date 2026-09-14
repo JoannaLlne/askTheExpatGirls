@@ -37,14 +37,12 @@ a {
 }
 
 .nav-menu {
-    display: flex;
-    gap: 15px;
     list-style: none;
 }
 
 .nav-menu a {
-    font-size: 0.9rem;
-    letter-spacing: 1.2px;
+    font-size: 0.92rem;
+    letter-spacing: 1.1px;
     font-weight: 600;
 }
 
@@ -52,7 +50,7 @@ a {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 25px;
 }
 
 .btn {
@@ -276,6 +274,28 @@ a {
     width: auto;
 }
 
+@media screen and (max-width: 620px) {
+    #logo {
+        height: 35px;
+        width: auto;
+    }
+
+    .navbar .btnLogin {
+        padding: 6px 10px;
+        font-size: 0.83rem;
+    }
+
+    .nav-menu a {
+        font-size: 0.83rem;
+    }
+}
+
+@media screen and (max-width: 535px) {
+    .nav-menu ul {
+        gap: 10px;
+    }
+}
+
 #search {
     height: 30px;
     width: 150px;
@@ -305,7 +325,7 @@ a {
 
 @media screen and (max-width: 1190px) {
     #newsletter-band {
-        height: 14vh;
+        height: 15vh;
         display: flex;
         flex-direction: column;
         align-items: center;

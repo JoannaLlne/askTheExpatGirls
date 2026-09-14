@@ -4,6 +4,16 @@ h1 {
     letter-spacing: 1px;
 }
 
+@media screen and (max-width: 730px) {
+    .service-container {
+        font-size: 0.85rem;
+    }
+
+    .service-card .card-price {
+        font-size: 1rem;
+    }
+}
+
 .caroussel-img {
     display: flex;
     flex-direction: row;
@@ -42,6 +52,24 @@ h1 {
     margin: 30px 0;
 }
 
+@media screen and (max-width: 635px) {
+    .filter-container {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+    }
+
+    .service-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .caroussel-img #photo {
+        height: 140px;
+        width: 95px;
+    }
+}
+
 .filter-checkboxes {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -52,18 +80,32 @@ h1 {
     font-weight: 550;
 }
 
-
 #photo {
     height: 300px;
-    width: 200px
+    width: 200px;
 }
 
+@media screen and (max-width: 895px) {
+    #photo {
+        height: 200px;
+        width: 140px;
+    }
+
+    #service-description .btnSubmit {
+        padding: 7px 15px;
+    }
+
+    .filter-checkboxes {
+        display: grid;
+        grid-template-columns: 35% 65%;
+    }
+}
 
 #service-description {
     margin: 50px 30px;
 }
 
-#card-price {
+.card-price {
     font-size: 1.2rem;
     font-weight: 550;
     text-align: right;
@@ -72,7 +114,7 @@ h1 {
 
 #service_filter_timing {
     height: 30px;
-    width: 200px;
+    width: 180px;
     border: 1px solid var(--grey);
     padding: 5px 2px;
     background: transparent;
