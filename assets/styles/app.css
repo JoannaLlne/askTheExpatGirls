@@ -124,6 +124,25 @@ a {
     text-align: center;
 }
 
+@media screen and (max-width: 620px) {
+    .header-container h1 {
+        font-size: 1.8rem;
+    }
+
+    .header-container h2 {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 515px) {
+    .header-container h1 {
+        font-size: 1.6rem;
+    }
+    .header-container p {
+        font-size: 0.8rem;
+    }
+}
+
 .header-container p {
     margin: 20px 0 50px;
 }
@@ -161,11 +180,20 @@ a {
     padding: 10px 20px;
 }
 
+@media screen and (max-width: 675px) {
+    .contactUs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        gap: 30px;
+    }
+}
 
 .newsletter-subscribe-btn {
-    width: 130px;
+    width: 120px;
     height: 30px;
-    margin: 0 10px 0 -65px;
+    margin: 0 10px 0 -75px;
 
     background-color: var(--secondary);
     color: var(--beige);
@@ -275,6 +303,21 @@ a {
     font-size: 0.9rem;
 }
 
+@media screen and (max-width: 1190px) {
+    #newsletter-band {
+        height: 14vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 0.8rem;
+    }
+
+    #newsletter-band p {
+        margin-bottom: 6px;
+    }
+}
+
 #main-content {
     display: flex;
     flex-direction: column;
@@ -304,6 +347,37 @@ a {
     font-weight: 200;
 }
 
+@media screen and (max-width: 875px) {
+    .footer-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 7px;
+    }
+
+    .footer-center {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #footer {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 605px) {
+    #footer {
+        display: grid-lanes;
+        grid-template-columns: auto auto;
+    }
+
+    #footer h3 {
+        margin: 50px 0 5px;
+    }
+}
+
+
 #footer a {
     color: var(--beige);
 }
@@ -319,7 +393,7 @@ a {
 
 #newsletter_footer_email, #newsletter_home_middle_email {
     height: 30px;
-    width: 290px;
+    width: 250px;
     padding: 5px 10px;
 }
 
