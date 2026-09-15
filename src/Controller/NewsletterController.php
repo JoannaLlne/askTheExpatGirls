@@ -47,7 +47,7 @@ class NewsletterController extends AbstractController
             }
 
             $this->addFlash('newsletter_success', $message);
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('main_index');
         }
 
         if ($form->isSubmitted() && $isAjax) {
