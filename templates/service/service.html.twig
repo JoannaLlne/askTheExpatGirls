@@ -47,7 +47,7 @@
         {% for service in services %}
             <div class="service-card">
                 <h3>{{ service.name }}</h3>
-                <p>{{ service.description }}</p>
+                <p>{{ service.description|raw }}</p>
                 <p class="card-price">{{ service.price }} €</p>
             </div>
         {% endfor %}
