@@ -2,6 +2,7 @@
 
 namespace App\Controller\Dashboard;
 
+use App\Controller\Admin\ExpatPackagesCrudController;
 use App\Controller\Admin\QuestionnaireCrudController;
 use App\Controller\Admin\ServiceCrudController;
 use App\Controller\Admin\UserCrudController;
@@ -33,8 +34,10 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Home', 'fa fa-home');
         yield MenuItem::section('Gestion');
-        yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-tags')->setAction(Action::INDEX);
-        yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-tags')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-user')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-file')->setAction(Action::INDEX);
         yield MenuItem::linkTo(ServiceCrudController::class, 'Services', 'fa fa-tags')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(ExpatPackagesCrudController::class, 'Expat Packages', 'fa fa-box')->setAction(Action::INDEX);
+
     }
 }

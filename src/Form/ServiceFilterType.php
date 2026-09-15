@@ -22,7 +22,7 @@ class ServiceFilterType extends AbstractType
                 'class' => ServiceTiming::class,
                 'choice_label' => fn(ServiceTiming $t) => $t->label(),
                 'required' => false,
-                'placeholder' => 'Tous types',
+                'placeholder' => 'All types',
                 'expanded' => false, // select
                 'multiple' => false,
             ])

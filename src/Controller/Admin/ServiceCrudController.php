@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 
 class ServiceCrudController extends AbstractCrudController
@@ -24,7 +25,7 @@ class ServiceCrudController extends AbstractCrudController
     {
         yield IdField::new('id', 'ID')->hideOnForm();
         yield TextField::new('name', 'Name');
-        yield TextareaField::new('description', 'Description');
+        yield TextEditorField::new('description', 'Description');
         yield IntegerField::new('price', 'Price');
 
         yield ChoiceField::new('serviceCategory', 'Service Category')
@@ -41,7 +42,7 @@ class ServiceCrudController extends AbstractCrudController
             ))
             ->allowMultipleChoices();
 
-        yield DateTimeField::new('createdAt', 'Créé le')
+        yield DateTimeField::new('createdAt', 'Created')
             ->hideOnForm();
     }
 }

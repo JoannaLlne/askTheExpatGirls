@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/service.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/packages.css') }}">
+{% endblock %}
+
+{% block title %}Expat Packages{% endblock %}
+
+{% block body %}
+
+<section class="packages-container">
+    <h1>Expat Packages</h1>
+
+    <div class="packages-img">
+        <img id="photo" src="{{ asset('images/photo1.jpg') }}" alt="Vew over Paris">
+    </div>
+
+    <div class="packages-presentation">
+        <p>Below is an overview of our packages. The services included in the packages are examples and is not
+            an exhaustive list – we’re happy to adapt and offer additional support based on your needs. They are designed to
+            help you settle into France smoothly, tailored to fit your individual needs & wants,
+            and to give you ongoing administrative assistance whilst your settle into your new life in France.</p>
+    </div>
+
+    <div class="packages-list">
+        {% for package in packages %}
+            <div class="package-card">
+                <h3>{{ package.name }}</h3>
+                <p>{{ package.description|raw }}</p>
+                <p class="card-price">{{ package.price }} €</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

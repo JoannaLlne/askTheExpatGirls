@@ -49,7 +49,7 @@ final class UserController extends AbstractController
         // récupère les données du form et les injecter
         $userForm->handleRequest($request);
 
-        // si le formulaire est soumis et valide
+        // si formulaire soumis et valide
         if ($userForm->isSubmitted() && $userForm->isValid()) {
             $plainPassword = $userForm->get('password')->getData();
 
