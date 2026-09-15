@@ -28,7 +28,7 @@ class SendNewsletterMessageHandler
             ->from('joanna.lalanne2026@campus-eni.fr')
             ->to($message->email)
             ->subject($message->subject)
-            ->htmlTemplate('emails/newsletter.html.twig')
+            ->htmlTemplate('email/newsletter.html.twig')
             ->context([
                 'subject' => $message->subject,
                 'content' => $message->content,

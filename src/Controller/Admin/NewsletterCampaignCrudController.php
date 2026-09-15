@@ -80,7 +80,12 @@ class NewsletterCampaignCrudController extends AbstractCrudController
         return $actions
             ->add(Crud::PAGE_INDEX, $send)
             ->add(Crud::PAGE_EDIT, $send)
-            ->add(Crud::PAGE_DETAIL, $send);
+            ->add(Crud::PAGE_DETAIL, $send)
+
+        ->addBatchAction(
+        Action::new('send_selected', 'Send')
+            ->linkToCrudAction('sendSelected')
+    );
     }
 
     /*
