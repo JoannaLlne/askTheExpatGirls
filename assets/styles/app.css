@@ -296,6 +296,11 @@ p {
     align-items: center;
 }
 
+.fa-brands {
+    font-size: 1.8rem;
+    margin-top: 20px;
+}
+
 #logo {
     height: 50px;
     width: auto;
