@@ -1,12 +1,11 @@
 <?php
-namespace App\Message;
+namespace App\MessageHandler;
 
 use App\Message\SendNewsletterMessage;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 #[AsMessageHandler]
 class SendNewsletterMessageHandler

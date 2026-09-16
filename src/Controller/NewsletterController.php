@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Attribute\Route;
 class NewsletterController extends AbstractController
 {
     #[Route('/newsletter/subscribe/{placement}',
-        name: 'newsletter_subscribe', methods: ['GET', 'POST'],
-        defaults: ['placement' => 'default'])]
+        name: 'newsletter_subscribe', defaults: ['placement' => 'default'],
+        methods: ['GET', 'POST'])]
     public function subscribe(Request $request, EntityManagerInterface $em,
         FormFactoryInterface $formFactory, string $placement): Response {
         $subscriber = new NewsletterSubscriber();
