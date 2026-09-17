@@ -46,43 +46,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private array $role = [];
 
-    #[ORM\OneToMany(targetEntity: Questionnaire::class, mappedBy: 'user', orphanRemoval: true)]
-    private Collection $questionnaire;
-
-    public function __construct()
-    {
-        $this->questionnaire = new ArrayCollection();
-    }
-
-    /**
-     * @return Collection<int, Questionnaire>
-     */
-    public function getQuestionnaire(): Collection
-    {
-        return $this->questionnaire;
-    }
-
-    public function addQuestionnaire(Questionnaire $questionnaire): static
-    {
-        if (!$this->questionnaire->contains($questionnaire)) {
-            $this->questionnaire->add($questionnaire);
-            $questionnaire->setUser($this);
-        }
-        return $this;
-    }
-
-    public function removeQuestionnaire(Questionnaire $questionnaire): static
-    {
-        if ($this->questionnaire->removeElement($questionnaire)) {
-            // set the owning side to null (unless already changed)
-            if ($questionnaire->getUser() === $this) {
-                $questionnaire->setUser(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getId(): ?int
     {
         return $this->id;

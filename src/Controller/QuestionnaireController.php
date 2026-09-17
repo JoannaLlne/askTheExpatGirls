@@ -6,6 +6,7 @@ use App\Entity\Questionnaire;
 use App\Entity\User;
 use App\Form\QuestionnaireType;
 use App\Repository\QuestionnaireRepository;
+use App\Service\NewsletterSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
@@ -25,7 +26,7 @@ final class QuestionnaireController extends AbstractController
     ) {}
 
     #[Route('/questionnaire', name: 'new_questionnaire', methods: ['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $em, MailerInterface $mailer): Response
+    public function create(Request $request, EntityManagerInterface $em, MailerInterface $mailer, NewsletterSubscriptionService $newsletterService): Response
     {
         // Entité vide
         $questionnaire = new Questionnaire();
@@ -43,16 +44,13 @@ final class QuestionnaireController extends AbstractController
 
             // sauvegarde en bdd
             $em->persist($questionnaire);
-            $em->flush();
 
-            // Création de l'email
-            $email = (new Email())
-                ->from($this->adminEmail) // Expéditeur issu du formulaire
-                ->to($this->adminEmail) // Destinataire
-                ->subject('New form')
-                ->text('Someone filled out a new form. Check your Dashboard');
-            // Envoi de l'email
-            $mailer->send($email);
+            // Seulement si la case est cochée : on inscrit aussi dans subscribers
+            if ($questionnaireForm->get('newsletter')->getData() === true) {
+                $newsletterService->subscribe($questionnaire->getEmail());
+            }
+
+            $em->flush();
 
             // affiche un message sur la prochaine page si soumission
             $this->addFlash('success', 'The questionnaire was successfully sent');

@@ -8,6 +8,8 @@ use App\Enum\ServiceCategory;
 use App\Enum\Situation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,6 +21,20 @@ class QuestionnaireType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('firstName', TextType::class, [
+                'label' => 'First name',
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => 'Last name',
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Email address',
+            ])
+            ->add('newsletter', CheckboxType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'I want to subscribe to newsletter',
+            ])
             ->add('nationality', TextType::class, [
                 'label' => 'Nationality',
             ])
@@ -26,7 +42,6 @@ class QuestionnaireType extends AbstractType
                 'class' => Situation::class,
                 'label' => 'Your situation',
                 'choice_label'=> fn (Situation $situation) => $situation->label(),
-
             ])
             ->add('helpReason', EnumType::class, [
                 'class'=> ServiceCategory::class,

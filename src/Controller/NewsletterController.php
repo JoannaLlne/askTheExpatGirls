@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\NewsletterSubscriber;
+use App\Entity\Questionnaire;
 use App\Form\NewsletterSubscriberType;
+use App\Form\QuestionnaireType;
+use App\Service\NewsletterSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;

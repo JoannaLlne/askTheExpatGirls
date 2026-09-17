@@ -36,9 +36,18 @@ class Questionnaire
     #[ORM\Column]
     private ?\DateTimeImmutable $submittedAt = null;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'questionnaire')]
-    #[JoinColumn(nullable: false)]
-    private User $user;
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    private ?string $lastName = null;
+
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    #[Assert\Email()]
+    private ?string $email = null;
 
     public function getId(): ?int
     {
@@ -114,25 +123,39 @@ class Questionnaire
         return $this;
     }
 
-    public function getUser(): User
-    {
-        return $this->user;
-    }
+   public function getFirstName(): ?string
+   {
+       return $this->firstName;
+   }
 
-    public function setUser(User $user): static
-    {
-        $this->user = $user;
-        return $this;
-    }
+   public function setFirstName(string $firstName): static
+   {
+       $this->firstName = $firstName;
 
-    public function getUserFirstName(): ?string
-    {
-        return $this->user?->getFirstName();
-    }
+       return $this;
+   }
 
-    public function getUserLastName(): ?string
-    {
-        return $this->user?->getLastName();
-    }
+   public function getLastName(): ?string
+   {
+       return $this->lastName;
+   }
 
+   public function setLastName(string $lastName): static
+   {
+       $this->lastName = $lastName;
+
+       return $this;
+   }
+
+   public function getEmail(): ?string
+   {
+       return $this->email;
+   }
+
+   public function setEmail(string $email): static
+   {
+       $this->email = $email;
+
+       return $this;
+   }
 }
