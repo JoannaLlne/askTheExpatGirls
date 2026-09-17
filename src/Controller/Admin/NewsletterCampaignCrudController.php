@@ -131,8 +131,8 @@ class NewsletterCampaignCrudController extends AbstractCrudController
             ->linkToCrudAction('send')
             ->displayIf(fn (NewsletterCampaign $c) => $c->getSentAt() === null);
 
-        $sendBatch = Action::new('sendBatch', 'Send the selected campaigns')
-            ->linkToCrudAction('sendBatch')
+        $sendBatch = Action::new('sendSelected', 'Send the selected campaigns')
+            ->linkToCrudAction('sendSelected')
             ->createAsBatchAction();
 
         return $actions

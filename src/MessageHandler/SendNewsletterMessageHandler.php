@@ -24,7 +24,7 @@ class SendNewsletterMessageHandler
         );
 
         $email = (new TemplatedEmail())
-            ->from('joanna.lalanne2026@campus-eni.fr')
+            ->from('Joanna.lalanne2026@campus-eni.fr')
             ->to($message->email)
             ->subject($message->subject)
             ->htmlTemplate('email/newsletter.html.twig')
