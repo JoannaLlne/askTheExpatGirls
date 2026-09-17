@@ -301,6 +301,14 @@ p {
     margin-top: 20px;
 }
 
+.forgetPwd {
+   text-align: right;
+}
+
+.forgetPwd a, .checkbox label {
+    font-size: 0.8rem;
+}
+
 #logo {
     height: 50px;
     width: auto;
