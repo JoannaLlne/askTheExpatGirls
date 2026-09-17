@@ -3,30 +3,22 @@
 namespace App\Controller;
 
 use App\Entity\Questionnaire;
-use App\Entity\User;
 use App\Form\QuestionnaireType;
-use App\Repository\QuestionnaireRepository;
+use App\Mailer\AdminNotificationHandler;
+use App\Mailer\AdminNotificationMailer;
 use App\Service\NewsletterSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class QuestionnaireController extends AbstractController
 {
 
-    public function __construct(
-        #[Autowire('%admin_email%')]
-        private string $adminEmail,
-    ) {}
-
     #[Route('/questionnaire', name: 'new_questionnaire', methods: ['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $em, MailerInterface $mailer, NewsletterSubscriptionService $newsletterService): Response
+    public function create(Request $request, EntityManagerInterface $em, NewsletterSubscriptionService $newsletterService,
+                           AdminNotificationMailer $adminNotif): Response
     {
         // Entité vide
         $questionnaire = new Questionnaire();
@@ -51,6 +43,13 @@ final class QuestionnaireController extends AbstractController
             }
 
             $em->flush();
+            //Envoi notification
+            try {
+                $adminNotif->notifyFormSubmitted();
+                dump('Email envoyé avec succès');
+            } catch (\Throwable $e) {
+                dump('ERREUR : ' . $e->getMessage());
+            }
 
             // affiche un message sur la prochaine page si soumission
             $this->addFlash('success', 'The questionnaire was successfully sent');

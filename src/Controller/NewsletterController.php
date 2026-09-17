@@ -6,12 +6,14 @@ use App\Entity\NewsletterSubscriber;
 use App\Entity\Questionnaire;
 use App\Form\NewsletterSubscriberType;
 use App\Form\QuestionnaireType;
+use App\Message\SendNewsletterMessage;
 use App\Service\NewsletterSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 class NewsletterController extends AbstractController
@@ -20,7 +22,7 @@ class NewsletterController extends AbstractController
         name: 'newsletter_subscribe', defaults: ['placement' => 'default'],
         methods: ['GET', 'POST'])]
     public function subscribe(Request $request, EntityManagerInterface $em,
-        FormFactoryInterface $formFactory, string $placement): Response {
+        FormFactoryInterface $formFactory, MessageBusInterface $messageBus, string $placement): Response {
         $subscriber = new NewsletterSubscriber();
 
         $form = $formFactory->createNamed(
@@ -40,7 +42,15 @@ class NewsletterController extends AbstractController
             if (!$existing) {
                 $em->persist($subscriber);
                 $em->flush();
-                $message = 'You are now subscribed to !';
+                $message = 'You are now subscribed to the newsletter.!';
+
+                // Déclenche l'envoi de l'email de bienvenue
+                $messageBus->dispatch(new SendNewsletterMessage(
+                    email: $subscriber->getEmail(),
+                    subject: 'Welcome to our newsletter!',
+                    content: 'Thank you for subscribing!',
+                    unsubscribeToken: $subscriber->getUnsubscribeToken(),
+                ));
             } else {
                 $message = 'Sorry but this email is already subscribed !';
             }

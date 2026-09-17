@@ -7,8 +7,7 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    default_admin_email: joanna.lalanne2026@campus-eni.fr
-    admin_email: "%env(string:default:default_admin_email:ADMIN_EMAIL)%"
+    app.admin_emails: 'joanna.lalanne2026@campus-eni.fr'
 
 services:
     # default configuration for services in *this* file
@@ -23,3 +22,6 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Mailer\AdminNotificationMailer:
+        arguments:
+            $adminEmails: '%app.admin_emails%'
