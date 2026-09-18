@@ -56,14 +56,14 @@ p {
         font-size: 0.75rem;
     }
 
-    .nav-menu ul {
+    .nav-menu > ul {
         display: flex;
         align-items: center;
         gap: 15px;
     }
 }
 
-.nav-menu ul {
+.nav-menu > ul {
     list-style: none;
     display: flex;
     align-items: center;
@@ -470,4 +470,79 @@ p {
 
 #newsletter_home_middle_email {
 margin-right: 80px;
+}
+
+/*NAV MENU*/
+/* Le nav-li qui contient le dropdown doit être positionné en relative */
+.nav-li-dropdown {
+    position: relative;
+}
+
+/* Le bouton "Our services" ressemble à un nav-link classique */
+.nav-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    padding: 0; /* ajustez selon le padding de votre .nav-link existant */
+}
+
+/* Petite flèche qui tourne à l'ouverture */
+.nav-arrow {
+    width: 6px;
+    height: 6px;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+    transition: transform 0.2s ease;
+}
+
+.nav-li-dropdown.open .nav-arrow {
+    transform: rotate(-135deg);
+}
+
+/* Sous-menu, caché par défaut */
+.nav-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    list-style: none;
+    margin: 0.5rem 0 0 0;
+    padding: 0.4rem 0;
+    display: none;
+    z-index: 100;
+}
+
+.nav-li-dropdown.open .nav-dropdown-menu {
+    display: block;
+}
+
+.nav-dropdown-link {
+    display: block;
+    padding: 0.6rem 1rem;
+    color: #333;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.nav-dropdown-link:hover {
+    background: rgb(242 242 242 / 0.43);
+}
+
+/* sous-menu statique en mobile */
+@media (max-width: 768px) {
+    .nav-dropdown-menu {
+        position: static;
+        box-shadow: none;
+        margin: 0;
+        padding-left: 1rem;
+    }
 }

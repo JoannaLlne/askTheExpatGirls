@@ -1,3 +1,7 @@
+{% block javascripts %}
+    <script src="{{ asset('styles/js/menu.js') }}" defer></script>
+{% endblock %}
+
 <nav class="navbar">
 
         <div class="logo">
@@ -25,18 +29,31 @@
                     </a>
                 </li>
 
-                <li class="nav-li">
-                    <a class="nav-link" href="{{ path('main_service') }}"
-                       title="See services">
-                        Services
-                    </a>
-                </li>
-
-                <li class="nav-li">
-                    <a class="nav-link" href="{{ path('expat_packages') }}"
-                       title="See Expat Packages">
-                        Expat Packages
-                    </a>
+                <li class="nav-li nav-li-dropdown">
+                    <button class="nav-link nav-dropdown-toggle" type="button">
+                        Our services
+                        <span class="nav-arrow"></span>
+                    </button>
+                    <ul class="nav-dropdown-menu">
+                        <li>
+                            <a class="nav-dropdown-link" href="{{ path('how_it_works') }}"
+                               title="See how it works">
+                                How it works
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-dropdown-link" href="{{ path('main_service') }}"
+                               title="See services">
+                                Services
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-dropdown-link" href="{{ path('expat_packages') }}"
+                               title="See Expat Packages">
+                                Expat Packages
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="nav-li">
@@ -54,12 +71,6 @@
                         My profile
                     </a>
                 </li>
-
-                {# <li class="nav-li">
-                    <a class="nav-link" href="{{ path('app_logout') }}" data-turbo-prefetch="false" title="Logout">
-                        Logout
-                    </a>
-                </li>  #}
             {% endif %}
             {% endif %}
             </ul>
