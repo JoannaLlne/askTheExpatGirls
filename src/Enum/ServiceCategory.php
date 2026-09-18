@@ -4,18 +4,18 @@ namespace App\Enum;
 
 enum ServiceCategory: string
 {
-    case StayImmigration = 'Stay & Immigration';
-    case WorkStudy = 'Work & Study';
-    case Healthcare = 'Healthcare';
-    case Other = 'Other';
+    case STAYIMMIGRATION = 'Stay & Immigration';
+    case WORKSTUDY = 'Work & Study';
+    case HEALTHCARE = 'Healthcare';
+    case OTHERS = 'Others';
 
     public function label(): string
     {
         return match($this) {
-            self::StayImmigration => 'Stay & Immigration',
-            self::WorkStudy => 'Work & Study',
-            self::Healthcare => 'Healthcare',
-            self::Other => 'Other',
+            self::STAYIMMIGRATION => 'Stay & Immigration',
+            self::WORKSTUDY => 'Work & Study',
+            self::HEALTHCARE => 'Healthcare',
+            self::OTHERS => 'Others',
         };
     }
 }

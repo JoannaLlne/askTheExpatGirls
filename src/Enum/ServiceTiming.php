@@ -4,15 +4,15 @@ namespace App\Enum;
 
 enum ServiceTiming: string
 {
-    case BeforeMoving = 'Before moving to France';
-    case AfterArrival = 'After arrival';
+    case BEFOREMOVING = 'Before moving to France';
+    case AFTERARRIVAL = 'After arrival';
 
 
     public function label(): string
     {
         return match($this) {
-            self::BeforeMoving => 'Before moving to France',
-            self::AfterArrival => 'After arrival',
+            self::BEFOREMOVING => 'Before moving to France',
+            self::AFTERARRIVAL => 'After arrival',
         };
     }
 }
