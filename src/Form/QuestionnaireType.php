@@ -33,7 +33,7 @@ class QuestionnaireType extends AbstractType
             ->add('newsletter', CheckboxType::class, [
                 'mapped' => false,
                 'required' => false,
-                'label' => 'I want to subscribe to newsletter',
+                'label' => 'I want to subscribe to the newsletter',
             ])
             ->add('nationality', TextType::class, [
                 'label' => 'Nationality',

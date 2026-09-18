@@ -133,6 +133,15 @@
     gap: 20px;
 }
 
+.newsletter-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: -5px 0 15px;
+
+    font-size: 0.80rem;
+}
+
 #signature {
     font-family: "Indie Flower", cursive;
     font-size: 0.75rem;
