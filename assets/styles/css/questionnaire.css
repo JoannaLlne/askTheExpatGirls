@@ -16,6 +16,13 @@
     position: relative;
 }
 
+@media screen and (max-width: 1050px) {
+    .questContainer {
+        display: flex;
+    }
+}
+
+
 .questForm {
     background: #ffffff;
     border: 0.5px solid #ddd6c7;
@@ -24,6 +31,18 @@
     padding: 40px 50px;
 
     width: 580px;
+}
+
+@media screen and (max-width: 1050px) {
+    .questForm {
+        width: 510px;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .questForm {
+        width: 300px;
+    }
 }
 
 .textForm {
@@ -43,6 +62,15 @@
 
     line-height: 1.6;
     text-align: right;
+}
+
+@media screen and (max-width: 1050px) {
+    .textForm {
+        padding: 60px 12px 45px;
+        font-size: 0.85rem;
+        left: -35px;
+        width: 230px;
+    }
 }
 
 .textForm h2 {
@@ -121,6 +149,12 @@
     margin: 18px 0 0;
 }
 
+@media screen and (max-width: 842px) {
+    .qr-confidentiality {
+        font-size: 0.55rem;
+    }
+}
+
 .qr-panel .cr-panel-signature {
     color: var(--beige);
     font-size: 13px;
@@ -150,10 +184,4 @@
 
 #qr-title {
     text-align: center;
-}
-
-@media (max-width: 640px) {
-    .questContainer {
-        grid-template-columns: 1fr;
-    }
 }
