@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Enum\ServiceCategory;
 use App\Enum\ServiceTiming;
 use App\Repository\ServiceRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -39,6 +40,9 @@ class Service
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
+
+    #[ORM\OneToMany(mappedBy: 'service', targetEntity: Application::class)]
+    private Collection $applications;
 
     public function getId(): ?int
     {
@@ -130,5 +134,17 @@ class Service
     public function setCreatedAtValue(): void
     {
         $this->createdAt = new \DateTimeImmutable();
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->Application;
+    }
+
+    public function setApplication(Application $Application): static
+    {
+        $this->Application = $Application;
+
+        return $this;
     }
 }

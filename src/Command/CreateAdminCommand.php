@@ -81,6 +81,7 @@ class CreateAdminCommand extends Command
 
         // Création de l'utilisateur
         $user = new User();
+        $createdAt = new \DateTimeImmutable();
         $user->setFirstName($firstName);
         $user->setLastName($lastName);
         $user->setEmail($email);
@@ -88,6 +89,7 @@ class CreateAdminCommand extends Command
         $user->setPassword(
             $this->passwordHasher->hashPassword($user, $plainPassword)
         );
+        $user->setCreatedAt($createdAt);
 
         $this->entityManager->persist($user);
         $this->entityManager->flush();

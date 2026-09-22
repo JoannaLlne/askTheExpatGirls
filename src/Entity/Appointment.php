@@ -20,6 +20,9 @@ class Appointment
     #[ORM\Column(enumType: AppointmentStatus::class)]
     private ?AppointmentStatus $status = null;
 
+    #[ORM\ManyToOne(targetEntity: Application::class, inversedBy: 'appointments')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Application $application = null;
     public function getStatus(): ?AppointmentStatus
     {
         return $this->status;
@@ -43,6 +46,18 @@ class Appointment
     public function setDate(\DateTimeImmutable $date): static
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getApplication(): ?Application
+    {
+        return $this->application;
+    }
+
+    public function setApplication(?Application $application): static
+    {
+        $this->application = $application;
 
         return $this;
     }

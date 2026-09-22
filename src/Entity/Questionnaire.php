@@ -51,6 +51,9 @@ class Questionnaire
     #[Assert\Email()]
     private ?string $email = null;
 
+    #[ORM\OneToOne(mappedBy: 'questionnaire', cascade: ['persist', 'remove'])]
+    private ?Application $application = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -157,6 +160,23 @@ class Questionnaire
    public function setEmail(string $email): static
    {
        $this->email = $email;
+
+       return $this;
+   }
+
+   public function getApplication(): ?Application
+   {
+       return $this->application;
+   }
+
+   public function setApplication(Application $application): static
+   {
+       // set the owning side of the relation if necessary
+       if ($application->getQuestionnaire() !== $this) {
+           $application->setQuestionnaire($this);
+       }
+
+       $this->application = $application;
 
        return $this;
    }

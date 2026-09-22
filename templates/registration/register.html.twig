@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}Create an account{% endblock %}
+
+{% block body %}
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+    <section class="registration-container">
+        <div class="registration-card">
+
+            <h1>Register</h1>
+
+            <p class="registration">Create your account to access to your application(s).</p>
+
+            {{ form_start(registrationForm) }}
+            {{ form_errors(registrationForm) }}
+
+            {{ form_row(registrationForm.firstName) }}
+
+            {{ form_row(registrationForm.lastName) }}
+
+            {{ form_row(registrationForm.email) }}
+
+            {{ form_row(registrationForm.plainPassword) }}
+
+            {{ form_row(registrationForm.agreeTerms) }}
+
+            <button type="submit" class="btn-register">
+                Create my account
+            </button>
+
+            {{ form_end(registrationForm) }}
+
+            <p class="login-link">Already have an account?
+                <a href="{{ path('app_login') }}">Log in</a>
+            </p>
+
+        </div>
+    </section>
+{% endblock %}
