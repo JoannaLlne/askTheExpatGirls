@@ -31,6 +31,16 @@ class Application
         return $this->id;
     }
 
+    public function getStatus(): ?ApplicationStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?ApplicationStatus $status): void
+    {
+        $this->status = $status;
+    }
+
     public function getEmail(): ?string
     {
         return $this->email;
