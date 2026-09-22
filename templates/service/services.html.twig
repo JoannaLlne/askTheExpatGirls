@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/service.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+{% endblock %}
+
+{% block title %}Services{% endblock %}
+
+{% block body %}
+
+<section class="service-header">
+    <div class="service-header-left">
+        <div class="text-left">
+    <h5>Personnalised expat support</h5>
+    <h1>Expat Services</h1>
+
+    <h2>We take care of the details. <br>
+        You enjoy France.</h2>
+
+    <p>From paperwork to healthcare, housing, driving licences and everyday life,
+        our services help you navigate the practical side of your move to France.
+    </p>
+        </div>
+        <div class="text-right">
+            <div class="icon-text">
+                <i class="fa-regular fa-handshake"></i>
+                <p>Local experts</p>
+            </div>
+            <div class="icon-text">
+                <i class="fa-regular fa-heart"></i>
+                <p>Personnalized support</p>
+            </div>
+            <div class="icon-text">
+                <i class="fa-solid fa-earth-europe"></i>
+                <p>A smoother transition</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="service-header-right">
+            <img id="photo" src="{{ asset('images/photo1.jpg') }}" alt="Vew over Paris">
+            <img id="photo" src="{{ asset('images/photo2.jpg') }}" alt="Paris's street">
+            <img id="photo" src="{{ asset('images/photo3.jpg') }}" alt="Picnic">
+            <img id="photo" src="{{ asset('images/photo4.jpg') }}" alt="Patisserie terrace">
+    </div>
+</section>
+
+    <section class="filters-container">
+        <div class="filters-text">
+        <h2>How can we help you ?</h2>
+        <p>Find the right service for your new life in France.</p>
+        </div>
+
+        <div class="filters">
+            <h3>Categories</h3>
+            <div class="filters-categories">
+                <div class="filter-group">
+
+                    <div class="filter-heading">
+                        <span>Service type</span>
+                        <small>Select one or more</small>
+                    </div>
+
+                    <div class="filter-options">
+                        {% for child in form.categories %}
+                            <div class="form-categories">
+                                {{ form_widget(child) }}
+                                {{ form_label(child) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                <div class="filter-group">
+                    <div class="filter-heading">
+                        <span>When do you need it?</span>
+                    </div>
+
+                    <div class="filter-options">
+                        {% for child in form.timing %}
+                            <div class="form-timing">
+                                {{ form_widget(child) }}
+                                {{ form_label(child) }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+
+{% endblock %}
