@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Enum\ApplicationStatus;
+use App\Enum\AppointmentStatus;
 use App\Enum\ServiceCategory;
 use App\Enum\Situation;
 use App\Repository\QuestionnaireRepository;
@@ -49,9 +50,6 @@ class Questionnaire
     #[Assert\NotBlank()]
     #[Assert\Email()]
     private ?string $email = null;
-
-    #[ORM\Column(enumType: ApplicationStatus::class)]
-    private ?ApplicationStatus $ApplicationStatus = ApplicationStatus::PENDING;
 
     public function getId(): ?int
     {
@@ -159,18 +157,6 @@ class Questionnaire
    public function setEmail(string $email): static
    {
        $this->email = $email;
-
-       return $this;
-   }
-
-   public function getApplicationStatus(): ?ApplicationStatus
-   {
-       return $this->ApplicationStatus;
-   }
-
-   public function setApplicationStatus(ApplicationStatus $ApplicationStatus): static
-   {
-       $this->ApplicationStatus = $ApplicationStatus;
 
        return $this;
    }

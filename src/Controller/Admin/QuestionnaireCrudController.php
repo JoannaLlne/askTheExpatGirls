@@ -3,7 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Questionnaire;
-use App\Enum\ApplicationStatus;
+use App\Enum\AppointmentStatus;
 use App\Enum\ServiceCategory;
 use App\Enum\Situation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -34,8 +34,8 @@ class QuestionnaireCrudController extends AbstractCrudController
 
         yield ChoiceField::new('applicationStatus', 'Application status')
             ->setChoices(array_combine(
-                array_map(fn (ApplicationStatus $c) => $c->label(), ApplicationStatus::cases()),
-                ApplicationStatus::cases()
+                array_map(fn (AppointmentStatus $c) => $c->label(), AppointmentStatus::cases()),
+                AppointmentStatus::cases()
             ));
     }
 
