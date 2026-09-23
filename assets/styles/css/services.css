@@ -169,7 +169,7 @@ li::marker {
     justify-content: space-between;
     min-height: 290px;
 
-    padding: 30px;
+    padding-bottom: 30px;
     background: var(--white);
     border: 1px solid rgba(221, 213, 210, 0.8);
     border-radius: 10px;
@@ -194,10 +194,17 @@ li::marker {
     letter-spacing: 0;
 }
 
+.service-card-image img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
 .card-price {
     color: var(--beige);
     font-weight: 600;
     margin-top: 30px;
+    padding: 0 30px;
 }
 
 #photo {
