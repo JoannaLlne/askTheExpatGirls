@@ -13,6 +13,8 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 
 class ServiceCrudController extends AbstractCrudController
 {
@@ -41,6 +43,11 @@ class ServiceCrudController extends AbstractCrudController
                 array_map(fn (ServiceTiming $t) => $t->value, ServiceTiming::cases())
             ))
             ->allowMultipleChoices();
+
+        yield ImageField::new('image', 'Photo')
+            ->setBasePath('/uploads/services')
+            ->setUploadDir('public/uploads/services')
+            ->setRequired(false);
 
         yield DateTimeField::new('createdAt', 'Created')
             ->hideOnForm();

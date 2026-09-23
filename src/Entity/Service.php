@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use AllowDynamicProperties;
 use App\Enum\ServiceCategory;
 use App\Enum\ServiceTiming;
 use App\Repository\ServiceRepository;
@@ -10,6 +11,7 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+#[AllowDynamicProperties]
 #[ORM\Entity(repositoryClass: ServiceRepository::class)]
 #[ORM\HasLifecycleCallbacks]
 class Service
@@ -43,6 +45,22 @@ class Service
 
     #[ORM\OneToMany(mappedBy: 'service', targetEntity: Application::class)]
     private Collection $applications;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    public function setApplications(Collection $applications): void
+    {
+        $this->applications = $applications;
+    }
 
     public function getId(): ?int
     {
@@ -144,6 +162,18 @@ class Service
     public function setApplication(Application $Application): static
     {
         $this->Application = $Application;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): static
+    {
+        $this->image = $image;
 
         return $this;
     }

@@ -52,6 +52,7 @@
         <p>Find the right service for your new life in France.</p>
         </div>
 
+        {{ form_start(form) }}
         <div class="filters-options">
             <div class="filters-categories">
                 <h3>Categories</h3>
@@ -101,6 +102,11 @@
         <div class="service-list">
             {% for service in services %}
                 <article class="service-card">
+                    <div class="service-card-image">
+                        {% if service.image %}
+                            <img src="{{ asset('uploads/services/' ~ service.image) }}" alt="{{ service.name }}">
+                        {% endif %}
+                    </div>
                     <div class="service-content">
                     <h3>{{ service.name }}</h3>
                     <p>{{ service.description|raw }}</p>

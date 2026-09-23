@@ -10,10 +10,12 @@ h1 {
 
 ul {
     padding-inline-start: 40px;
+    list-style-type: "✔";
 }
 
 li {
     margin: 5px 0;
+    padding-left: 10px;
 }
 
 li::marker {

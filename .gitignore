@@ -9,6 +9,7 @@
 /var/
 /vendor/
 /.idea/
+/public/uploads/services/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###
