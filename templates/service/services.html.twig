@@ -101,8 +101,10 @@
         <div class="service-list">
             {% for service in services %}
                 <article class="service-card">
+                    <div class="service-content">
                     <h3>{{ service.name }}</h3>
                     <p>{{ service.description|raw }}</p>
+                    </div>
                     <p class="card-price">From €{{ service.price }}</p>
                 </article>
             {% endfor %}
