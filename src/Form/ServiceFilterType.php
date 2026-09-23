@@ -23,15 +23,15 @@ class ServiceFilterType extends AbstractType
                 'choice_label' => fn(ServiceTiming $t) => $t->label(),
                 'required' => false,
                 'placeholder' => 'All types',
-                'expanded' => false, // select
+                'expanded' => true, //boutons radio
                 'multiple' => false,
             ])
             ->add('categories', EnumType::class, [
                 'class' => ServiceCategory::class,
                 'choice_label' => fn(ServiceCategory $c) => $c->label(),
                 'required' => false,
-                'expanded' => true,  // checkboxes
-                'multiple' => true,
+                'expanded' => true,  // bouton radio
+                'multiple' => true, // donc checkbox
             ])
         ;
     }

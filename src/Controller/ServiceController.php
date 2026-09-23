@@ -21,7 +21,7 @@ final class ServiceController extends AbstractController
 
         $services = $serviceRepository->findByFilters($filterDto);
 
-        return $this->render('service/service.html.twig', [
+        return $this->render('service/services.html.twig', [
             'form' => $form->createView(),
             'services' => $services,
         ]);

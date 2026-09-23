@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/service.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/services.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer">
 {% endblock %}
 
 {% block title %}Services{% endblock %}
 
 {% block body %}
-
+<main class="service-page">
 <section class="service-header">
     <div class="service-header-left">
         <div class="text-left">
-    <h5>Personnalised expat support</h5>
+    <h5>Personalized expat support</h5>
     <h1>Expat Services</h1>
 
     <h2>We take care of the details. <br>
@@ -29,7 +29,7 @@
             </div>
             <div class="icon-text">
                 <i class="fa-regular fa-heart"></i>
-                <p>Personnalized support</p>
+                <p>Personalized support</p>
             </div>
             <div class="icon-text">
                 <i class="fa-solid fa-earth-europe"></i>
@@ -52,17 +52,10 @@
         <p>Find the right service for your new life in France.</p>
         </div>
 
-        <div class="filters">
-            <h3>Categories</h3>
+        <div class="filters-options">
             <div class="filters-categories">
-                <div class="filter-group">
-
-                    <div class="filter-heading">
-                        <span>Service type</span>
-                        <small>Select one or more</small>
-                    </div>
-
-                    <div class="filter-options">
+                <h3>Categories</h3>
+                    <div class="filter-group">
                         {% for child in form.categories %}
                             <div class="form-categories">
                                 {{ form_widget(child) }}
@@ -70,15 +63,14 @@
                             </div>
                         {% endfor %}
                     </div>
-                </div>
+            </div>
 
-
-                <div class="filter-group">
+                <div class="filter-timing">
                     <div class="filter-heading">
-                        <span>When do you need it?</span>
+                        <h3>When do you need it?</h3>
                     </div>
 
-                    <div class="filter-options">
+                    <div class="filter-group">
                         {% for child in form.timing %}
                             <div class="form-timing">
                                 {{ form_widget(child) }}
@@ -87,10 +79,34 @@
                         {% endfor %}
                     </div>
                 </div>
+
+
+            <div class="filter-actions">
+                <button type="submit" class="filter-submit">Apply filters</button>
+                <a href="{{ path('main_service') }}" class="filter-reset">Clear filters<i class="fa-solid fa-filter-circle-xmark"></i></a>
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </section>
+
+    <section class="service-results">
+        <div class="service-results-header">
+            <div class="services-results-count">
+                    <p class="count-number">{{ services|length }}</p>
+                <!-- 's' si services affichés supérieur à 1 -->
+                <p class="count-label">service{{ services|length > 1 ? 's' : '' }}</p>
             </div>
         </div>
 
+        <div class="service-list">
+            {% for service in services %}
+                <article class="service-card">
+                    <h3>{{ service.name }}</h3>
+                    <p>{{ service.description|raw }}</p>
+                    <p class="card-price">From €{{ service.price }}</p>
+                </article>
+            {% endfor %}
+        </div>
     </section>
-
-
+</main>
 {% endblock %}
