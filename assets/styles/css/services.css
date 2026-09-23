@@ -108,7 +108,61 @@ h1 {
 
     margin: 8px 0;
     padding: 8px 13px;
+    border-radius: 10px;
+}
+
+.filter-actions {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 10px;
+}
+
+.filter-actions a, .filter-actions button {
+    border: 1px solid var(--navy);
     border-radius: 30px;
+    cursor: pointer;
+
+    margin: 20px 0;
+    padding: 5px 10px;
+    background: transparent;
+    font-size: 0.9rem;
+}
+
+.filter-actions i {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+.services-results-count {
+    display: inline-flex;
+    gap: 5px;
+
+    font-size: 1rem;
+    font-weight: 450;
+    margin-bottom: 10px;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 290px;
+
+    padding: 30px;
+    background: var(--white);
+    border: 1px solid rgba(221, 213, 210, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(23, 36, 63, 0.05);
+}
+
+.service-card:last-child {
+    margin-bottom: 100px;
 }
 
 #photo {

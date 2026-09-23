@@ -79,14 +79,14 @@
                         {% endfor %}
                     </div>
                 </div>
-
+        </div>
 
             <div class="filter-actions">
                 <button type="submit" class="filter-submit">Apply filters</button>
-                <a href="{{ path('main_service') }}" class="filter-reset">Clear filters<i class="fa-solid fa-filter-circle-xmark"></i></a>
+                <a href="{{ path('main_service') }}" class="filter-reset">Clear filters<i class="fa-solid fa-arrows-spin"></i></a>
             </div>
             {{ form_end(form) }}
-        </div>
+
     </section>
 
     <section class="service-results">
@@ -94,7 +94,7 @@
             <div class="services-results-count">
                     <p class="count-number">{{ services|length }}</p>
                 <!-- 's' si services affichés supérieur à 1 -->
-                <p class="count-label">service{{ services|length > 1 ? 's' : '' }}</p>
+                <p class="count-label">service{{ services|length > 1 ? 's' : '' }} available</p>
             </div>
         </div>
 
