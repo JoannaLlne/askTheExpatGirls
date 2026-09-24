@@ -19,7 +19,7 @@ final class MainController extends AbstractController
     #[Route('/contact', name: 'contact_page')]
     public function contact(): Response
     {
-        return $this->render('contact.html.twig');
+        return $this->render('contact2.html.twig');
     }
 
     #[Route('/about', name: 'about_page')]
