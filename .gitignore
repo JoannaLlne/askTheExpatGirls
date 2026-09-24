@@ -11,6 +11,7 @@
 /.idea/
 /public/uploads/
 /public/uploads/services/
+/public/uploads/packages/
 ###< symfony/framework-bundle ###
 
 ###> phpunit/phpunit ###

@@ -4,7 +4,7 @@
     --primary: #14213D;
     --secondary: #7A1F2B;
     --back: rgb(254 241 242);
-    --beige: #bd9659;
+    --beige: rgb(189 150 89);
     --grey: #3D4552;
     --text: #343434;
     --navy: rgb(23 36 63);
@@ -21,6 +21,7 @@ body {
     background-color: var(--back) ;
     font-family: "Roboto", sans-serif;
     font-size: 1rem;
+    color: var(--navy);
 }
 
 h1, h2, h3, h4, h5, h6 {

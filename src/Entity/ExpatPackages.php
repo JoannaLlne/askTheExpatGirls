@@ -27,6 +27,9 @@ class ExpatPackages
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $image = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -66,5 +69,15 @@ class ExpatPackages
         $this->price = $price;
 
         return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->image = $image;
     }
 }

@@ -1,5 +1,4 @@
-.service-page {
-    color: var(--navy);
+.services-page {
     padding: 0 30px;
 }
 
@@ -71,11 +70,11 @@ li::marker {
     }
 }
 
-.text-left p {
+.text-left p, .packages-header p {
     font-size: 1rem;
-    line-height: 1.4;
+    line-height: 1.7;
+    max-width: 520px;
     padding: 20px 0 50px;
-
 }
 
 .text-right {
@@ -269,17 +268,20 @@ li::marker {
     letter-spacing: 0;
 }
 
-.service-card-image {
+.service-card-image, .package-card-image {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
 
 .service-card-image img {
+    border-radius: 10px 10px 0 0;
+}
+
+.service-card-image img, .package-card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px 10px 0 0;
 }
 
 .card-price {
@@ -293,6 +295,207 @@ li::marker {
     .card-price {
         font-size: 1rem;
     }
+}
+
+/* PACKAGES PAGE */
+.packages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    margin: 30px 0;
+}
+
+.packages-header, .packages-results {
+    padding: 0 30px;
+}
+
+.packages-header-img {
+    position: relative;
+    width: 500px;
+    height: 400px;
+    padding-right: 30px;
+}
+
+.packages-img-gold {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+
+    width: 470px;
+    height: 320px;
+
+    background: var(--beige);
+    border-radius: 60% 395px 100% 100% / 92% 100% 54% 88%;
+    transform: rotate(-2deg);
+}
+
+.packages-header-img-main {
+    width: 470px;
+    height: 320px;
+
+    overflow: hidden;
+    border-radius: 60% 395px 100% 100% / 92% 100% 54% 88%;
+    transform: rotate(2deg);
+    z-index: 2;
+}
+
+.packages-header-img-main img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    object-fit: cover;
+    transform: rotate(-2deg) scale(1.06);
+}
+
+.packages-note {
+    width: 100%;
+    background: var(--navy);
+    color: #fff;
+}
+
+.packages-note-content {
+    width: min(1200px, 85%);
+    min-height: 150px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+
+    margin: 0 auto;
+    padding: 25px 0;
+}
+
+.packages-note-title {
+    position: relative;
+    padding-left: 32px;
+}
+
+.packages-note-title::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+
+    width: 3px;
+    background: var(--beige);
+}
+
+.packages-note-title p {
+    margin-bottom: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--beige);
+}
+
+.packages-note-title h2 {
+    font-size: 1.6rem;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--white);
+}
+
+.packages-note-text p {
+    max-width: 520px;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.packages-results {
+    margin: 50px 0;
+}
+
+.packages-list {
+    display: grid;
+    grid-auto-rows: 450px;
+    gap: 50px;
+}
+
+.package-card {
+    display: grid;
+    grid-template-columns: 30% 70%;
+
+    border: 1px solid rgba(221, 213, 210, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 15px 45px rgba(23, 36, 63, 0.07);
+}
+
+.package-card-image img {
+    border-radius: 10px 0 0 10px;
+}
+
+.packages-text {
+    padding: 42px 42px 0;
+}
+
+ .packages-text h3, .packages-text h4 {
+    text-transform: uppercase;
+     letter-spacing: 0;
+ }
+
+.packages-text h4 {
+    font-size: 0.85rem;
+}
+
+.packages-text h3 {
+    margin: 5px 0 10px;
+    font-size: 1.8rem;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.packages-text ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    list-style-position: outside;
+
+    font-size: 0.9rem;
+    line-height: 1;
+    align-items: start;
+    margin-top: 10px;
+}
+
+.packages-text li {
+    margin: 2px 0;
+}
+
+.packages-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 13px;
+
+    margin: 30px 0 20px;
+    padding: 8px 10px;
+    background: var(--beige);
+    color: var(--white);
+
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    transition: all 0.25s ease}
+
+.packages-btn span {
+    font-size: 1.1rem;
+    transition: transform 0.25s ease;
+}
+
+.packages-btn:hover {
+    background: #a98249;
+    transform: translateY(-2px);
+}
+
+.packages-btn :hover span {
+    transform: translateX(5px);
 }
 
 #photo {
