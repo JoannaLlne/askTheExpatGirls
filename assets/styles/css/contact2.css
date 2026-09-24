@@ -20,6 +20,7 @@
 
 .container1 p {
     margin: 25px 0 50px;
+    line-height: 1.7;
 }
 
 .contact-information-item {
@@ -77,6 +78,7 @@
 #contact-container {
     margin: 30px 50px;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40% 60%;
+    gap: 60px;
 }
 

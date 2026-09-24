@@ -7,7 +7,7 @@
 
 .questContainer {
     display: grid;
-    grid-template-columns: 1.3fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     border-radius: 12px;
     overflow: hidden;
 
@@ -16,17 +16,32 @@
     position: relative;
 }
 
+.questContainer h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 700;
+    color: var(--beige);
+}
+
+.questContainer h1 {
+    font-size: 2.3rem;
+    font-weight: 500;
+    line-height: 1.1;
+
+    margin: 10px 0 30px;
+}
+
 @media screen and (max-width: 1050px) {
     .questContainer {
         display: flex;
     }
 }
 
-
 .questForm {
     background: #ffffff;
     border: 0.5px solid #ddd6c7;
-    box-shadow: 3px 5px 15px 4px rgba(0,0,0,0.48);
+    box-shadow: 2px 8px 30px rgba(23, 36, 63, 0.05);
     margin: 40px 0;
     padding: 40px 50px;
 
@@ -45,42 +60,6 @@
     }
 }
 
-.textForm {
-    background: #7A1F2B;
-    color: #F0DCDC;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
-    padding: 72px 32px 58px;
-    width: auto;
-    height: 420px;
-    position: relative;
-    left: -65px;
-    top: 105px;
-
-    line-height: 1.6;
-    text-align: right;
-}
-
-@media screen and (max-width: 1050px) {
-    .textForm {
-        padding: 60px 12px 45px;
-        font-size: 0.85rem;
-        left: -35px;
-        width: 230px;
-    }
-}
-
-.textForm h2 {
-    color: #F5F1EA;
-    font-size: 1.35rem;
-    font-weight: 500;
-    margin: 0 0 14px;
-    line-height: 1.4;
-}
-
 .qr-field {
     margin-bottom: 10px;
 }
@@ -89,7 +68,7 @@
     display: block;
     color: #14213D;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 300;
     margin-bottom: 6px;
 }
 
@@ -101,11 +80,11 @@
     background: #ffffff;
     border: 1px solid #cfc9ba;
     border-radius: 6px;
-    padding: 0 14px;
+    padding: 2px 14px;
     font-size: 0.8rem;
     color: #14213D;
     box-sizing: border-box;
-    height: 30px;
+    height: 40px;
 }
 
 .qr-field textarea {
@@ -175,11 +154,24 @@
 
     font-size: 0.80rem;
 }
+#i-form {
+    position: absolute;
+    top: 10px;
+    right: 120px;
 
-#signature {
-    font-family: "Indie Flower", cursive;
-    font-size: 0.75rem;
-    margin-top: 30px;
+    width: 70px;
+    height: 70px;
+    border: 2px solid;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    background: var(--beige);
+    color: #fff;
+    font-size: 18px;
 }
 
 #qr-title {
