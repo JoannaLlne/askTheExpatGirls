@@ -105,6 +105,11 @@
                     <div class="service-card-image">
                         {% if service.image %}
                             <img src="{{ asset('uploads/services/' ~ service.image) }}" alt="{{ service.name }}">
+                        {% else %}
+                            <img
+                                src="{{ asset('images/default-service.jpg') }}"
+                                alt="{{ service.name }}"
+                            >
                         {% endif %}
                     </div>
                     <div class="service-content">

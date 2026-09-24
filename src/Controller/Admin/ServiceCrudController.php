@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use Symfony\Component\Validator\Constraints\Image;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 
 class ServiceCrudController extends AbstractCrudController
@@ -47,7 +48,13 @@ class ServiceCrudController extends AbstractCrudController
         yield ImageField::new('image', 'Photo')
             ->setBasePath('/uploads/services')
             ->setUploadDir('public/uploads/services')
-            ->setRequired(false);
+            ->setRequired(false)
+            //Pour ne pas converser le nom original de la photo
+            ->setUploadedFileNamePattern('[uuid58].[extension]')
+            ->setFileConstraints(
+            new Image(maxSize: '3M', maxWidth: 3000,
+                maxHeight: 3000, extensions: ['jpg', 'jpeg', 'png', 'webp'],)
+            );
 
         yield DateTimeField::new('createdAt', 'Created')
             ->hideOnForm();
