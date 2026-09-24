@@ -8,6 +8,12 @@ h1 {
     font-weight: 580;
 }
 
+@media screen and (max-width: 730px) {
+    h1 {
+        font-size: 2.6rem;
+    }
+}
+
 ul {
     padding-inline-start: 40px;
     list-style-type: "✔";
@@ -48,9 +54,21 @@ li::marker {
     background: var(--beige);
 }
 
+@media screen and (max-width: 730px) {
+    .text-left h5::after {
+        width: 30px;
+    }
+}
+
 .text-left h2 {
     font-weight: 520;
     font-size: 1.4rem;
+}
+
+@media screen and (max-width: 730px) {
+    .text-left h2 {
+        font-size: 1.1rem;
+    }
 }
 
 .text-left p {
@@ -76,6 +94,7 @@ li::marker {
 
 .icon-text:first-child, .icon-text:nth-child(2) {
     border-right: 2px solid rgb(23 36 63 / 0.22);
+    margin-right: 5px;
 }
 
 .icon-text i {
@@ -83,8 +102,21 @@ li::marker {
     color: var(--beige);
 }
 
+@media screen and (max-width: 860px) {
+    .icon-text i {
+        font-size: 20px;
+    }
+}
+
 .icon-text p {
     font-size: 1rem;
+}
+
+@media screen and (max-width: 945px) {
+    .icon-text p {
+        font-size: 0.9rem;
+        margin-right: 7px;
+    }
 }
 
 .service-header-right {
@@ -92,6 +124,13 @@ li::marker {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     height: 400px;
+}
+
+@media screen and (max-width: 810px) {
+    .service-header-right {
+        height: 300px;
+        margin: 20px 10px;
+    }
 }
 
 .filters-options {
@@ -123,6 +162,14 @@ li::marker {
     margin: 8px 0;
     padding: 8px 13px;
     border-radius: 10px;
+}
+
+@media screen and (max-width: 850px) {
+    .form-timing, .form-categories {
+        padding: 7px 10px;
+        gap: 3px;
+        margin: 5px 0;
+    }
 }
 
 .filter-actions {
@@ -158,16 +205,25 @@ li::marker {
 }
 
 .service-list {
+    width: 100%;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 22px;
+}
+
+@media screen and (max-width: 850px) {
+    .service-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .service-card {
     display: grid;
-    grid-template-rows: 30% 60% 5%;
+    grid-template-rows: 30% 65% 5%;
     justify-content: space-between;
-    min-height: 290px;
+    min-height: 400px;
+    overflow: hidden;
 
     padding-bottom: 30px;
     background: var(--white);
@@ -176,13 +232,32 @@ li::marker {
     box-shadow: 0 8px 30px rgba(23, 36, 63, 0.05);
 }
 
+@media screen and (max-width: 1050px) {
+    .service-card {
+        display: grid;
+        grid-template-rows: 20% 75% 5%;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .service-card {
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .service-card {
+        display: grid;
+        grid-template-rows: 15% 80% 5%;
+    }
+}
+
 .service-card:last-child {
     margin-bottom: 100px;
 }
 
 .service-content {
     height: 100%;
-    min-height: 290px;
     padding: 30px 28px 25px;
 
     display: flex;
@@ -192,6 +267,12 @@ li::marker {
 
 .service-content h3 {
     letter-spacing: 0;
+}
+
+.service-card-image {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .service-card-image img {
@@ -206,6 +287,12 @@ li::marker {
     font-weight: 600;
     margin-top: 30px;
     padding: 0 20px;
+}
+
+@media screen and (max-width: 580px) {
+    .card-price {
+        font-size: 1rem;
+    }
 }
 
 #photo {
