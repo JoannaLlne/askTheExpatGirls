@@ -229,16 +229,50 @@ p {
     margin-top: 50px;
 }
 
+@media screen and (max-width: 900px) {
+    .header-btn {
+        margin-top: 15px;
+    }
+
+}
+
+.header-visual {
+    position: relative;
+}
+
+.header-photo-gold {
+    position: absolute;
+    bottom: 13px;
+    left: 17px;
+    width: min(100%, 520px);
+    aspect-ratio: 1.35 / 1;
+    border: 1px solid var(--beige);
+
+    border-radius: 273px 91px 221px 103px / 150px 76px 147px 97px;
+    transform: rotate(-3deg);
+}
+
 .header-photo-main {
+    width: min(100%, 520px);
+    aspect-ratio: 1.35 / 1;
     overflow: hidden;
 
-    border-radius: 273px 91px 221px 103px / 150px 76px 147px 97px;}
+    border-radius: 273px 91px 221px 103px / 150px 76px 147px 97px;
+    transform: rotate(2deg);
+    z-index: 2;
+}
 
 .header-visual img {
     width: 100%;
     height: 100%;
     display: block;
     object-fit: cover;
+}
+
+@media screen and (max-width: 830px) {
+    .header-container h1 {
+        font-size: 1.7rem;
+    }
 }
 
 .header-container p {
@@ -288,7 +322,6 @@ p {
 
 .btnHomeService {
     width: 240px;
-
 }
 
 .presentation {
@@ -308,10 +341,11 @@ p {
     top: 25px;
     left: 15px;
 
-    width: 440px;
-    height: 330px;
+    width: min(100%, 440px);
+    aspect-ratio: 1.35 / 1;
+
     border: 1px solid var(--beige);
-    border-radius: 90px 25px 100px 20px;
+    border-radius: 10px;
     transform: rotate(-3deg);
 }
 
@@ -320,17 +354,19 @@ p {
     top: 0;
     left: 0;
 
-    width: 440px;
-    height: 330px;
+    width: min(100%, 440px);
+    aspect-ratio: 1.35 / 1;
+
     overflow: hidden;
-    border-radius: 90px 25px 100px 20px;
     transform: rotate(-1deg);
 }
 
-.about-photo img {
+.img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
+
 }
 
 .presensation-text {
@@ -389,16 +425,14 @@ p {
     background-repeat: no-repeat;
 }
 
-@media screen and (max-width: 750px) {
-    .contactUs {
-        justify-content: start;
-        gap: 30px;
-    }
-}
-
 .contactUs h2 {
     font-size: 2rem;
     margin-bottom: 15px;
+}
+
+.contactUs p {
+    width: 60%;
+    text-align: center;
 }
 
 .btnContact {
@@ -424,7 +458,7 @@ p {
     cursor: pointer;
 }
 
-@media screen and (max-width: 1195px) {
+@media screen and (max-width: 1105px) {
     .newsletter-subscribe-btn {
         width: 75px;
     }
@@ -442,7 +476,6 @@ p {
     }
 
     /* FOOTER */
-
     .footer-left-adress {
         margin-top: 15px;
     }
@@ -547,41 +580,37 @@ p {
         gap: 20px;
     }
 
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 970px) {
     #newsletter-band {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
+        display: grid;
+        grid-template-columns: 50% 50%;
         font-size: 0.8rem;
     }
 }
 
-    @media screen and (max-width: 1150px) and (max-height: 900px ){
+    @media screen and (max-width: 970px) and (max-height: 900px ){
         #newsletter-band {
             gap: 20px;
         }
     }
 
-@media screen and (max-width: 1150px) and (min-height: 900px ){
+@media screen and (max-width: 970px) and (min-height: 900px ){
     #newsletter-band {
         height: 10vh;
         gap: 10px;
     }
 }
 
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: 680px) {
         #newsletter-band {
-            height: 18vh;
+            height: 22vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            }
         }
-    }
 
-@media screen and (max-width: 480px) and (min-height: 901px) {
-    #newsletter-band {
-        height: 12vh;
-    }
-}
 
     #newsletter-band p {
         font-size:
