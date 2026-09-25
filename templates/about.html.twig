@@ -7,35 +7,48 @@
 {% block title %}About us{% endblock %}
 
 {% block body %}
+<section class="about-presentation">
 
     <div class="about-container">
-    <h1>About us</h1>
+        <div class="about-text">
+            <h1>Vicky & Zoe</h1>
+            <h2>Making your life in France a little easier.</h2>
 
-   <!-- IMG À AJOUTER -->
+            <p>Ask the Expat Girls is run by us – Zoe and Vicky – two English expats living in the Basque Country in South Western France.
+                Zoe moved to France in 2013, and Vicky in 2011, both green
+                and completely naive to the complicated French bureaucracy that we had to deal with.</p>
 
-    <p>Ask the Expat Girls is run by us – Zoe and Vicky – two English expats living in the Basque Country in South Western France.
-        Zoe moved to France in 2013, and Vicky in 2011, both green
-        and completely naive to the complicated French bureaucracy that we had to deal with.</p>
+            <p>Since moving here, Zoe has started and built a business, and has gone through the arduous and somewhat
+                confusing processes and administration required to set up and maintain a business in France.
+                Vicky has had several jobs since moving here, most recently working with expats for a large global clothing brand,
+                so has first-hand knowledge of all that is involved when applying for jobs, job seeking, and the different government benefits available.</p>
+        </div>
 
-    <p>Since moving here, Zoe has started and built a business, and has gone through the arduous and somewhat
-        confusing processes and administration required to set up and maintain a business in France.
-        Vicky has had several jobs since moving here, most recently working with expats for a large global clothing brand,
-        so has first-hand knowledge of all that is involved when applying for jobs, job seeking, and the different government benefits available.</p>
+        <div class="about-img">
+            <img class="img" src="{{ asset('images/ZoeVicky.jpg') }}" alt="Vicky and Zoe from Ask the Expat Girls">
+        </div>
+    </div>
 
-    <p>We are both mothers to two gorgeous little girls. We gave birth in France, so have researched and learned
-        all the benefits & aid in France that are available for women pre and post birth.
-        We speak fluent French and have successfully applied for our residency (carte de séjour), and now our French citizenship.</p>
+    <div class="about-container">
+        <div class="about-img">
+            <img class="img" src="{{ asset('images/ZoeVicky.jpg') }}" alt="Vicky and Zoe from Ask the Expat Girls">
+        </div>
 
-    <p>Zoe is a homeowner and Vicky has lived in several rental properties so both understand
-        the administrative processes involved when buying and renting property here.</p>
+        <div class="about-text">
+            <p>We are both mothers to two gorgeous little girls. We gave birth in France, so have researched and learned
+                all the benefits & aid in France that are available for women pre- and post-birth.
+                We speak fluent French and have successfully applied for our residency (carte de séjour), and now our French citizenship.</p>
 
-    <p>We set up Ask the Expat Girls after seeing how challenging it was for our friends and family to relocate to France,
-        especially for those who have a basic level of French or don’t speak it at all.</p>
+            <p>Zoe is a homeowner and Vicky has lived in several rental properties so both understand
+                the administrative processes involved when buying and renting property here.</p>
 
-    <p>Our aim is to make other expats’ lives easier. Moving to a new country can be hard enough,
-        let us take the hassle out of your journey of becoming an expat in France.</p>
+            <p>We set up Ask the Expat Girls after seeing how challenging it was for our friends and family to relocate to France,
+                especially for those who have a basic level of French or don’t speak it at all.</p>
 
-        <p>Got a question? <a class="link" href="{{ path('contact_page') }}">Ask the Expat Girls!</a></p>
-</div>
+            <p>Our aim is to make other expats’ lives easier. Moving to a new country can be hard enough,
+                let us take the hassle out of your journey of becoming an expat in France.</p>
 
+            <p>Got a question? <a class="link" href="{{ path('contact_page') }}">Ask the Expat Girls!</a></p>
+            </div>
+</section>
 {% endblock %}
