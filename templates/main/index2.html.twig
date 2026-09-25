@@ -8,12 +8,11 @@
 {% block title %}Ask the Expat Girls{% endblock %}
 
 {% block body %}
-
-    <section id="header">
+<main id="home-page">
+    <section class="header">
+        <div class="header-container">
         <h3>Your expat partner in France</h3>
         <h1>Moving to France doesn’t need to be so difficult. </h1>
-        <div class="header-container">
-            <h2>We help you to deal with French bureaucracy</h2>
             <p>The French bureaucratic system can be over whelming, especially if you don’t have a
                 high level of French. We’re here to take the hassle of the French administration process
                 away from you!</p>
@@ -23,81 +22,89 @@
                 <a class="btn btnHeader" href="{{ path('contact_page') }}">Contact</a>
             </div>
         </div>
+
+        <div class="header-visual">
+            <div class="header-photo-gold"></div>
+            <div class="header-photo-main">
+                <img src="{{ asset('images/bg.jpg') }}" alt="Basque country coast">
+            </div>
+        </div>
     </section>
 
     <section id="newsletter-band">
+        <div class="newsletter-text">
+        <h3>Newsletter</h3>
         <p>Get practical visa updates, moving to France tips, French admin guidance and exclusive resources – straight to your inbox!
             <br> Sign up to our Newsletter for FREE today</p>
+        </div>
         {{ render(controller('App\\Controller\\NewsletterController::subscribe', {placement: 'home_middle'})) }}
     </section>
 
     <section id="content-service">
-        <div class="contactUs">
-            <div class="contactUs-text">
-                <h3>Our services</h3>
-                <h2>Ready to move in France ?</h2>
-                <p>We are here to help! We will hold your hand every step of the way, and help you to get settled into France.
-                    Fill out a form to give us your infos and we’ll contact you</p>
-            </div>
-        </div>
-
-        <section id="our-services">
-            <h2>Our Services</h2>
-            <div class="services-container">
-                <div class="services-intro">
-                    <h3>Expat services to help you settle into France easier</h3>
+                <div class="service-intro">
+                <h3>Our Services</h3>
+                    <h2>Expat services to help you settle into France easier</h2>
                     <p>We’re here to help you with whatever your query is, from visa
                         application, to general living advice, We’re here to answer all your
                         question</p>
                     </div>
 
-                <div class="services-grid">
+                <div class="service-grid">
                     <article class="service-intro-card">
-                        <div class="service-icon">♢</div>
+                        <div class="service-icon"><i class="fa-solid fa-passport"></i></div>
                         <h3>Visa & residence</h3>
                         <p>We help you with your visa application and residence permit process.</p>
-                        <a href="{{ path('main_service') }}">
-                            Discover services
-                            <span>→</span>
-                        </a>
                     </article>
 
-
                     <article class="service-intro-card">
-                        <div class="service-icon">⌂</div>
+                        <div class="service-icon"><i class="fa-solid fa-house"></i></div>
                         <h3>Daily life</h3>
                         <p>From bank accounts to utilities, we guide you through the practicalities.</p>
-                        <a href="{{ path('main_service') }}">Discover services<span>→</span></a>
                     </article>
 
-
                     <article class="service-intro-card">
-                        <div class="service-icon">♡</div>
+                        <div class="service-icon"><i class="fa-solid fa-children"></i></div>
                         <h3>Family</h3>
                         <p>Support for your family, from schools to healthcare and beyond.</p>
-                        <a href="{{ path('main_service') }}">Discover services<span>→</span></a>
                     </article>
-
 
                     <article class="service-intro-card">
-                        <div class="service-icon">✧</div>
+                        <div class="service-icon"><i class="fa-solid fa-earth-europe"></i></div>
                         <h3>Translations</h3>
                         <p>We offer guided translations of documents and other requests.</p>
-                        <a href="{{ path('main_service') }}">
-                            Discover services
-                            <span>→</span>
-                        </a>
                     </article>
                 </div>
 
-
-                <div class="services-button">
-                    <a href="{{ path('main_service') }}" class="text-link">
-                        View all our services
-                        <span>→</span>
-                    </a>
-                </div>
-            </div>
+        <a href="{{ path('main_service') }}" class="btnHome">Discover our services</a>
         </section>
+
+    <section class="presentation">
+        <div class="about-visual">
+            <div class="about-photo-gold"></div>
+            <div class="about-photo">
+                <img class="img" src="{{ asset('images/ZoeVicky.jpg') }}" alt="Vicky and Zoe from Ask the Expat Girls">
+            </div>
+        </div>
+
+        <div class="presensation-text">
+            <h3>About us</h3>
+            <h2>Hi, we're Zoe & Vicky!</h2>
+            <p>Vicky and Zoe, the owners of Ask the Expat Girls, have lived in France for over
+                ten years and know first hand how tricky and over whelming settling into a new
+                country can be. We’ve set up this business to help ot her expats like us adapt
+                to French lifestyle more easily!</p>
+        </div>
+        <a href="{{ path('about_page') }}" class="btnHome">Learn more<span>→</span></a>
     </section>
+
+    <section class="contactUs">
+        <h3>Ready to move in France ?</h3>
+        <h2>We are here to help !</h2>
+        <p>We will hold your hand every step of the way, and help you to get settled into France.
+            Fill out a form to give us your infos, and we'll reach out to you.</p>
+        <a href="{{ path('contact_page') }}" class="btn btnContact">
+            Contact us<span>→</span></a>
+    </section>
+</main>
 {% endblock %}
+
