@@ -286,19 +286,9 @@ p {
     text-align: center;
 }
 
-.btn-discover {
-    color: var(--navy);
-    font-size: 0.85rem;
-    text-align: center;
+.btnHomeService {
+    width: 240px;
 
-    border: 1px solid var(--navy);
-    border-radius: 10px;
-
-    width: 130px;
-    height: 50px;
-    margin: 50px auto;
-    display: flex;
-    align-items: center;
 }
 
 .presentation {
@@ -367,7 +357,8 @@ p {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 150px;
+
+    margin: 50px auto;
     padding: 15px 22px;
     border-radius: 2px;
     font-size: 11px;
@@ -379,34 +370,40 @@ p {
     border: 1px solid var(--beige);
     background: transparent;
     color: var(--navy);
+}
 
+.btnHomeLearn {
+    width: 160px;
 }
 
 .contactUs {
-    display: grid;
-    grid-template-columns: 70% 20%;
-    align-items: end;
-    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    margin: 50px auto;
+    min-height: 40vh;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 750px) {
     .contactUs {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
         justify-content: start;
         gap: 30px;
     }
 }
 
 .contactUs h2 {
+    font-size: 2rem;
     margin-bottom: 15px;
 }
 
 .btnContact {
-    padding: 10px 20px;
+    padding: 10px 30px;
+    margin-top: 30px;
 }
 
 .newsletter-text {

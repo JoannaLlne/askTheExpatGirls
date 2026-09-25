@@ -75,7 +75,7 @@
                     </article>
                 </div>
 
-        <a href="{{ path('main_service') }}" class="btnHome">Discover our services</a>
+        <a href="{{ path('main_service') }}" class="btnHome btnHomeService">Discover our services<span>→</span></a>
         </section>
 
     <section class="presentation">
@@ -93,17 +93,24 @@
                 ten years and know first hand how tricky and over whelming settling into a new
                 country can be. We’ve set up this business to help ot her expats like us adapt
                 to French lifestyle more easily!</p>
+            <a href="{{ path('about_page') }}" class="btnHome btnHomeLearn">Learn more<span>→</span></a>
         </div>
-        <a href="{{ path('about_page') }}" class="btnHome">Learn more<span>→</span></a>
     </section>
 
-    <section class="contactUs">
+    <section class="contactUs"
+             style="
+                 background-image:
+                 linear-gradient(
+                 rgba(244, 229, 228, .62),
+                 rgba(244, 229, 228, .62)
+                 ),
+                 url('{{ asset('images/paris.jpg') }}');
+                 ">
         <h3>Ready to move in France ?</h3>
         <h2>We are here to help !</h2>
         <p>We will hold your hand every step of the way, and help you to get settled into France.
             Fill out a form to give us your infos, and we'll reach out to you.</p>
-        <a href="{{ path('contact_page') }}" class="btn btnContact">
-            Contact us<span>→</span></a>
+        <a href="{{ path('contact_page') }}" class="btn btnContact">Contact us</a>
     </section>
 </main>
 {% endblock %}
