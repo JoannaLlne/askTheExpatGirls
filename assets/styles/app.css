@@ -158,7 +158,7 @@ p {
 }
 
 /* BOUTONS */
-.btn {
+.btn, .btn-register {
     background-color: var(--primary);
     color: var(--beige);
     font-size: 0.85rem;
@@ -190,7 +190,7 @@ p {
     padding: 7px 10px;
 }
 
-.btnHeader {
+.btnHeader  {
     height: 35px;
     width: 100px;
     text-align: center;

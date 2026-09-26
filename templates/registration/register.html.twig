@@ -1,4 +1,10 @@
 {% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/register.css') }}">
+{% endblock %}
+
+
 {% block title %}Create an account{% endblock %}
 
 {% block body %}
@@ -8,11 +14,8 @@
 
     <section class="registration-container">
         <div class="registration-card">
-
             <h1>Register</h1>
-
             <p class="registration">Create your account to access to your application(s).</p>
-
             {{ form_start(registrationForm) }}
             {{ form_errors(registrationForm) }}
 
