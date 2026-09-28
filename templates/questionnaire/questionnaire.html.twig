@@ -14,11 +14,13 @@
 
         {{ form_start(questionnaireForm, {'action': path('new_questionnaire')}) }}
 
+
         <div class="qr-field">
             {{ form_label(questionnaireForm.firstName) }}
             {{ form_widget(questionnaireForm.firstName) }}
             {{ form_errors(questionnaireForm.firstName) }}
         </div>
+
         <div class="qr-field">
             {{ form_label(questionnaireForm.lastName) }}
             {{ form_widget(questionnaireForm.lastName) }}

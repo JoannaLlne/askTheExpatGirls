@@ -99,7 +99,7 @@
 }
 
 .btnSubmit, .btnReturn, .btnCreate, .btnLog {
-    background-color: var(--secondary);
+    background-color: var(--bordeaux);
     color: var(--back);
     padding: 11px 25px;
     border: none;
@@ -113,7 +113,7 @@
 
 .btnSubmit:hover, .btnReturn:hover, .btnCreate:hover, .btnLog:hover {
     background: var(--back);
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--bordeaux);
     color: black;
 }
 

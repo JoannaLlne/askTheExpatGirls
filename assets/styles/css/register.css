@@ -96,7 +96,7 @@
 }
 
 .btnSave, .btnReturn {
-    background-color: var(--secondary)  ;
+    background-color: var(--bordeaux)  ;
     color: var(--back);
     padding: 11px 25px;
     border: none;

@@ -154,7 +154,7 @@ li::marker {
     justify-content: center;
     gap: 5px;
 
-    background: var(--primary);
+    background: var(--navy);
     color: var(--back);
     font-size: 0.9rem;
 

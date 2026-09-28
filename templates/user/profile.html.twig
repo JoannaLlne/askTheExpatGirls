@@ -7,15 +7,18 @@
 {% block title %}My profile{% endblock %}
 
 {% block body %}
-<div id="containerProfile">
-    <div>
+<section id="containerProfile">
+    <div class="hello">
         {% if app.user and app.user.id == user.id %}
-            <h1>My profile</h1>
+            <h1>Hello {{ user.firstName }}</h1>
+            <h2>My profile</h2>
         {% endif %}
     </div>
 
-    <div class="containerTable">
-            <table id="table">
+    <div class="profile-grid">
+    <div class="profile-card">
+            <table id="infos">
+                <h3>My personal information</h3>
                 <tr>
                     <th>First name</th>
                     <td>{{ user.firstName }}</td>
@@ -30,16 +33,50 @@
                     <th>Email</th>
                     <td>{{ user.email }}</td>
                 </tr>
-            </table>
-    </div>
 
-    <div class="container-btn">
+                <tr>
+                    <th>Phone</th>
+                    {% if user.phone %}
+                    <td>{{ user.phone }}</td>
+                    {% else %}
+                        <td>No phone number added</td>
+                    {% endif %}
+                </tr>
+            </table>
+
         {% if app.user and app.user.id == user.id %}
             <a type="button" class="btn btnModify" href="{{ path('user_update', {id:app.user.id})}}">Modify</a>
         {% endif %}
+    </div>
 
+    <div class="profile-card">
+        {% block account_content %}
+        <table id="application">
+
+            {% for application in applications %}
+                <h3>{{ application.service.name }}</h3>
+
+                <tr>
+                    <th>Submitted : </th>
+                    <td>{{ application.createdAt|date('d/m/Y') }}</td>
+                </tr>
+
+                <tr>
+                    <th>Status : </th>
+                    <td>{{ application.status.value }} </td>
+                </tr>
+
+            {% else %}
+                <p>You don't have any request.</p>
+            {% endfor %}
+        </table>
+        {% endblock %}
+    </div>
+    </div>
+
+    <div class="container-btn">
         <a type="button" class="btn btnReturn" href="{{ path('main_index') }}">Return</a>
     </div>
-</div>
+</section>
 
 {% endblock %}

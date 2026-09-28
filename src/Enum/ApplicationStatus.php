@@ -18,4 +18,14 @@ enum ApplicationStatus: string
             self::PROCESSED => 'Processed',
         };
     }
+
+    public function step(): int
+    {
+        return match($this) {
+            self::NEW => 1,
+            self::PENDING => 2,
+            self::IN_PROGRESS => 3,
+            self::PROCESSED => 4,
+        };
+    }
 }

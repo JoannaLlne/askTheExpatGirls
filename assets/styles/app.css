@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&display=swap');
 
 :root {
-    --primary: #14213D;
-    --secondary: #7A1F2B;
+    --bordeaux: #7A1F2B;
     --back: rgb(254 241 242);
+    --bandeau : #F4E5E49E;
     --beige: rgb(189 150 89);
     --grey: #3D4552;
     --text: #343434;
@@ -159,7 +159,7 @@ p {
 
 /* BOUTONS */
 .btn, .btn-register {
-    background-color: var(--primary);
+    background-color: var(--navy);
     color: var(--beige);
     font-size: 0.85rem;
     border: none;
@@ -175,7 +175,7 @@ p {
 
 .btn:hover {
     background-color: var(--beige);
-    color: var(--primary);
+    color: var(--navy);
 }
 
 .btnLogin, .btnLogout {
@@ -198,7 +198,7 @@ p {
 }
 
 .btnSubmit {
-    background-color: var(--primary)  ;
+    background-color: var(--navy)  ;
     color: var(--beige);
     padding: 11px 25px;
     border: none;
@@ -472,7 +472,7 @@ p {
     height: 40px;
     margin: 0 10px 0 -75px;
 
-    background-color: var(--secondary);
+    background-color: var(--bordeaux);
     color: var(--beige);
     border: none;
     border-radius: 5px;
@@ -493,7 +493,7 @@ p {
 
     .newsletter-subscribe-btn:hover {
         background-color: var(--beige);
-        color: var(--secondary);
+        color: var(--bordeaux);
     }
 
     /* FOOTER */
@@ -586,7 +586,7 @@ p {
     }
 
     #newsletter-band {
-        background-color: var(--primary);
+        background-color: var(--navy);
         color: var(--beige);
         border-bottom: 3px solid black;
         border-top: 3px solid black;
@@ -661,7 +661,7 @@ p {
     }
 
     #footer {
-        background-color: var(--primary);
+        background-color: var(--navy);
         color: var(--beige);
 
         display: flex;

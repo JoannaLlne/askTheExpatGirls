@@ -25,8 +25,8 @@ class Application
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    #[ORM\Column(enumType: ApplicationStatus::class)]
-    private ?ApplicationStatus $status = ApplicationStatus::NEW;
+    #[ORM\Column(length: 30, enumType: ApplicationStatus::class)]
+    private ApplicationStatus $status = ApplicationStatus::NEW;
 
     #[ORM\ManyToOne(targetEntity: Service::class, inversedBy: 'applications')]
     #[ORM\JoinColumn(nullable: false)]

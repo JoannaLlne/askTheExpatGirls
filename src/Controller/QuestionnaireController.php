@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Questionnaire;
+use App\Entity\User;
 use App\Form\QuestionnaireType;
 use App\Mailer\AdminNotificationHandler;
 use App\Mailer\AdminNotificationMailer;
@@ -27,6 +28,12 @@ final class QuestionnaireController extends AbstractController
 
         // Le formulaire, associée à l'entité vide
         $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire);
+
+        if ($user = $this->getUser()) {
+            $questionnaireForm->get('firstName')->setData($user->getFirstName());
+            $questionnaireForm->get('lastName')->setData($user->getLastName());
+        }
+
 
         // récupère les données du form et les injecte dans notre $questionnaire
         $questionnaireForm->handleRequest($request);
@@ -58,6 +65,7 @@ final class QuestionnaireController extends AbstractController
         // affiche le formulaire
         return $this->render('questionnaire/questionnaire.html.twig', [
             'questionnaireForm' => $questionnaireForm,
+            'user'=>$user,
         ]);
     }
 
@@ -65,12 +73,12 @@ final class QuestionnaireController extends AbstractController
     #[Route('/questionnaire/thank-you', name: 'questionnaire_thanks')]
     public function thanks(Request $request): Response
     {
-        /* $session = $request->getSession();
+         $session = $request->getSession();
 
         // accès direct à l'URL sans avoir soumis le questionnaire : retour au formulaire
         if (!$session->remove('inquiry_submitted')) {
             return $this->redirectToRoute('contact_page');
-        }*/
+        }
 
         return $this->render('questionnaire/thanks.html.twig');
     }

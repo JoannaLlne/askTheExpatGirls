@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Application;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\ApplicationRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,10 +19,19 @@ final class UserController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
     #[Route('/user/{id}', name: 'user_profile', requirements: ['id' => '\d+'], methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, ApplicationRepository $applicationRepository): Response
     {
+        // Un utilisateur ne peut voir que son propre profil
+        if ($user !== $this->getUser()) {
+            throw $this->createAccessDeniedException();
+        }
+
         return $this->render('user/profile.html.twig', [
             'user' => $user,
+            'applications' => $applicationRepository->findBy(
+                ['user' => $user],
+                ['createdAt' => 'DESC']
+            ),
         ]);
     }
 
