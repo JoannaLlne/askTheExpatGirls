@@ -49,29 +49,120 @@
         {% endif %}
     </div>
 
-    <div class="profile-card">
-        {% block account_content %}
-        <table id="application">
+        <div class="profile-card application-card">
+            {% block account_content %}
+                {% for application in applications %}
+                    <div class="application-item">
+                        <div class="application-header">
+                            <div>
+                                <h3>{{ application.service.name }}</h3>
+                                <p class="application-date">
+                                    Submitted on {{ application.createdAt|date('d/m/Y') }}
+                                </p>
+                            </div>
 
-            {% for application in applications %}
-                <h3>{{ application.service.name }}</h3>
+                            <span class="status-badge">
+                        {{ application.status.label() }}
+                    </span>
+                        </div>
 
-                <tr>
-                    <th>Submitted : </th>
-                    <td>{{ application.createdAt|date('d/m/Y') }}</td>
-                </tr>
 
-                <tr>
-                    <th>Status : </th>
-                    <td>{{ application.status.value }} </td>
-                </tr>
+                        {# Progress timeline #}
+                        <div class="application-progress">
+                            <div class="progress-line">
+                                <div class="progress-line-fill"
+                                    style="width: {{ ((application.status.step() - 1) / 3) * 100 }}%;">
+                                </div>
+                            </div>
 
-            {% else %}
-                <p>You don't have any request.</p>
-            {% endfor %}
-        </table>
-        {% endblock %}
-    </div>
+                            <div class="progress-steps">
+                                {# Step 1 #}
+                                <div class="progress-step {{ application.status.step() >= 1 ? 'completed' : '' }} {{ application.status.step() == 1 ? 'current' : '' }}">
+                                    <div class="step-circle">
+                                        {% if application.status.step() > 1 %}
+                                            ✓
+                                        {% else %}
+                                            1
+                                        {% endif %}
+                                    </div>
+                                    <span>New</span>
+                                </div>
+
+
+                                {# Step 2 #}
+                                <div class="progress-step {{ application.status.step() >= 2 ? 'completed' : '' }} {{ application.status.step() == 2 ? 'current' : '' }}">
+                                    <div class="step-circle">
+                                        {% if application.status.step() > 2 %}
+                                            ✓
+                                        {% else %}
+                                            2
+                                        {% endif %}
+                                    </div>
+                                    <span>Pending</span>
+                                </div>
+
+
+                                {# Step 3 #}
+                                <div class="progress-step {{ application.status.step() >= 3 ? 'completed' : '' }} {{ application.status.step() == 3 ? 'current' : '' }}">
+                                    <div class="step-circle">
+                                        {% if application.status.step() > 3 %}
+                                            ✓
+                                        {% else %}
+                                            3
+                                        {% endif %}
+                                    </div>
+                                    <span>In Progress</span>
+                                </div>
+
+
+                                {# Step 4 #}
+                                <div class="progress-step {{ application.status.step() >= 4 ? 'completed' : '' }} {{ application.status.step() == 4 ? 'current' : '' }}">
+                                    <div class="step-circle">
+                                        {% if application.status.step() > 4 %}
+                                            ✓
+                                        {% else %}
+                                            4
+                                        {% endif %}
+                                    </div>
+                                    <span>Processed</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {# Current status message #}
+                        <div class="application-status-message">
+                            {% if application.status.step() == 1 %}
+                                <strong>Your application has been received.</strong>
+                                <p>We have received your application and will review it shortly.</p>
+
+                            {% elseif application.status.step() == 2 %}
+                                <strong>Your application is pending.</strong>
+                                <p>We are currently reviewing the information provided.</p>
+
+                            {% elseif application.status.step() == 3 %}
+                                <strong>Your application is in progress.</strong>
+                                <p>Our team is currently working on your request.</p>
+
+                            {% elseif application.status.step() == 4 %}
+                                <strong>Your application has been processed.</strong>
+                                <p>Your request has been processed. Thank you for your patience.</p>
+
+                            {% endif %}
+                        </div>
+                    </div>
+
+                {% else %}
+                    <div class="no-application"><p>You don't have any request.</p></div>
+                {% endfor %}
+
+
+                <a class="btn btnModify" href="{{ path('contact_page') }}">New application</a>
+            {% endblock %}
+        </div>
+
+
+
     </div>
 
     <div class="container-btn">
