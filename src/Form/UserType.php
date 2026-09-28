@@ -28,7 +28,9 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email'
             ])
-
+            ->add('phone', TextType::class, [
+                'label' => 'Phone'
+            ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Passwords do not match.',

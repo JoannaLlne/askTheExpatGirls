@@ -64,9 +64,9 @@
                 </li>
 
                 {% if app.user %}
-                {% if is_granted("ROLE_ADMIN") %}
+                {% if is_granted("ROLE_USER") %}
                 <li class="nav-li">
-                    <a class="nav-link" href="{{ path('admin_profile', {id:app.user.id}) }}"
+                    <a class="nav-link" href="{{ path('user_profile', {id:app.user.id}) }}"
                        title="See my profile">
                         My profile
                     </a>

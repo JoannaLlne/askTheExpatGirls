@@ -15,8 +15,8 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 final class UserController extends AbstractController
 {
-    #[IsGranted('ROLE_ADMIN')]
-    #[Route('/user/{id}', name: 'admin_profile', requirements: ['id'=>'\d+'], methods: ['GET'])]
+    #[IsGranted('ROLE_USER')]
+    #[Route('/user/{id}', name: 'user_profile', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(User $user): Response
     {
         return $this->render('user/profile.html.twig', [
@@ -25,31 +25,20 @@ final class UserController extends AbstractController
     }
 
     //modification de son profil
-    #[IsGranted('ROLE_ADMIN')]
-    #[Route('/update/{id}', name: 'admin_update', requirements: ['id'=>'\d+'], methods: ['GET','POST'])]
-    public function update(int $id, UserRepository $userRepository, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
+    #[IsGranted('ROLE_USER')]
+    #[Route('/update/{id}', name: 'user_update', requirements: ['id' => '\d+'], methods: ['GET', 'POST'])]
+    public function update(int $id, Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher): Response
     {
-        //récupération de l'utilisateur connecté
-        /** @var User|null $user */
+        /** @var User $user */
         $user = $this->getUser();
 
-        //on vérifie que le profil est bien celui de l'utilisateur connecté
         if ($user->getId() !== $id) {
             throw $this->createAccessDeniedException('Only the owner of this account can edit it.');
         }
-        // récupère user en fonction de l'id présent dans l'URL
-        $user = $userRepository->find($id);
 
-        // s'il n'existe pas en bdd, on déclenche une erreur 404
-        if (!$user) {
-            throw $this->createNotFoundException('This user does not exist.');
-        }
-        // notre formulaire, associée à l'entité vide
         $userForm = $this->createForm(UserType::class, $user);
-        // récupère les données du form et les injecter
         $userForm->handleRequest($request);
 
-        // si formulaire soumis et valide
         if ($userForm->isSubmitted() && $userForm->isValid()) {
             $plainPassword = $userForm->get('password')->getData();
 
@@ -58,11 +47,12 @@ final class UserController extends AbstractController
             }
 
             $em->flush();
-            return $this->redirectToRoute('admin_profile', ['id' => $user->getId()]);
+            $this->addFlash('success', 'Profil mis à jour.');
+
+            return $this->redirectToRoute('user_profile', ['id' => $user->getId()]);
         }
 
-        // affiche le formulaire
-        return $this->render('user/create_user.html.twig', [
+        return $this->render('user/update_user.html.twig', [
             'userForm' => $userForm,
         ]);
     }

@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('styles/css/form.css') }}">
+    <link rel="stylesheet" href="{{ asset('styles/css/register.css') }}">
 {% endblock %}
 
 {% block javascripts %}
@@ -9,38 +9,24 @@
     <script src="{{ asset('styles/js/password-check.js') }}" defer></script>
 {% endblock %}
 
-
 {% block title %}Sign in{% endblock %}
 
 {% block body %}
 
-    <section id="create-user">
-<h1 class="h1">Create an account</h1>
-
-<div class="containerForm">
+    <section class="user-container">
+<div class="registration-card">
+    <h1 class="h1">Update my info</h1>
     {{ form_start(userForm) }}
 
-    <ul id="containerCreateUser">
-        <li class="input">
             {{ form_row(userForm.lastName) }}
-        </li>
 
-        <li class="input">
             {{ form_row(userForm.firstName) }}
-        </li>
 
-        <li class="input">
             {{ form_row(userForm.email) }}
-        </li>
 
-        <li class="input">
             {{ form_row(userForm.phone) }}
-        </li>
 
-        <li class="inputPwd">
             {{ form_row(userForm.password) }}
-        </li>
-    </ul>
     <span id="passwordError" class="error"></span>
 
     <div class="btnList">

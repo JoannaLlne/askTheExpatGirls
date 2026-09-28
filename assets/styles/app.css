@@ -382,7 +382,6 @@ p {
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-
 }
 
 .presensation-text {
@@ -633,7 +632,6 @@ p {
             }
         }
 
-
     #newsletter-band p {
         font-size:
             0.9rem;
@@ -697,7 +695,6 @@ p {
     #footer a {
         color: var(--beige);
     }
-
 
     #copyright {
         margin-top: 50px;

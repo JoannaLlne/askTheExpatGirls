@@ -51,14 +51,28 @@ final class QuestionnaireController extends AbstractController
                 dump('ERREUR : ' . $e->getMessage());
             }
 
-            // affiche un message sur la prochaine page si soumission
-            $this->addFlash('success', 'The questionnaire was successfully sent');
-            return $this->redirectToRoute('contact_page');
+            // affiche un message sur la prochaine page si soumission du formulaire
+            $request->getSession()->set('inquiry_submitted', true);
+            return $this->redirectToRoute('request_thanks');
         }
         // affiche le formulaire
         return $this->render('questionnaire/questionnaire.html.twig', [
             'questionnaireForm' => $questionnaireForm,
         ]);
+    }
+
+    // src/Controller/QuestionnaireController.php
+    #[Route('/questionnaire/thank-you', name: 'questionnaire_thanks')]
+    public function thanks(Request $request): Response
+    {
+        /* $session = $request->getSession();
+
+        // accès direct à l'URL sans avoir soumis le questionnaire : retour au formulaire
+        if (!$session->remove('inquiry_submitted')) {
+            return $this->redirectToRoute('contact_page');
+        }*/
+
+        return $this->render('questionnaire/thanks.html.twig');
     }
 }
 

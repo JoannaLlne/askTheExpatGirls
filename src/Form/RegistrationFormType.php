@@ -32,6 +32,10 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Email',
             ])
 
+            ->add('phone', TextType::class, [
+                'label' => 'Phone',
+            ])
+
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'mapped' => false,

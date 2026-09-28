@@ -35,7 +35,7 @@
 
     <div class="container-btn">
         {% if app.user and app.user.id == user.id %}
-            <a type="button" class="btn btnModify" href="{{ path('admin_update', {id:app.user.id})}}">Modify</a>
+            <a type="button" class="btn btnModify" href="{{ path('user_update', {id:app.user.id})}}">Modify</a>
         {% endif %}
 
         <a type="button" class="btn btnReturn" href="{{ path('main_index') }}">Return</a>

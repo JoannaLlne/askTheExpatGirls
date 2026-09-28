@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/questionnaire.css') }}">
+{% endblock %}
+
+{% block title %}Request sent{% endblock %}
+
+{% block body %}
+    <section class="thanks-page">
+        <div class="thanks-card">
+            <div class="thanks-icon">
+                <i class="fa-solid fa-check"></i>
+            </div>
+
+            <h1>Thank you!</h1>
+            <p class="thanks-text">
+                Your request has been successfully submitted.<br>
+                We will get back to you as soon as possible.
+            </p>
+
+            <hr>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                <a class="btn btn-primary" href="{{ path('user_profile', {id: app.user.id}) }}">
+                    Follow your request
+                </a>
+            {% else %}
+                <p class="thanks-sub">You want to track your request? Log in or create an account here</p>
+                <div class="thanks-actions">
+                    <a class="btn btnLog" href="{{ path('app_login') }}">Log in</a>
+                    <a class="btn btnCreate" href="{{ path('app_register') }}">New account</a>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
