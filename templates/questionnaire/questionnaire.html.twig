@@ -8,28 +8,26 @@
     <div class="questContainer">
     <div class="questForm">
 
-        <i id="i-form" class="fa-solid fa-pen-to-square"></i>
         <h3>Send us a message</h3>
         <h1>How can we help ?</h1>
 
         {{ form_start(questionnaireForm, {'action': path('new_questionnaire')}) }}
 
-
         <div class="qr-field">
             {{ form_label(questionnaireForm.firstName) }}
-            {{ form_widget(questionnaireForm.firstName) }}
+            {{ form_widget(questionnaireForm.firstName, {attr: {readonly: app.user is not null}}) }}
             {{ form_errors(questionnaireForm.firstName) }}
         </div>
 
         <div class="qr-field">
             {{ form_label(questionnaireForm.lastName) }}
-            {{ form_widget(questionnaireForm.lastName) }}
+            {{ form_widget(questionnaireForm.lastName, {attr: {readonly: app.user is not null}}) }}
             {{ form_errors(questionnaireForm.lastName) }}
         </div>
 
         <div class="qr-field email-field">
             {{ form_label(questionnaireForm.email) }}
-            {{ form_widget(questionnaireForm.email) }}
+            {{ form_widget(questionnaireForm.email, {attr: {readonly: app.user is not null}}) }}
             {{ form_errors(questionnaireForm.email) }}
         </div>
         <div class="newsletter-field">

@@ -13,7 +13,6 @@
 
     max-width: 800px;
     margin: 0 auto;
-    position: relative;
 }
 
 .questContainer h3 {
@@ -184,26 +183,6 @@
 .thanks-sub {
     margin: 30px 0;
     font-size: 1.2rem;
-}
-
-#i-form {
-    position: absolute;
-    top: 10px;
-    right: 120px;
-
-    width: 70px;
-    height: 70px;
-    border: 2px solid;
-    border-radius: 50%;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-
-    background: var(--beige);
-    color: #fff;
-    font-size: 18px;
 }
 
 #qr-title {

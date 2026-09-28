@@ -18,15 +18,24 @@
     <h1 class="h1">Update my info</h1>
     {{ form_start(userForm) }}
 
-            {{ form_row(userForm.lastName) }}
+    {{ form_row(userForm.lastName) }}
 
-            {{ form_row(userForm.firstName) }}
+    {{ form_row(userForm.firstName) }}
 
-            {{ form_row(userForm.email) }}
+    {{ form_row(userForm.email) }}
 
-            {{ form_row(userForm.phone) }}
+    {{ form_row(userForm.phone) }}
 
-            {{ form_row(userForm.password) }}
+    {{ form_row(userForm.password.first, {
+        attr: {
+            placeholder: 'Leave empty to keep the same'}
+    }) }}
+
+    {{ form_row(userForm.password.second, {
+        attr: {
+            placeholder: 'Leave empty to keep the same'}
+    }) }}
+
     <span id="passwordError" class="error"></span>
 
     <div class="btnList">

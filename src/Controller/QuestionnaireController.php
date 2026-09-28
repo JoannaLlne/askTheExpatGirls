@@ -32,6 +32,7 @@ final class QuestionnaireController extends AbstractController
         if ($user = $this->getUser()) {
             $questionnaireForm->get('firstName')->setData($user->getFirstName());
             $questionnaireForm->get('lastName')->setData($user->getLastName());
+            $questionnaireForm->get('email')->setData($user->getEmail());
         }
 
 

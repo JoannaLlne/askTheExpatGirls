@@ -180,4 +180,19 @@ class Questionnaire
 
        return $this;
    }
+
+   //Récupérer le statut de la demande pour l'avoir dans le dashboard
+    public function getApplicationStatus(): ?ApplicationStatus
+    {
+        return $this->application?->getStatus();
+    }
+
+    public function setApplicationStatus(?ApplicationStatus $status): static
+    {
+        if ($status !== null && $this->application !== null) {
+            $this->application->setStatus($status);
+            $this->application->setUpdatedAt(new \DateTimeImmutable());
+        }
+        return $this;
+    }
 }
