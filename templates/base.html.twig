@@ -28,7 +28,7 @@
     {% include('_navbar.html.twig') %}
 </header>
 <main class="container">
-    {# block pour les flashes #}
+    {# block pour les addFlash #}
     {% for label, messages in app.flashes %}
         {% for message in messages %}
             <div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">

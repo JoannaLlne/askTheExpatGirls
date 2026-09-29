@@ -3,6 +3,7 @@
 
 :root {
     --bordeaux: #7A1F2B;
+    --red: #b42318;
     --back: rgb(254 241 242);
     --bandeau : #F4E5E49E;
     --beige: rgb(189 150 89);
@@ -37,6 +38,21 @@ a {
 
 p {
     font-size: 1.1rem;
+}
+
+/* AddFlash */
+.alert {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 200px;
+}
+
+.alert-danger {
+    color: var(--red);
+}
+
+.alert-success {
+    color: darkgreen;
 }
 
 /*NAV MENU*/

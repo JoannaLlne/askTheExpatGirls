@@ -49,7 +49,7 @@ form > div > ul {
 
     list-style: none;
 
-    color: #b42318;
+    color: var(--red);
     font-size: 0.9rem;
 
     /* Pas de retour à la ligne automatique */
@@ -57,7 +57,7 @@ form > div > ul {
 }
 
 form > div > ul li {
-    color: #b42318;
+    color: var(--red);
     font-size: 0.9rem;
 }
 
@@ -172,7 +172,7 @@ form > div:has(input[type="checkbox"]) label {
 }
 
 .error {
-    color: red;
+    color: var(--red);
     font-weight: 650;
     font-size: 0.9rem;
 }
