@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Application;
 use App\Entity\Questionnaire;
 use App\Entity\User;
+use App\Enum\ApplicationStatus;
 use App\Form\QuestionnaireType;
 use App\Mailer\AdminNotificationHandler;
 use App\Mailer\AdminNotificationMailer;
@@ -35,14 +37,27 @@ final class QuestionnaireController extends AbstractController
             $questionnaireForm->get('email')->setData($user->getEmail());
         }
 
-
         // récupère les données du form et les injecte dans notre $questionnaire
         $questionnaireForm->handleRequest($request);
 
+        $logFile = __DIR__ . '/../../var/log/debug_questionnaire.log';
+
+        if ($questionnaireForm->isSubmitted()) {
+            file_put_contents($logFile, "[" . date('H:i:s') . "] Formulaire soumis\n", FILE_APPEND);
+            file_put_contents($logFile, "Valide : " . ($questionnaireForm->isValid() ? 'oui' : 'non') . "\n", FILE_APPEND);
+
+            if (!$questionnaireForm->isValid()) {
+                foreach ($questionnaireForm->getErrors(true) as $error) {
+                    file_put_contents($logFile, "Erreur : " . $error->getMessage() . " (champ : " . $error->getOrigin()?->getName() . ")\n", FILE_APPEND);
+                }
+            }
+        } else {
+            file_put_contents($logFile, "[" . date('H:i:s') . "] Formulaire NON soumis (isSubmitted = false)\n", FILE_APPEND);
+        }
+
         // Si formulaire soumis et valide
         if ($questionnaireForm->isSubmitted() && $questionnaireForm->isValid()) {
-
-            // sauvegarde en bdd
+            // sauvegarde du questionnaire en bdd
             $em->persist($questionnaire);
 
             // Seulement si la case est cochée : on inscrit aussi dans subscribers
@@ -50,7 +65,19 @@ final class QuestionnaireController extends AbstractController
                 $newsletterService->subscribe($questionnaire->getEmail());
             }
 
+            $application = new Application;
+            $application->setEmail($questionnaireForm->get('email')->getData()); // champ ajouté au formulaire)
+            $application->setQuestionnaire($questionnaire);
+            $application->setService($questionnaireForm->get('service')->getData());            $application->setStatus(ApplicationStatus::NEW);
+            $application->setCreatedAt(new \DateTimeImmutable());
+            $application->setUpdatedAt(new \DateTimeImmutable());
+
+            //placer le questionnaire dans le dossier
+            $application->setQuestionnaire($questionnaire);
+            // sauvegarde de dossier en bdd
+            $em->persist($application);
             $em->flush();
+
             //Envoi notification
             try {
                 $adminNotif->notifyFormSubmitted();
@@ -61,7 +88,7 @@ final class QuestionnaireController extends AbstractController
 
             // affiche un message sur la prochaine page si soumission du formulaire
             $request->getSession()->set('inquiry_submitted', true);
-            return $this->redirectToRoute('request_thanks');
+            return $this->redirectToRoute('questionnaire_thanks');
         }
         // affiche le formulaire
         return $this->render('questionnaire/questionnaire.html.twig', [

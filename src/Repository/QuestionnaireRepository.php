@@ -23,6 +23,13 @@ class QuestionnaireRepository extends ServiceEntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    public function findByEmail(string $email): ?Questionnaire {
+        $qb = $this->createQueryBuilder('q');
+        $qb->where('q.email = :email')
+            ->setParameter('email', $email);
+        return $qb->getQuery()->getResult();
+    }
+
     //    /**
     //     * @return Questionnaire[] Returns an array of Questionnaire objects
     //     */

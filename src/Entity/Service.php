@@ -6,6 +6,7 @@ use AllowDynamicProperties;
 use App\Enum\ServiceCategory;
 use App\Enum\ServiceTiming;
 use App\Repository\ServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -44,6 +45,7 @@ class Service
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\OneToMany(mappedBy: 'service', targetEntity: Application::class)]
+    //mappedBy : va voir la propriété service sur l'entité application (qui porte la relation)
     private Collection $applications;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -51,6 +53,11 @@ class Service
 
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
+
+    public function __construct()
+    {
+        $this->applications = new ArrayCollection();
+    }
 
     public function getApplications(): Collection
     {
@@ -154,15 +161,25 @@ class Service
         $this->createdAt = new \DateTimeImmutable();
     }
 
-    public function getApplication(): ?Application
+    public function addApplication(Application $application): static
     {
-        return $this->Application;
+        //Vérifie que Application n'est pas dans la liste
+        if (!$this->applications->contains($application)) {
+            //Ajout à la collection
+            $this->applications->add($application);
+            //Appelle pour que l'objet Application sache qu'il est lié à CE Service
+            $application->setService($this);
+        }
+        return $this;
     }
 
-    public function setApplication(Application $Application): static
+    public function removeApplication(Application $application): static
     {
-        $this->Application = $Application;
-
+        if ($this->applications->removeElement($application)) {
+            if ($application->getService() === $this) {
+                $application->setService(null);
+            }
+        }
         return $this;
     }
 

@@ -12,7 +12,7 @@
         <h1>How can we help ?</h1>
 
         {{ form_start(questionnaireForm, {'action': path('new_questionnaire')}) }}
-
+        {{ form_errors(questionnaireForm) }}
         <div class="qr-field">
             {{ form_label(questionnaireForm.firstName) }}
             {{ form_widget(questionnaireForm.firstName, {attr: {readonly: app.user is not null}}) }}
@@ -49,6 +49,11 @@
                 {{ form_widget(questionnaireForm.helpReason) }}
                 {{ form_errors(questionnaireForm.helpReason) }}
             </div>
+        <div class="qr-field">
+            {{ form_label(questionnaireForm.service) }}
+            {{ form_widget(questionnaireForm.service) }}
+            {{ form_errors(questionnaireForm.service) }}
+        </div>
             <div class="qr-field">
                 {{ form_label(questionnaireForm.additionalInfo) }}
                 {{ form_widget(questionnaireForm.additionalInfo) }}

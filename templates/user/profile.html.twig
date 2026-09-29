@@ -16,7 +16,7 @@
     </div>
 
     <div class="profile-grid">
-    <div class="profile-card">
+    <div class="profile-card profile-info">
             <table id="infos">
                 <h3>My personal information</h3>
                 <tr>
@@ -129,7 +129,6 @@
                             </div>
                         </div>
 
-
                         {# Current status message #}
                         <div class="application-status-message">
                             {% if application.status.step() == 1 %}
@@ -155,18 +154,13 @@
                 {% else %}
                     <div class="no-application"><p>You don't have any request.</p></div>
                 {% endfor %}
-
-
-                <a class="btn btnModify" href="{{ path('contact_page') }}">New application</a>
             {% endblock %}
         </div>
-
-
-
     </div>
 
     <div class="container-btn">
-        <a type="button" class="btn btnReturn" href="{{ path('main_index') }}">Return</a>
+        <a class="btnNewApp" href="{{ path('contact_page') }}">New application</a>
+        <a class="btn btnReturn" href="{{ path('main_index') }}">Return</a>
     </div>
 </section>
 

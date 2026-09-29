@@ -109,13 +109,7 @@ class Application
 
     public function setService(Service $service): static
     {
-        // set the owning side of the relation if necessary
-        if ($service->getApplication() !== $this) {
-            $service->setApplication($this);
-        }
-
         $this->service = $service;
-
         return $this;
     }
 

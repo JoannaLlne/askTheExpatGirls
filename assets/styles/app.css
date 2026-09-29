@@ -423,7 +423,7 @@ p {
     color: var(--navy);
 }
 
-.btnHome:hover, .btnLogin:hover, .btnLogout:hover {
+.btnHome:hover, .btnLogin:hover, .btnLogout:hover, .btnNewApp:hover {
     border: 1px solid var(--beige);
     background: var(--navy);
     color: var(--beige);

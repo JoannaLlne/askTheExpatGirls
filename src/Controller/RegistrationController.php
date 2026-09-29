@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\ApplicationRepository;
 use App\Security\EmailVerifier;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
@@ -24,7 +25,9 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security, EntityManagerInterface $entityManager): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, Security $security,
+                             EntityManagerInterface $entityManager,
+                             ApplicationRepository $applicationRepository): Response
     {
         $user = new User();
         $createdAt = new \DateTimeImmutable();
@@ -53,7 +56,14 @@ class RegistrationController extends AbstractController
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
 
-            // do anything else you need here, like send an email
+            // Rattachement automatique des dossiers existants
+            $applicationsOrphelines = $applicationRepository->findOrphelinsByEmail($user->getEmail());
+            foreach ($applicationsOrphelines as $application) {
+                $application->setUser($user);
+            }
+            if (count($applicationsOrphelines) > 0) {
+                $entityManager->flush();
+            }
 
             return $security->login($user, null, 'main');        }
 

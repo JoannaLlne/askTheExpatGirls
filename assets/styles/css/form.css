@@ -55,19 +55,24 @@ th {
     display: flex;
     flex-direction: column;
     align-items: start;
+}
 
+.btnNewApp {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background: transparent;
+    border: 2px solid var(--beige);
+    border-radius: 10px;
+    color: var(--navy);
+}
+
+.application-item, .profile-info {
     border: 1px solid var(--navy);
     border-radius: 10px;
 
     padding: 15px;
     background: #fffdfd;
-}
-
-.profile-card .btnModify {
-    margin-top: 15px;
-    background: transparent;
-    border: 2px solid var(--navy);
-    color: var(--navy);
+    margin-bottom: 40px;
 }
 
 .containerForm {
@@ -130,12 +135,6 @@ th {
     font-size: 0.9rem;
 }
 
-.container-btn {
-    padding: 20px;
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
-}
 
 .textarea div{
     display: flex;
@@ -143,14 +142,6 @@ th {
 }
 
 /* APPLICATION STATUS PROGRESS */
-   .application-card {
-       padding: 30px;
-   }
-
-.application-item {
-    margin-bottom: 35px;
-}
-
 /* Header */
 .application-header {
     display: flex;
@@ -293,6 +284,13 @@ th {
     color: #777;
 }
 
+/* Buttons */
+.container-btn .btnReturn {
+    padding: 11px 20px;
+    border: 1px solid var(--navy);
+    font-size: 1rem;
+    margin-left: 15px;
+}
 
 /* Mobile */
 @media (max-width: 700px) {

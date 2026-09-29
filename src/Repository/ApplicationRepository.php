@@ -16,6 +16,17 @@ class ApplicationRepository extends ServiceEntityRepository
         parent::__construct($registry, Application::class);
     }
 
+// Trouver les dossiers orphelins, sans user attribué
+    public function findOrphelinsByEmail(string $email): array
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.email = :email')
+            ->andWhere('a.user IS NULL')
+            ->setParameter('email', $email)
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return Application[] Returns an array of Application objects
     //     */

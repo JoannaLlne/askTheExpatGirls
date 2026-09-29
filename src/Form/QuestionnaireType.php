@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Questionnaire;
+use App\Entity\Service;
 use App\Entity\User;
 use App\Enum\ServiceCategory;
 use App\Enum\Situation;
@@ -47,6 +48,16 @@ class QuestionnaireType extends AbstractType
                 'class'=> ServiceCategory::class,
                 'label' => 'Help Reason',
                 'choice_label'=> fn (ServiceCategory $serviceCategory) => $serviceCategory->label(),
+            ])
+
+            ->add('service', EntityType::class, [
+                'class' => Service::class,
+                'choice_label' => 'name',
+                //affiche ce champ et valide-le, mais ne cherche pas de méthode pour le récupérer
+                //A nous de placer une ligne pour le récupérer manuellement
+                'mapped' => false,
+                'placeholder' => 'Choose a service',
+                'label' => 'Which service do you need?',
             ])
             ->add('additionalInfo', TextareaType::class, [
                 'label' => 'Additional Info',
