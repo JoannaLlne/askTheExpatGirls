@@ -471,6 +471,7 @@ p {
     width: 120px;
     height: 40px;
     margin: 0 10px 0 -75px;
+    font-size: 0.9rem;
 
     background-color: var(--bordeaux);
     color: var(--beige);

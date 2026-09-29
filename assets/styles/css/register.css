@@ -1,3 +1,91 @@
+form li {
+    list-style: none;
+}
+
+/* Chaque ligne du formulaire */
+/* Création de deux colonnes : LABEL + INPUT */
+form > div {
+    display: grid;
+    grid-template-columns: 180px 207px;
+    column-gap: 20px;
+    margin-bottom: 15px;
+    align-items: start;
+}
+
+/* Label */
+form > div > label {
+    /* On force le label dans la 1ère colonne et 1ère ligne */
+    grid-column: 1;
+    grid-row: 1;
+
+    width: auto;
+    margin: 0;
+    padding-top: 6px;
+    text-align: left;
+}
+
+/* Input */
+form > div > input,
+form > div > select {
+    /* On force l'input dans la 2ème colonne et 1ère ligne */
+    grid-column: 2;
+    grid-row: 1;
+
+    width: 207px;
+    box-sizing: border-box;
+}
+
+/* Erreur */
+form > div > ul {
+    /* On place l'erreur 2ème colonne et 2ème ligne donc sous l'input */
+    grid-column: 2;
+    grid-row: 2;
+
+    width: max-content;
+    max-width: 300px;
+
+    margin: 4px 0 0;
+    padding: 0;
+
+    list-style: none;
+
+    color: #b42318;
+    font-size: 0.9rem;
+
+    /* Pas de retour à la ligne automatique */
+    white-space: nowrap;
+}
+
+form > div > ul li {
+    color: #b42318;
+    font-size: 0.9rem;
+}
+
+/* CHECKBOX */
+/* Identifier la div qui contient une checkbox */
+form > div:has(input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+form > div:has(input[type="checkbox"]) input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+form > div:has(input[type="checkbox"]) label {
+    width: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+
 .user-container {
     text-align: center;
     margin-top: 50px;
@@ -33,16 +121,16 @@
 .registration-card input[type="email"],
 .registration-card input[type="password"]  {
     height: 30px;
-    width: 180px;
+    width: 207px;
+    box-sizing: border-box;
 }
 
 .registration-card label {
-    display: inline-block;
-    width: 190px;
+    display: block;
+    width: auto;
     text-align: left;
-    margin-right: 20px;
+    margin: 0;
 }
-
 
 .btn-register {
         height: 50px;

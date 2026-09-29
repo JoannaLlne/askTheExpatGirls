@@ -97,13 +97,19 @@
     margin-top: 4px;
 }
 
-.btnSubmit, .btnReturn, .btnCreate, .btnLog {
+.btnReturn, .btnCreate, .btnLog {
     background-color: var(--bordeaux);
     color: var(--back);
     padding: 11px 25px;
     border: none;
     border-radius: 15px;
     cursor: pointer;
+}
+
+.btns .btnSubmit {
+    background-color: var(--bordeaux);
+    color: var(--back);
+    border-radius: 15px;
 }
 
 .btnReturn a {
