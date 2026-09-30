@@ -578,6 +578,26 @@ p {
         font-size: 0.8rem;
     }
 
+    /* RESET PASSWORD PAGE */
+.reset-container {
+    margin: 70px 30px;
+    min-height: 50vh;
+}
+
+.reset-email {
+    margin: 30px 0 20px;
+}
+
+.reset-email label {
+    font-weight: 550;
+}
+
+.reset-email input {
+    height: 30px;
+    width: 200px;
+    margin-left: 10px;
+}
+
     #home-page h1, h2 {
         font-weight: 400;
     }
