@@ -80,15 +80,9 @@ th {
 }
 
 .btnSave, .btnReturn, .btnModify, .btnSign {
-    background-color: var(--bordeaux)  ;
-    color: var(--back);
     padding: 11px 25px;
     border: none;
     cursor: pointer;
-}
-
-.btnReturn a, .btnSign a {
-    color: var(--back);
 }
 
 .btnList {
@@ -124,13 +118,13 @@ th {
 }
 
 .error {
-    color: red;
+    color: var(--red);
     font-weight: 650;
     font-size: 0.9rem;
 }
 
 .success {
-    color: green;
+    color: darkgreen;
     font-weight: 650;
     font-size: 0.9rem;
 }
@@ -316,7 +310,6 @@ th {
     .progress-line {
         top: 16px;
     }
-
 }
 
 #create-user {

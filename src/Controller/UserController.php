@@ -21,7 +21,7 @@ final class UserController extends AbstractController
     #[Route('/user/{id}', name: 'user_profile', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(User $user, ApplicationRepository $applicationRepository): Response
     {
-        // Un utilisateur ne peut voir que son propre profil
+        // Un utilisateur ne peut voir que son propre profil - Remplace un VOTER
         if ($user !== $this->getUser()) {
             throw $this->createAccessDeniedException();
         }
