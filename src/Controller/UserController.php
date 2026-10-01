@@ -58,7 +58,7 @@ final class UserController extends AbstractController
             }
 
             $em->flush();
-            $this->addFlash('success', 'Profil mis à jour.');
+            $this->addFlash('success', 'Profile updated successfully.');
 
             return $this->redirectToRoute('user_profile', ['id' => $user->getId()]);
         }

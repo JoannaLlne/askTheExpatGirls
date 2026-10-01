@@ -30,7 +30,7 @@ public function getAvailableSlotsForDay(\DateTimeImmutable $day): array
     $slots = [];
 for ($hour = self::START_HOUR; $hour < self::END_HOUR; $hour++) {
     if (!in_array($hour, $bookedHours, true)) {
-        //création d'un objet à cette date, avec cet heure et 0 minute
+        //création d'un objet à cette date, avec cette heure et 0 minute
         $slots[] = $day->setTime($hour, 0);
     }
 }

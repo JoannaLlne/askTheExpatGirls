@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AppointmentController!{% endblock %}
+
+{% block body %}
+    <h1>Book an appointment</h1>
+    <p>For your request: {{ application.service.name }}</p>
+
+    <form method="post">
+        {% for dayKey, slots in availableSlots %}
+            <fieldset>
+                <legend>{{ slots[0]|date('d/m/Y') }}</legend>
+                {% for slot in slots %}
+                    <label>
+                        <input type="radio" name="slot" value="{{ slot|date('c') }}" required>
+                        {{ slot|date('H:i') }}
+                    </label>
+                {% endfor %}
+            </fieldset>
+        {% else %}
+            <p>No slots available at the moment, please try again later.</p>
+        {% endfor %}
+
+        <button type="submit" class="btn btnSubmit">Confirm appointment</button>
+    </form>
+{% endblock %}
