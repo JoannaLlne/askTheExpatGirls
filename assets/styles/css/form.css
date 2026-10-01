@@ -59,7 +59,7 @@ th {
 
 .btnNewApp, .btnBook {
     display: inline-block;
-    margin: 5px 0 15px;
+    margin: 10px 0 10px;
     padding: 10px 20px;
     background: transparent;
     border: 2px solid var(--beige);
@@ -256,7 +256,7 @@ th {
     border-radius: 12px;
 
     padding: 20px 25px;
-    margin: 10px 0 30px;
+    margin-bottom: 30px;
 }
 
 .application-status-message strong {

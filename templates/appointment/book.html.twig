@@ -1,26 +1,181 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AppointmentController!{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/css/appointment.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('styles/js/calendar.js') }}"></script>
+{% endblock %}
+
+{% block title %}Book an appointment{% endblock %}
 
 {% block body %}
-    <h1>Book an appointment</h1>
-    <p>For your request: {{ application.service.name }}</p>
+    <main class="appointment-container">
+    <section class="left-part">
+    <h3>Book an appointment</h3>
+    <h1>Let's talk about your request</h1>
+    <p>We'd be happy to discuss your application and answer any questions you may have.</p>
 
-    <form method="post">
-        {% for dayKey, slots in availableSlots %}
-            <fieldset>
-                <legend>{{ slots[0]|date('d/m/Y') }}</legend>
-                {% for slot in slots %}
-                    <label>
-                        <input type="radio" name="slot" value="{{ slot|date('c') }}" required>
-                        {{ slot|date('H:i') }}
-                    </label>
-                {% endfor %}
-            </fieldset>
-        {% else %}
-            <p>No slots available at the moment, please try again later.</p>
-        {% endfor %}
+        <h4>Your application</h4>
+    <div class="your-application">
+        <div class="your-application-icon">
+            <i class="fa-regular fa-file-lines"></i>
+        </div>
 
-        <button type="submit" class="btn btnSubmit">Confirm appointment</button>
-    </form>
+        <div class="your-application-text">
+        <p>{{ application.service.name }}</p>
+        <small>Submitted on {{ application.createdAt|date('d/m/Y') }}</small>
+        </div>
+    </div>
+
+    <div class="consultation">
+        <div class="consultation-part">
+            <i class="fa-regular fa-clock"></i>
+            <p>1h consultation</p>
+        </div>
+
+        <div class="consultation-part">
+            <i class="fa-solid fa-laptop"></i>
+            <p>Online meeting</p>
+        </div>
+    </div>
+    </section>
+
+
+            <section class="right-part">
+
+                {# =========================
+       CALENDAR
+    ========================== #}
+
+                <div class="appointment-calendar">
+
+                    <div class="calendar-header">
+
+                        <button
+                            type="button"
+                            id="prevMonth"
+                            class="calendar-nav"
+                        >
+                            ‹
+                        </button>
+
+                        <h2 id="currentMonth"></h2>
+
+                        <button
+                            type="button"
+                            id="nextMonth"
+                            class="calendar-nav"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+
+                    <div class="calendar-weekdays">
+                        <span>Mon</span>
+                        <span>Tue</span>
+                        <span>Wed</span>
+                        <span>Thu</span>
+                        <span>Fri</span>
+                        <span>Sat</span>
+                        <span>Sun</span>
+                    </div>
+
+
+                    <div
+                        id="calendarDays"
+                        class="calendar-days"
+                    ></div>
+
+                </div>
+
+
+                {# =========================
+       AVAILABLE SLOTS
+    ========================== #}
+
+                <div
+                    id="timeSlots"
+                    class="time-slots"
+                >
+
+                    <p class="choose-day">
+                        Select a day to see the available times.
+                    </p>
+
+
+                    {% for dayKey, slots in availableSlots %}
+
+                        <div
+                            class="day-slots"
+                            data-date="{{ dayKey }}"
+                            hidden
+                        >
+
+                            <h3>
+                                {{ slots[0]|date('l, d F Y') }}
+                            </h3>
+
+
+                            <div class="slots-list">
+
+                                {% for slot in slots %}
+
+                                    <label class="slot-option">
+
+                                        <input
+                                            type="radio"
+                                            name="slot"
+                                            value="{{ slot|date('c') }}"
+                                            required
+                                        >
+
+                                        <span>
+                                {{ slot|date('H:i') }}
+                            </span>
+
+                                    </label>
+
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    {% else %}
+
+                        <p>
+                            No slots available at the moment,
+                            please try again later.
+                        </p>
+
+                    {% endfor %}
+
+                </div>
+
+
+                {# =========================
+       CONFIRM
+    ========================== #}
+
+                <form
+                    method="post"
+                    class="appointment-form"
+                >
+
+                    <button
+                        type="submit"
+                        class="btn btnSubmit"
+                    >
+                        Confirm appointment
+                    </button>
+
+                </form>
+
+            </section>
+    </main>
 {% endblock %}
