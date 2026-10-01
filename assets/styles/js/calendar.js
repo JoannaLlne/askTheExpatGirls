@@ -65,9 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
             firstDayIndex--;
         }
 
-        /*
-         * Cases vides avant le premier jour.
-         */
+
+        // Cases vides avant le premier jour
         for (let i = 0; i < firstDayIndex; i++) {
             const emptyDay = document.createElement('div');
 
@@ -75,9 +74,8 @@ document.addEventListener('DOMContentLoaded', () => {
             calendarDays.appendChild(emptyDay);
         }
 
-        /*
-         * Création des jours.
-         */
+
+        // Création des jours
         for (let day = 1; day <= numberOfDays; day++) {
             const dateKey =
                 `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
@@ -88,29 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
             button.classList.add('calendar-day');
             button.textContent = day;
 
-            /*
-             * Vérifie si cette date possède
-             * des créneaux.
-             */
+
+            // Vérifie si cette date possède des créneaux
             if (availableDays[dateKey]) {
                 button.classList.add('available');
 
                 button.dataset.date = dateKey;
 
-
                 button.addEventListener('click', () => {
                     selectDay(dateKey);
                     }
                 );
-
             } else {
                 button.classList.add('unavailable');
                 button.disabled = true;
             }
 
-            /*
-             * Aujourd'hui
-             */
+
+            // Aujourd'hui
             const today = new Date();
 
             if (
@@ -120,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ) {
                 button.classList.add('today');
             }
-
             calendarDays.appendChild(button);
         }
     }
@@ -131,9 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
      * =========================
      */
     function selectDay(dateKey) {
-        /*
-         * Retire la sélection précédente.
-         */
+        // Retire la sélection précédente
         document.querySelectorAll('.calendar-day.selected')
             .forEach(day => {
                 day.classList.remove(
@@ -141,9 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 );
             });
 
-        /*
-         * Sélectionne le nouveau jour.
-         */
+        // Sélectionne le nouveau jour.
         const selectedDay =
             document.querySelector(`.calendar-day[data-date="${dateKey}"]`);
 
@@ -153,25 +141,19 @@ document.addEventListener('DOMContentLoaded', () => {
             );
         }
 
-        /*
-         * Cache tous les créneaux.
-         */
+        // Cache tous les créneaux.
         daySlots.forEach(slot => {
             slot.hidden = true;
         });
 
-        /*
-         * Affiche les créneaux du jour.
-         */
+        // Affiche les créneaux du jour.
         const selectedSlots = document.querySelector(`.day-slots[data-date="${dateKey}"]`);
 
         if (selectedSlots) {
             selectedSlots.hidden = false;
         }
 
-        /*
-         * Cache le message initial.
-         */
+        // Cache le message initial.
         const chooseDay = document.querySelector('.choose-day');
 
         if (chooseDay) {
