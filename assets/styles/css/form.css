@@ -57,13 +57,18 @@ th {
     align-items: start;
 }
 
-.btnNewApp {
-    margin-top: 15px;
+.btnNewApp, .btnBook {
+    display: inline-block;
+    margin: 5px 0 15px;
     padding: 10px 20px;
     background: transparent;
     border: 2px solid var(--beige);
     border-radius: 10px;
     color: var(--navy);
+}
+
+.container-btn {
+    margin-top: 40px;
 }
 
 .application-item, .profile-info {
@@ -72,7 +77,6 @@ th {
 
     padding: 15px;
     background: #fffdfd;
-    margin-bottom: 40px;
 }
 
 .containerForm {
@@ -128,7 +132,6 @@ th {
     font-weight: 650;
     font-size: 0.9rem;
 }
-
 
 .textarea div{
     display: flex;
@@ -253,7 +256,7 @@ th {
     border-radius: 12px;
 
     padding: 20px 25px;
-    margin-top: 10px;
+    margin: 10px 0 30px;
 }
 
 .application-status-message strong {

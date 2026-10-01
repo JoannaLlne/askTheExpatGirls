@@ -146,9 +146,9 @@
                             {% elseif application.status.step() == 4 %}
                                 <strong>Your application has been processed.</strong>
                                 <p>Your request has been processed. Thank you for your patience.</p>
-
                             {% endif %}
                         </div>
+                        <a class="btnBook" href="{{ path('appointment_book', {id:application.id}) }}">Book an appointment</a>
                     </div>
 
                 {% else %}
