@@ -1,12 +1,12 @@
 // PASSWORD VALIDATION
-document.querySelector('.containerForm').addEventListener('input', function () {
+document.querySelector('.registration-card').addEventListener('input', function () {
     validateForm();
 });
 
 function validateForm() {
-    const password = document.getElementById('user_password_first');
-    const confirmPassword = document.getElementById('user_password_second');
-    const submitBtn = document.querySelector('.btnSave');
+    const password = document.getElementById('registration_form_plainPassword_first');
+    const confirmPassword = document.getElementById('registration_form_plainPassword_second');
+    const submitBtn = document.querySelector('.btn-register');
     const errorElement = document.getElementById('passwordError');
 
     if (!password || !confirmPassword) return; // sécurité si les champs n'existent pas encore

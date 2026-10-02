@@ -32,7 +32,10 @@
 
             {{ form_row(registrationForm.phone) }}
 
+
             {{ form_row(registrationForm.plainPassword) }}
+            <div id="passwordError"></div>
+
 
             <div class="register-checkbox">
                 {{ form_widget(registrationForm.agreeTerms) }}
