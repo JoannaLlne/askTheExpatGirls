@@ -6,7 +6,7 @@
 }
 
 .left-part {
-
+    width: 100%;
 }
 
 .left-part h1 {
@@ -25,7 +25,7 @@
 .left-part h4 {
     text-transform: uppercase;
     font-size: 1.1rem;
-    margin: 30px 0 5px;
+    margin: 50px 0 8px;
 }
 
 .your-application {
@@ -36,9 +36,10 @@
     gap: 20px;
     border: 1px solid var(--navy);
     border-radius: 10px;
+    background: #fff8f8;
 
-    width: 60%;
-    padding: 10px;
+    width: 70%;
+    padding: 20px;
     margin-bottom: 40px;
 }
 
@@ -62,12 +63,217 @@
 }
 
 .consultation-part:first-child {
-    border-right: 3px solid var(--beige);
+    border-right: 3px solid rgba(221, 213, 210, 0.8);
     padding-right: 30px;
 }
 
 .consultation-part i {
     font-size: 20px;
+    color: var(--beige);
 }
 
 /* CALENDAR */
+.right-part {
+    width: 100%;
+    max-width: 550px;
+}
+
+.appointment-calendar {
+    background: #fff;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.calendar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 550;
+    color: var(--navy);
+}
+
+.calendar-nav {
+    background: transparent;
+    border: none;
+
+    font-size: 1.6rem;
+    padding: 0 10px;
+
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.calendar-nav:hover {
+    transform: scale(1.5);
+}
+
+/* Jours */
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 10px;
+}
+
+.calendar-weekdays span {
+    text-align: center;
+    font-size: 12px;
+    font-weight: 600;
+    color: #777;
+    text-transform: uppercase;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 7px;
+}
+
+.calendar-day {
+    aspect-ratio: 1.3;
+
+    border: none;
+    border-radius: 10px;
+
+    background: transparent;
+    font-size:0.9rem;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.calendar-day.available {
+    background: var(--back);
+    color: var(--navy);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.calendar-day.available:hover {
+    background: var(--navy);
+    color: #fff;
+}
+
+.calendar-day.selected {
+    background: var(--navy);
+    color: #fff;
+}
+
+.calendar-day.today {
+    border: 1px solid var(--navy);
+}
+
+.calendar-day.empty {
+    visibility: hidden;
+}
+
+/* TIME SLOTS */
+.time-slots {
+    margin-top: 25px;
+}
+
+.choose-day {
+    text-align: center;
+    color: #777;
+    font-size: 0.9rem;
+    margin: 20px 0;
+}
+
+.day-slots h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+/* Horaires */
+.slots-list {
+    display: grid;
+    grid-template-columns: repeat(4, 15%);
+    gap: 10px;
+
+    align-items: center;
+}
+
+.slot-option {
+    cursor: pointer;
+}
+
+.slot-option input {
+    display: none;
+}
+
+.slot-option span {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 25px;
+    background: var(--back);
+    color: var(--navy);
+    font-size: 0.9rem;
+    transition: 0.2s ease;
+}
+
+.slot-option:hover span {
+    background: var(--navy);
+    color: #fff;
+}
+
+.slot-option input:checked + span {
+    background: var(--navy);
+    color: #fff;
+}
+
+.appointment-form {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.btnSubmit {
+    border: none;
+    background: var(--navy);
+    color: #fff;
+    padding: 13px 28px;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btnSubmit:hover {
+    background: var(--navy);
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    .appointment-calendar {
+        padding: 18px;
+    }
+
+    .calendar-header h2 {
+        font-size: 18px;
+    }
+
+    .calendar-days {
+        gap: 4px;
+    }
+
+    .calendar-day {
+        font-size: 13px;
+    }
+
+    .calendar-weekdays span {
+        font-size: 10px;
+    }
+
+    .day-slots {
+        padding: 20px;
+    }
+}
