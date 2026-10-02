@@ -250,11 +250,18 @@ th {
     box-shadow: 0 0 0 6px rgba(245, 223, 226, 0.8);
 }
 
-/* Status message */
+/* Status message + rendez-vous */
 .application-status-message {
-    background: #fcf1f2;
+    background: var(--back);
     border-radius: 12px;
 
+    padding: 20px 25px;
+    margin-bottom: 30px;
+}
+
+.appointment-status {
+    border: 2px solid var(--back);
+    border-radius: 12px;
     padding: 20px 25px;
     margin-bottom: 30px;
 }
@@ -263,11 +270,9 @@ th {
     display: block;
     color: var(--navy);
     font-size: 16px;
-
-    margin-bottom: 6px;
 }
 
-.application-status-message p {
+.application-status-message p, .appointment-status p {
     margin: 0;
     color: #666;
 

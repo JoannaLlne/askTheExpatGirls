@@ -71,7 +71,7 @@
                         <div class="application-progress">
                             <div class="progress-line">
                                 <div class="progress-line-fill"
-                                    style="width: {{ ((application.status.step() - 1) / 3) * 100 }}%;">
+                                    style=" width: {{ ((application.status.step() - 1) / 3) * 100 }}%;">
                                 </div>
                             </div>
 
@@ -147,6 +147,14 @@
                                 <strong>Your application has been processed.</strong>
                                 <p>Your request has been processed. Thank you for your patience.</p>
                             {% endif %}
+                        </div>
+                        <div class="appointment-status">
+                            <strong>Your appointment(s) :</strong>
+                            {% for appointment in application.appointment %}
+                                <p>{{ appointment.date|date('d/m/Y \\a\\t H:i') }} — {{ appointment.status.value }}</p>
+                            {% else %}
+                                <p>No appointment yet.</p>
+                            {% endfor %}
                         </div>
                         <a class="btnBook" href="{{ path('appointment_book', {id:application.id}) }}">Book an appointment</a>
                     </div>
