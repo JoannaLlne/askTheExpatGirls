@@ -31,10 +31,10 @@ class AppointmentController extends AbstractController
         if ($request->isMethod('POST')) {
         //on récupère la valeur 'slot' du formulaire
             $chosenSlot = $request->request->get('slot'); // format ISO envoyé par le formulaire
-
+            dump($chosenSlot);
         //On transforme la donnée en DateTimeImmutable
             $date = \DateTimeImmutable::createFromFormat(\DateTimeInterface::ATOM, $chosenSlot);
-
+            dump($date);
         //Si retourne false, mauvais format donc erreur
             if (!$date) {
                 $this->addFlash('error', 'Please choose a valid slot.');

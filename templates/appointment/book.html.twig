@@ -44,28 +44,28 @@
     </section>
 
             <section class="right-part">
-
+                <form method="post" class="appointment-form">
                 {# ========== CALENDAR ========= #}
-                <div class="appointment-calendar">
-                    <div class="calendar-header">
-                        <button type="button" id="prevMonth" class="calendar-nav">‹</button>
-                        <h2 id="currentMonth"></h2>
-                        <button type="button" id="nextMonth" class="calendar-nav">›</button>
+                    <div class="appointment-calendar">
+                        <div class="calendar-header">
+                            <button type="button" id="prevMonth" class="calendar-nav">‹</button>
+                            <h2 id="currentMonth"></h2>
+                            <button type="button" id="nextMonth" class="calendar-nav">›</button>
+                        </div>
+
+
+                        <div class="calendar-weekdays">
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                            <span>Sun</span>
+                        </div>
+
+                        <div id="calendarDays" class="calendar-days"></div>
                     </div>
-
-
-                    <div class="calendar-weekdays">
-                        <span>Mon</span>
-                        <span>Tue</span>
-                        <span>Wed</span>
-                        <span>Thu</span>
-                        <span>Fri</span>
-                        <span>Sat</span>
-                        <span>Sun</span>
-                    </div>
-
-                    <div id="calendarDays" class="calendar-days"></div>
-                </div>
 
                 {# ========= AVAILABLE SLOTS ========== #}
                 <div id="timeSlots" class="time-slots">
@@ -93,7 +93,6 @@
                 </div>
 
                 {# ========= CONFIRM ========== #}
-                <form method="post" class="appointment-form">
                     <button type="submit" class="btn btnSubmit">Confirm appointment</button>
                 </form>
             </section>

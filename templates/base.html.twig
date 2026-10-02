@@ -12,6 +12,7 @@
     {% endblock %}
 
     {% block javascripts %}
+        {# Permet de charger ce qu'il y a dans app.js #}
         {% block importmap %}{{ importmap('app') }}{% endblock %}
     {% endblock %}
 
