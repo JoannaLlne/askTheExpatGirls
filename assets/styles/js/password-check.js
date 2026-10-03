@@ -4,9 +4,9 @@ document.querySelector('.registration-card').addEventListener('input', function 
 });
 
 function validateForm() {
-    const password = document.getElementById('registration_form_plainPassword_first');
-    const confirmPassword = document.getElementById('registration_form_plainPassword_second');
-    const submitBtn = document.querySelector('.btn-register');
+    const password = document.querySelector('#registration_form_plainPassword_first, #user_password_first');
+    const confirmPassword = document.querySelector('#registration_form_plainPassword_second, #user_password_second');
+    const submitBtn = document.querySelector('.btn-register, .btnSave');
     const errorElement = document.getElementById('passwordError');
 
     if (!password || !confirmPassword) return; // sécurité si les champs n'existent pas encore
