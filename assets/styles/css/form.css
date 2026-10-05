@@ -294,6 +294,31 @@ th {
     margin-left: 15px;
 }
 
+.btn-cancel {
+    padding: 10px 10px;
+    background: transparent;
+    border: none;
+    border-radius: 10px;
+
+    font-size: 0.9rem;
+    color: var(--red);
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-cancel:hover {
+    text-decoration: underline;
+    font-weight: 550;
+}
+
+.appointment-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
 /* Mobile */
 @media (max-width: 700px) {
     .application-header {

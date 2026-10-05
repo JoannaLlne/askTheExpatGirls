@@ -66,7 +66,6 @@
                     </span>
                         </div>
 
-
                         {# Progress timeline #}
                         <div class="application-progress">
                             <div class="progress-line">
@@ -88,7 +87,6 @@
                                     <span>New</span>
                                 </div>
 
-
                                 {# Step 2 #}
                                 <div class="progress-step {{ application.status.step() >= 2 ? 'completed' : '' }} {{ application.status.step() == 2 ? 'current' : '' }}">
                                     <div class="step-circle">
@@ -101,7 +99,6 @@
                                     <span>Pending</span>
                                 </div>
 
-
                                 {# Step 3 #}
                                 <div class="progress-step {{ application.status.step() >= 3 ? 'completed' : '' }} {{ application.status.step() == 3 ? 'current' : '' }}">
                                     <div class="step-circle">
@@ -113,7 +110,6 @@
                                     </div>
                                     <span>In Progress</span>
                                 </div>
-
 
                                 {# Step 4 #}
                                 <div class="progress-step {{ application.status.step() >= 4 ? 'completed' : '' }} {{ application.status.step() == 4 ? 'current' : '' }}">
@@ -150,18 +146,21 @@
                         </div>
                         <div class="appointment-status">
                             <strong>Your appointment(s) :</strong>
+
                             {% for appointment in application.appointment %}
+                            <div class="appointment-date">
                                 <p>{{ appointment.date|date('d/m/Y \\a\\t H:i') }} — {{ appointment.status.value }}</p>
                                 {% if appointment.status.name == 'BOOKED' %}
                                     <form method="post" action="{{ path('appointment_cancel', {id: appointment.id}) }}" data-turbo="false" onsubmit="return confirm('Cancel this appointment?');">
                                         <input type="hidden" name="_token" value="{{ csrf_token('cancel-' ~ appointment.id) }}">
-
-                                        <button type="submit" class="btn btn-cancel">Cancel appointment</button>
+                                        <button type="submit" class="btn-cancel"><i class="fa-regular fa-circle-xmark"></i>Cancel</button>
                                     </form>
                                 {% endif %}
+                            </div>
                             {% else %}
                                 <p>No appointment yet.</p>
                             {% endfor %}
+
                         </div>
                         <a class="btnBook" href="{{ path('appointment_book', {id:application.id}) }}">Book an appointment</a>
                     </div>
