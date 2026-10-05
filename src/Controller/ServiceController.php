@@ -26,10 +26,4 @@ final class ServiceController extends AbstractController
             'services' => $services,
         ]);
     }
-
-    #[Route('/service/works', name: 'how_it_works')]
-    public function contact(): Response
-    {
-        return $this->render('service/how_it_works.html.twig');
-    }
 }
