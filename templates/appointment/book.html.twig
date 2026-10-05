@@ -80,7 +80,7 @@
                                 {% for slot in slots %}
                                     <label class="slot-option">
                                         <input type="radio" name="slot"
-                                            value="{{ slot|date('c') }}" required>
+                                            value="{{ slot|date('c') }}">
                                         <span>{{ slot|date('H:i') }}</span>
                                     </label>
                                 {% endfor %}

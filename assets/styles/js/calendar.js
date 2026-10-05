@@ -2,13 +2,11 @@ function initCalendar() {
 
     const calendarDays = document.getElementById('calendarDays');
     const currentMonthElement = document.getElementById('currentMonth');
-
     const previousButton = document.getElementById('prevMonth');
     const nextButton = document.getElementById('nextMonth');
+    const appointmentForm = document.querySelector('.appointment-form');
 
-    /*
-     * Si pas sur la page du calendrier, on ne fait rien.
-     */
+    /* Si on est pas sur la calendrier, rien ne se passe */
     if (
         !calendarDays ||
         !currentMonthElement ||
@@ -18,7 +16,6 @@ function initCalendar() {
         return;
     }
 
-
     const daySlots = document.querySelectorAll('.day-slots');
     const availableDays = {};
 
@@ -27,10 +24,8 @@ function initCalendar() {
         availableDays[date] = true;
     });
 
-
     let currentDate = new Date();
     currentDate.setDate(1);
-
 
     function renderCalendar() {
         calendarDays.innerHTML = '';
@@ -56,13 +51,11 @@ function initCalendar() {
             firstDayIndex--;
         }
 
-
         for (let i = 0; i < firstDayIndex; i++) {
             const emptyDay = document.createElement('div');
             emptyDay.classList.add('calendar-day', 'empty');
             calendarDays.appendChild(emptyDay);
         }
-
 
         for (let day = 1; day <= numberOfDays; day++) {
             const dateKey =
@@ -73,7 +66,6 @@ function initCalendar() {
             button.type = 'button';
             button.classList.add('calendar-day');
             button.textContent = day;
-
 
             if (availableDays[dateKey]) {
                 button.classList.add('available');
@@ -86,7 +78,6 @@ function initCalendar() {
                 button.disabled = true;
             }
 
-
             const today = new Date();
             if (
                 day === today.getDate() &&
@@ -98,7 +89,6 @@ function initCalendar() {
             calendarDays.appendChild(button);
         }
     }
-
 
     function selectDay(dateKey) {
         document
@@ -117,34 +107,65 @@ function initCalendar() {
             slot.hidden = true;
         });
 
-
         const selectedSlots = document.querySelector(`.day-slots[data-date="${dateKey}"]`);
 
         if (selectedSlots) {
             selectedSlots.hidden = false;
         }
 
-
         const chooseDay = document.querySelector('.choose-day');
         if (chooseDay) {
             chooseDay.hidden = true;
         }
+
+        // Réinitialise toute sélection précédente
+        document.querySelectorAll('input[name="slot"]').forEach(function (input) {
+            input.checked = false;
+        });
+
+        // Si tu as un résumé ou un bouton "Confirm" à désactiver tant que rien n'est choisi
+        const submitBtn = document.querySelector('.btnSubmit');
+        if (submitBtn) {
+            submitBtn.disabled = true;
+        }
     }
 
+    //ecouter evnmt change et retirer disabled du bouton
+    document.querySelectorAll('input[name="slot"]').forEach(function (input) {
+        input.addEventListener('change', function () {
+            const submitBtn = document.querySelector('.btnSubmit');
+            if (submitBtn) {
+                submitBtn.disabled = false;
+            }
+        });
+    });
+
     previousButton.addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() - 1);
-            renderCalendar();
-        }
-    );
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar();
+    });
 
     nextButton.addEventListener('click', () => {
-            currentDate.setMonth(currentDate.getMonth() + 1);
-            renderCalendar();
-        }
-    );
-    renderCalendar();
-}
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar();
+    });
 
+    renderCalendar();
+    // Validation du formulaire, placée ici pour profiter du même garde-fou
+    // que le reste du calendrier, et réexécutée proprement à chaque navigation Turbo
+    if (appointmentForm && !appointmentForm.dataset.validationBound) {
+        appointmentForm.dataset.validationBound = 'true';
+
+        appointmentForm.addEventListener('submit', function (event) {
+            const selected = document.querySelector('input[name="slot"]:checked');
+
+            if (!selected) {
+                event.preventDefault();
+                alert('Please select a time slot before confirming.');
+            }
+        });
+    }
+}
 
 // Chargement classique
 if (document.readyState === 'loading') {
@@ -154,7 +175,4 @@ if (document.readyState === 'loading') {
 }
 
 // Navigation avec Symfony UX Turbo
-document.addEventListener(
-    'turbo:load',
-    initCalendar
-);
+document.addEventListener('turbo:load', initCalendar);
