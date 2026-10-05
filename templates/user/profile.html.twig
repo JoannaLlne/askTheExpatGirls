@@ -152,6 +152,13 @@
                             <strong>Your appointment(s) :</strong>
                             {% for appointment in application.appointment %}
                                 <p>{{ appointment.date|date('d/m/Y \\a\\t H:i') }} — {{ appointment.status.value }}</p>
+                                {% if appointment.status.name == 'BOOKED' %}
+                                    <form method="post" action="{{ path('appointment_cancel', {id: appointment.id}) }}" data-turbo="false" onsubmit="return confirm('Cancel this appointment?');">
+                                        <input type="hidden" name="_token" value="{{ csrf_token('cancel-' ~ appointment.id) }}">
+
+                                        <button type="submit" class="btn btn-cancel">Cancel appointment</button>
+                                    </form>
+                                {% endif %}
                             {% else %}
                                 <p>No appointment yet.</p>
                             {% endfor %}
