@@ -1,6 +1,8 @@
 // PASSWORD VALIDATION
-document.querySelector('.registration-card').addEventListener('input', function () {
-    validateForm();
+document.addEventListener('input', function (event) {
+    if (event.target.closest('.registration-card')) {
+        validateForm();
+    }
 });
 
 function validateForm() {
@@ -9,19 +11,13 @@ function validateForm() {
     const submitBtn = document.querySelector('.btn-register, .btnSave');
     const errorElement = document.getElementById('passwordError');
 
-    if (!password || !confirmPassword) return; // sécurité si les champs n'existent pas encore
+    if (!password || !confirmPassword || !submitBtn || !errorElement) return;
 
-    let isValid = password.value.length > 0 && password.value === confirmPassword.value;
+    const isValid = password.value.length > 0 && password.value === confirmPassword.value;
 
-    if (!isValid) {
-        errorElement.textContent = 'Passwords do not match';
-        errorElement.classList.remove('success');
-        errorElement.classList.add('error');
-    } else {
-        errorElement.textContent = 'Passwords match';
-        errorElement.classList.remove('error');
-        errorElement.classList.add('success');
-    }
+    errorElement.textContent = isValid ? 'Passwords match' : 'Passwords do not match';
+    errorElement.classList.toggle('success', isValid);
+    errorElement.classList.toggle('error', !isValid);
 
     submitBtn.disabled = !isValid;
     submitBtn.classList.toggle('enabled', isValid);
