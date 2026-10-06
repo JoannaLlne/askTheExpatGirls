@@ -65,14 +65,18 @@
                 <div class="packages-text">
                     <h4>Expat package</h4>
                     <h3>{{ package.name }}</h3>
-                    <p>{{ package.description|raw }}</p>
+
+                    <div class="packages-description">
+                        {{ package.description|raw }}
+                    </div>
+
                 {% if package.price !== null %}
                     <p class="card-price">{{ package.price }} €</p>
-                </div>
                 {% endif %}
 
                 <a href="{{ path('contact_page') }}" class="packages-btn">
                     Get in touch<span aria-hidden="true">→</span></a>
+                </div>
             </article>
         {% endfor %}
     </div>

@@ -234,7 +234,7 @@ p {
 .header {
     min-height: 70vh;
     margin: 0 auto;
-    padding: 65px 60px 90px;
+    padding: 40px 60px 70px;
 
     display: grid;
     grid-template-columns: 40% 50%;

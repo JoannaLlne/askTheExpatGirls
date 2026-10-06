@@ -34,6 +34,13 @@ li::marker {
     margin: 50px 0;
 }
 
+@media screen and (max-width: 680px) {
+    .service-header {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
 .text-left h5 {
     display: inline-flex;
     align-items: center;
@@ -284,6 +291,10 @@ li::marker {
     object-fit: cover;
 }
 
+.service-results {
+    margin-bottom: 30px ;
+}
+
 .card-price {
     color: var(--beige);
     font-weight: 600;
@@ -299,11 +310,31 @@ li::marker {
 
 /* PACKAGES PAGE */
 .packages-header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
     align-items: center;
-    gap: 100px;
     margin: 30px 0;
+}
+
+@media screen and (max-width: 980px) {
+    .packages-header {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .packages-header {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+/* Eviter le débordement en flex */
+.packages-header-left {
+    flex: 1 1 0;
+    min-width: 0;
 }
 
 .packages-header, .packages-results {
@@ -312,35 +343,33 @@ li::marker {
 
 .packages-header-img {
     position: relative;
-    width: 500px;
-    height: 400px;
-    padding-right: 30px;
+    width: 100%;
+    padding: 0 16px 16px 0;
+}
+
+.packages-img-gold,
+.packages-header-img-main {
+    aspect-ratio: 470 / 320; /* remplace width/height en px */
+    border-radius: 60% 80% 100% 100% / 92% 100% 54% 88%;
 }
 
 .packages-img-gold {
     position: absolute;
-    top: 15px;
-    left: 15px;
-
-    width: 470px;
-    height: 320px;
-
+    top: 16px;
+    left: 16px;
+    width: calc(100% - 16px);
     background: var(--beige);
-    border-radius: 60% 395px 100% 100% / 92% 100% 54% 88%;
     transform: rotate(-2deg);
 }
 
 .packages-header-img-main {
-    width: 470px;
-    height: 320px;
-
-    overflow: hidden;
-    border-radius: 60% 395px 100% 100% / 92% 100% 54% 88%;
-    transform: rotate(2deg);
+    position: relative; /* nécessaire pour que z-index agisse */
     z-index: 2;
+    overflow: hidden;
+    transform: rotate(2deg);
 }
 
-.packages-header-img-main img {
+    .packages-header-img-main img {
     width: 100%;
     height: 100%;
 
@@ -413,21 +442,42 @@ li::marker {
 
 .packages-list {
     display: grid;
-    grid-auto-rows: 450px;
+    grid-auto-rows: auto;
     gap: 50px;
 }
 
 .package-card {
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: minmax(0, 30%) minmax(0, 70%);
 
     border: 1px solid rgba(221, 213, 210, 0.8);
     border-radius: 10px;
     box-shadow: 0 15px 45px rgba(23, 36, 63, 0.07);
 }
 
+.package-card-image {
+    position: relative;
+    min-height: 260px;
+}
+
+@media screen and (max-width: 800px) {
+    .package-card {
+        grid-template-columns: 1fr;
+    }
+
+    .package-card-image {
+        min-height: 0;
+        aspect-ratio: 16 / 9;
+    }
+}
+
 .package-card-image img {
-    border-radius: 10px 0 0 10px;
+    position: absolute;            /* l'image ne dicte plus la hauteur */
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;              /* le overflow du parent gère les coins */
 }
 
 .packages-text {
@@ -457,7 +507,7 @@ li::marker {
     list-style-position: outside;
 
     font-size: 0.9rem;
-    line-height: 1;
+    line-height: 1.25;
     align-items: start;
     margin-top: 10px;
 }
@@ -482,7 +532,8 @@ li::marker {
     text-transform: uppercase;
     text-decoration: none;
 
-    transition: all 0.25s ease}
+    transition: all 0.25s ease
+}
 
 .packages-btn span {
     font-size: 1.1rem;
@@ -494,7 +545,7 @@ li::marker {
     transform: translateY(-2px);
 }
 
-.packages-btn :hover span {
+.packages-btn:hover span {
     transform: translateX(5px);
 }
 
