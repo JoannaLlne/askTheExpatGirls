@@ -232,7 +232,7 @@ p {
 
 /* HOME PAGE */
 .header {
-    height: 70vh;
+    min-height: 70vh;
     margin: 0 auto;
     padding: 65px 60px 90px;
 
@@ -240,15 +240,6 @@ p {
     grid-template-columns: 40% 50%;
     align-items: center;
     gap: 80px;
-}
-
-@media screen and (max-width: 680px) {
-    .header {
-        display: flex;
-        flex-direction: column-reverse;
-        padding: 30px;
-    }
-
 }
 
 .header-btn {
@@ -260,64 +251,36 @@ p {
     margin-top: 50px;
 }
 
-@media screen and (max-width: 900px) {
-    .header-btn {
-        margin-top: 15px;
-    }
-}
-
 .header-visual {
     position: relative;
+    width: 100%;
 }
 
 .header-photo-gold {
     position: absolute;
-    bottom: 13px;
-    left: 17px;
-    width: min(100%, 520px);
-    aspect-ratio: 1.35 / 1;
+    inset: 0;                      /* remplace bottom/left : il suit toujours la photo */
     border: 1px solid var(--beige);
-
     border-radius: 273px 91px 221px 103px / 150px 76px 147px 97px;
     transform: rotate(-3deg);
 }
 
 .header-photo-main {
+    position: relative;            /* toujours dans le flux */
+    z-index: 2;
     width: min(100%, 520px);
     aspect-ratio: 1.35 / 1;
     overflow: hidden;
-
     border-radius: 273px 91px 221px 103px / 150px 76px 147px 97px;
     transform: rotate(2deg);
-    z-index: 2;
 }
 
-@media screen and (max-width: 900px) {
-    .header-photo-gold, .header-photo-main {
-        width: 80%;
-        aspect-ratio: 1.65 / 1;
-        top: 55px;
-        left: 35px;
-    }
-
-    .header-photo-main {
-        position: relative;
-    }
-}
-
-@media screen and (max-width: 405px) {
-    .header-photo-gold, .header-photo-main {
-        width: 80%;
-        aspect-ratio: 2.3 / 1;
-        top: 55px;
-        left: 25px;
-    }
-}
-
-@media screen and (max-width: 360px) {
-    .header-photo-gold, .header-photo-main {
-        visibility: hidden;
-    }
+.header-photo-gold {
+    width: min(100%, 520px);
+    aspect-ratio: 1.35 / 1;
+    height: auto;
+    inset: auto;                   /* on repart de la même taille que la photo */
+    top: 0;
+    left: 0;
 }
 
 .header-visual img {
@@ -325,6 +288,42 @@ p {
     height: 100%;
     display: block;
     object-fit: cover;
+}
+
+/* TABLETTE / MOBILE */
+@media screen and (max-width: 900px) {
+    .header {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 40px 30px 60px;
+    }
+
+    .header-visual {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .header-photo-main,
+    .header-photo-gold {
+        width: 100%;
+        aspect-ratio: 1.65 / 1;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .header {
+        display: flex;
+        flex-direction: column-reverse;
+        padding: 30px 30px 60px;
+        gap: 40px;
+    }
+}
+
+@media screen and (max-width: 405px) {
+    .header-photo-main,
+    .header-photo-gold {
+        aspect-ratio: 2.3 / 1;
+    }
 }
 
 @media screen and (max-width: 830px) {
