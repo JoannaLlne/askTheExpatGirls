@@ -57,7 +57,7 @@
     letter-spacing: 0;
 }
 
-.social-networks i {
+#contact-container .social-networks i {
     color: var(--navy);
     margin: 2px 0 10px;
 }
@@ -80,5 +80,12 @@
     display: grid;
     grid-template-columns: 40% 60%;
     gap: 60px;
+}
+
+@media screen and (max-width: 980px) {
+    #contact-container {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
