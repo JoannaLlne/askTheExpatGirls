@@ -4,13 +4,11 @@ namespace App\Controller\Admin;
 
 use App\Entity\Questionnaire;
 use App\Enum\ApplicationStatus;
-use App\Enum\AppointmentStatus;
-use App\Enum\ServiceCategory;
-use App\Enum\Situation;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 
@@ -47,5 +45,9 @@ class QuestionnaireCrudController extends AbstractCrudController
                 'choice_label' => fn (ApplicationStatus $s) => $s->label(),
             ]);
     }
-
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->disable(Action::NEW, Action::EDIT, Action::DELETE);
+    }
 }

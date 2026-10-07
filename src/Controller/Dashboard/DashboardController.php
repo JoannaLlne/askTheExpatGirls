@@ -2,14 +2,14 @@
 
 namespace App\Controller\Dashboard;
 
+use App\Controller\Admin\ApplicationCrudController;
+use App\Controller\Admin\AppointmentCrudController;
 use App\Controller\Admin\ExpatPackagesCrudController;
 use App\Controller\Admin\NewsletterCampaignCrudController;
 use App\Controller\Admin\NewsletterSubscriberCrudController;
 use App\Controller\Admin\QuestionnaireCrudController;
 use App\Controller\Admin\ServiceCrudController;
 use App\Controller\Admin\UserCrudController;
-use App\Entity\NewsletterCampaign;
-use App\Entity\NewsletterSubscriber;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -44,10 +44,11 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::section('Gestion');
         yield MenuItem::linkTo(UserCrudController::class, 'Users', 'fa fa-user')->setAction(Action::INDEX);
         yield MenuItem::linkTo(QuestionnaireCrudController::class, 'Questionnaires', 'fa fa-file')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(ApplicationCrudController::class, 'Applications', 'fas fa-folder')->setAction(Action::INDEX);
+        yield MenuItem::linkTo(AppointmentCrudController::class, 'Appointments', 'fas fa-calendar')->setAction(Action::INDEX);
 
         yield MenuItem::section('Newsletter');
         yield MenuItem::linkTo(NewsletterSubscriberCrudController::class, 'Subscribers', 'fa fa-users')->setAction(Action::INDEX);
         yield MenuItem::linkTo(NewsletterCampaignCrudController::class, 'Campaigns', 'fa fa-envelope')->setAction(Action::INDEX);
-
     }
 }
