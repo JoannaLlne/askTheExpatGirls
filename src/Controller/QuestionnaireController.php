@@ -7,7 +7,6 @@ use App\Entity\Questionnaire;
 use App\Entity\User;
 use App\Enum\ApplicationStatus;
 use App\Form\QuestionnaireType;
-use App\Mailer\AdminNotificationHandler;
 use App\Mailer\AdminNotificationMailer;
 use App\Service\NewsletterSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -57,6 +56,11 @@ final class QuestionnaireController extends AbstractController
 
         // Si formulaire soumis et valide
         if ($questionnaireForm->isSubmitted() && $questionnaireForm->isValid()) {
+            // Si le honeypot est rempli, c'est un bot : on fait semblant que tout s'est bien passé
+            if (!empty($questionnaireForm->get('website')->getData())) {
+                return $this->redirectToRoute('questionnaire_thanks');
+            }
+
             // sauvegarde du questionnaire en bdd
             $em->persist($questionnaire);
 

@@ -61,6 +61,10 @@
                 <br><small class="qr-confidentiality">Please only share information relevant to your request. Do not include sensitive personal information.</small>
             </div>
 
+        <div class="honeypot" aria-hidden="true">
+            {{ form_widget(questionnaireForm.website, {attr: {tabindex: '-1', autocomplete: 'off'}}) }}
+        </div>
+
         <div class="btns">
             <button class="btn btnSubmit">Submit</button>
             <a class="btn btnReturn" href="{{ path('main_index') }}">Back</a>

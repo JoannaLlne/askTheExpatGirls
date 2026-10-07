@@ -67,6 +67,12 @@ class QuestionnaireType extends AbstractType
                     'cols'=>50,
                 ]
             ])
+            //Anti spam
+            ->add('website', TextType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => false,
+            ])
         ;
     }
 

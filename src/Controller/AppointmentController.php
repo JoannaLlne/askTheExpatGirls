@@ -81,7 +81,7 @@ class AppointmentController extends AbstractController
     // ANNULATION RENDEZ-VOUS
     #[Route('/cancel', name: 'appointment_cancel', requirements: ['id' => '\d+'], methods: ['POST'])]
     //#[IsGranted('VIEW', subject: 'application')]
-    public function delete(Appointment $appointment, Request $request, EntityManagerInterface $em): Response
+    public function cancel(Appointment $appointment, Request $request, EntityManagerInterface $em): Response
     {
         /** @var User|null $user */
         $user = $this->getUser();

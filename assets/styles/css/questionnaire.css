@@ -185,6 +185,12 @@
     font-size: 1.2rem;
 }
 
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
 #qr-title {
     text-align: center;
 }
