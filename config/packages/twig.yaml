@@ -3,6 +3,10 @@ twig:
     paths:
         '%kernel.project_dir%/assets/styles/css': styles
 
+    #cacher boutons, liens dans les templates
+    globals:
+        appointments_enabled: '%appointments_enabled%'
+
 when@test:
     twig:
         strict_variables: true

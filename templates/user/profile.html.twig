@@ -160,9 +160,10 @@
                             {% else %}
                                 <p>No appointment yet.</p>
                             {% endfor %}
-
                         </div>
+                        {% if appointments_enabled %}
                         <a class="btnBook" href="{{ path('appointment_book', {id:application.id}) }}">Book an appointment</a>
+                        {% endif %}
                     </div>
 
                 {% else %}
