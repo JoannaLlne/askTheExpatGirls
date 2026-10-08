@@ -8,6 +8,8 @@ use App\Entity\User;
 use App\Enum\ApplicationStatus;
 use App\Form\QuestionnaireType;
 use App\Mailer\AdminNotificationMailer;
+use App\Repository\ExpatPackagesRepository;
+use App\Repository\ServiceRepository;
 use App\Service\NewsletterSubscriptionService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +22,8 @@ final class QuestionnaireController extends AbstractController
 
     #[Route('/questionnaire', name: 'new_questionnaire', methods: ['GET', 'POST'])]
     public function create(Request $request, EntityManagerInterface $em, NewsletterSubscriptionService $newsletterService,
-                           AdminNotificationMailer $adminNotif): Response
+                           AdminNotificationMailer $adminNotif,
+                           ServiceRepository $serviceRepository, ExpatPackagesRepository $expatPackagesRepository): Response
     {
         // Entité vide
         $questionnaire = new Questionnaire();
@@ -28,7 +31,10 @@ final class QuestionnaireController extends AbstractController
         $questionnaire->setSubmittedAt($createdAt);
 
         // Le formulaire, associée à l'entité vide
-        $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire);
+        $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire, [
+            'service'=>$serviceRepository->findAll(),
+            'expatPackages'=>$expatPackagesRepository->findAll(),
+        ]);
 
         if ($user = $this->getUser()) {
             $questionnaireForm->get('firstName')->setData($user->getFirstName());
@@ -69,12 +75,25 @@ final class QuestionnaireController extends AbstractController
                 $newsletterService->subscribe($questionnaire->getEmail());
             }
 
+            $chosen = $questionnaireForm->get('serviceOrPackage')->getData(); // ex: "service-3" ou "package-1"
+            [$type, $id] = explode('-', $chosen);
+
+
             $application = new Application;
             $application->setEmail($questionnaireForm->get('email')->getData()); // champ ajouté au formulaire)
             $application->setQuestionnaire($questionnaire);
             $application->setService($questionnaireForm->get('service')->getData());            $application->setStatus(ApplicationStatus::NEW);
             $application->setCreatedAt(new \DateTimeImmutable());
             $application->setUpdatedAt(new \DateTimeImmutable());
+
+            $chosen = $questionnaireForm->get('serviceOrPackage')->getData(); // ex: "service-3" ou "package-1"
+            [$type, $id] = explode('-', $chosen);
+
+            if ($type === 'service') {
+                $application->setService($serviceRepository->find($id));
+            } else {
+                $application->setExpatPackage($expatPackagesRepository->find($id));
+            }
 
             //placer le questionnaire dans le dossier
             $application->setQuestionnaire($questionnaire);

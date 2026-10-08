@@ -10,6 +10,7 @@ use App\Enum\Situation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -21,6 +22,18 @@ class QuestionnaireType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
+
+        $services = $options['services'];
+        $packages = $options['packages'];
+
+        $choices = [];
+        foreach ($services as $service) {
+            $choices[$service->getName()] = 'service-' . $service->getId();
+        }
+        foreach ($packages as $package) {
+            $choices[$package->getName()] = 'package-' . $package->getId();
+        }
+
         $builder
             ->add('firstName', TextType::class, [
                 'label' => 'First name',
@@ -49,15 +62,11 @@ class QuestionnaireType extends AbstractType
                 'label' => 'Help Reason',
                 'choice_label'=> fn (ServiceCategory $serviceCategory) => $serviceCategory->label(),
             ])
-
-            ->add('service', EntityType::class, [
-                'class' => Service::class,
-                'choice_label' => 'name',
-                //affiche ce champ et valide-le, mais ne cherche pas de méthode pour le récupérer
-                //A nous de placer une ligne pour le récupérer manuellement
+            ->add('serviceOrPackage', ChoiceType::class, [
+                'choices' => $choices,
                 'mapped' => false,
-                'placeholder' => 'Choose a service',
-                'label' => 'Which service do you need?',
+                'label' => 'Which service or package do you need?',
+                'placeholder' => 'Choose an option',
             ])
             ->add('additionalInfo', TextareaType::class, [
                 'label' => 'Additional Info',
@@ -80,6 +89,8 @@ class QuestionnaireType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Questionnaire::class,
+            'services' => [],
+            'packages' => [],
         ]);
     }
 }

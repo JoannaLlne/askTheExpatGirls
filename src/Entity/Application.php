@@ -29,8 +29,12 @@ class Application
     private ApplicationStatus $status = ApplicationStatus::NEW;
 
     #[ORM\ManyToOne(targetEntity: Service::class, inversedBy: 'applications')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: true)]  // possible null si package choisi
     private ?Service $service = null;
+
+    #[ORM\ManyToOne(targetEntity: ExpatPackages::class, inversedBy: 'applications')]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?ExpatPackages $expatPackage = null;
 
     #[ORM\ManyToOne(inversedBy: 'applications')]
     #[ORM\JoinColumn(nullable: true)]
@@ -111,6 +115,16 @@ class Application
     {
         $this->service = $service;
         return $this;
+    }
+
+    public function getExpatPackage(): ?ExpatPackages
+    {
+        return $this->expatPackage;
+    }
+
+    public function setExpatPackage(?ExpatPackages $expatPackage): void
+    {
+        $this->expatPackage = $expatPackage;
     }
 
     public function getUser(): ?User
