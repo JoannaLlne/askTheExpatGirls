@@ -22,7 +22,6 @@ class QuestionnaireType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-
         $services = $options['services'];
         $packages = $options['packages'];
 
