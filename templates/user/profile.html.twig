@@ -147,7 +147,7 @@
                         <div class="appointment-status">
                             <strong>Your appointment(s) :</strong>
 
-                            {% for appointment in application.appointment %}
+                            {% for appointment in application.appointments %}
                             <div class="appointment-date">
                                 <p>{{ appointment.date|date('d/m/Y \\a\\t H:i') }} — {{ appointment.status.value }}</p>
                                 {% if appointment.status.name == 'BOOKED' %}

@@ -47,12 +47,12 @@ class Application
     /**
      * @var Collection<int, Appointment>
      */
-    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'application')]
-    private Collection $appointment;
+    #[ORM\OneToMany(targetEntity: Appointment::class, mappedBy: 'application', orphanRemoval: true)]
+    private Collection $appointments;
 
     public function __construct()
     {
-        $this->appointment = new ArrayCollection();
+        $this->appointments = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -154,12 +154,12 @@ class Application
     /**
      * @return Collection<int, Appointment>
      */
-    public function getAppointment(): Collection
+    public function getAppointments(): Collection
     {
         return $this->appointment;
     }
 
-    public function addAppointment(Appointment $appointment): static
+    public function addAppointments(Appointment $appointment): static
     {
         if (!$this->appointment->contains($appointment)) {
             $this->appointment->add($appointment);
@@ -169,7 +169,7 @@ class Application
         return $this;
     }
 
-    public function removeAppointment(Appointment $appointment): static
+    public function removeAppointments(Appointment $appointment): static
     {
         if ($this->appointment->removeElement($appointment)) {
             // set the owning side to null (unless already changed)

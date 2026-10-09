@@ -6,6 +6,7 @@ use App\Repository\ExpatPackagesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\Collection;
 
 #[ORM\Entity(repositoryClass: ExpatPackagesRepository::class)]
 class ExpatPackages
@@ -29,6 +30,14 @@ class ExpatPackages
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
+
+    #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'expatPackage')]
+    private Collection $applications;
+
+    public function __construct()
+    {
+        $this->applications = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -79,5 +88,33 @@ class ExpatPackages
     public function setImage(?string $image): void
     {
         $this->image = $image;
+    }
+    /**
+     * @return Collection<int, Application>
+     */
+    public function getApplications(): Collection
+    {
+        return $this->applications;
+    }
+
+    public function addApplication(Application $application): static
+    {
+        if (!$this->applications->contains($application)) {
+            $this->applications->add($application);
+            $application->setExpatPackage($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApplication(Application $application): static
+    {
+        if ($this->applications->removeElement($application)) {
+            if ($application->getExpatPackage() === $this) {
+                $application->setExpatPackage(null);
+            }
+        }
+
+        return $this;
     }
 }
