@@ -25,7 +25,7 @@ final class Version20261009130737 extends AbstractMigration
             "Migration can only be executed safely on '\Doctrine\DBAL\Platforms\MySQL80Platform'."
         );
 
-        // Désactive temporairement la vérification des clés étrangères,
+        // Désactive temporairement la vérifica tion des clés étrangères,
         // le temps de créer toutes les tables peu importe leur ordre
         $this->addSql('SET FOREIGN_KEY_CHECKS = 0');
         $this->addSql('CREATE TABLE expat_packages (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(180) CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_0900_ai_ci`, description LONGTEXT CHARACTER SET utf8mb4 NOT NULL COLLATE `utf8mb4_0900_ai_ci`, price INT DEFAULT NULL, image VARCHAR(255) CHARACTER SET utf8mb4 DEFAULT NULL COLLATE `utf8mb4_0900_ai_ci`, PRIMARY KEY (id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_0900_ai_ci` ENGINE = InnoDB COMMENT = \'\' ');
