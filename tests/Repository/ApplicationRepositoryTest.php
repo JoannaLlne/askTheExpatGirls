@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Tests\Repository;
 
 use App\Entity\Application;
@@ -12,51 +13,62 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 class ApplicationRepositoryTest extends KernelTestCase
 {
-private EntityManagerInterface $em;
+    private EntityManagerInterface $em;
 
-protected function setUp(): void
-{
-self::bootKernel();
-$this->em = self::getContainer()->get(EntityManagerInterface::class);
-}
+    protected function setUp(): void
+    {
+        self::bootKernel();
+        $this->em = self::getContainer()->get(EntityManagerInterface::class);
 
-public function testFindsOrphanApplicationByEmail(): void
-{
-$service = new Service();
-$service->setName('Test service')->setDescription('...')->setPrice(100);
-$this->em->persist($service);
+        // Démarre une transaction : tout ce que le test écrit en base
+        // sera annulé automatiquement à la fin, dans tearDown()
+        $this->em->getConnection()->beginTransaction();
+    }
 
-$questionnaire = new Questionnaire();
-$questionnaire->setSubmittedAt(new \DateTimeImmutable());
-$questionnaire->setFirstName('Test');
-$questionnaire->setLastName('User');
-$questionnaire->setEmail('orphan@example.com');
-$questionnaire->setNationality('French');
-$questionnaire->setSituation(Situation::STUDENT);
-$questionnaire->setHelpReason(ServiceCategory::STAYIMMIGRATION);
-$this->em->persist($questionnaire);
+    public function testFindsOrphanApplicationByEmail(): void
+    {
+        // Création service
+        $service = new Service();
+        $service->setName('Test service')->setDescription('...')->setPrice(100);
+        $this->em->persist($service);
 
-$application = new Application();
-$application->setEmail('orphan@example.com');
-$application->setService($service);
-$application->setQuestionnaire($questionnaire);
-$application->setStatus(ApplicationStatus::NEW);
-$application->setCreatedAt(new \DateTimeImmutable());
-// user volontairement non défini : reste null
-$this->em->persist($application);
+        // Création questionnaire
+        $questionnaire = new Questionnaire();
+        $questionnaire->setSubmittedAt(new \DateTimeImmutable());
+        $questionnaire->setFirstName('Test');
+        $questionnaire->setLastName('User');
+        $questionnaire->setEmail('orphan@example.com');
+        $questionnaire->setNationality('French');
+        $questionnaire->setSituation(Situation::STUDENT);
+        $questionnaire->setHelpReason(ServiceCategory::STAYIMMIGRATION);
+        $this->em->persist($questionnaire);
 
-$this->em->flush();
+        // Création dossier
+        $application = new Application();
+        $application->setEmail('orphan@example.com');
+        $application->setService($service);
+        $application->setQuestionnaire($questionnaire);
+        $application->setStatus(ApplicationStatus::NEW);
+        $application->setCreatedAt(new \DateTimeImmutable());
+        // user non défini : reste null
 
-$repository = $this->em->getRepository(Application::class);
-$results = $repository->findOrphelinsByEmail('orphan@example.com');
+        $this->em->persist($application);
+        $this->em->flush();
 
-$this->assertCount(1, $results);
-$this->assertNull($results[0]->getUser());
-}
+        $repository = $this->em->getRepository(Application::class);
+        $results = $repository->findOrphelinsByEmail('orphan@example.com');
 
-protected function tearDown(): void
-{
-parent::tearDown();
-$this->em->close();
-}
+        $this->assertCount(1, $results);
+        $this->assertNull($results[0]->getUser());
+    }
+
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+
+        // Annule ce que le test a écrit
+        // La base de test retrouve son état d'avant le test
+        $this->em->getConnection()->rollBack();
+        $this->em->close();
+    }
 }
