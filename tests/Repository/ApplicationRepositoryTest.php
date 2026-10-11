@@ -19,10 +19,6 @@ class ApplicationRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
         $this->em = self::getContainer()->get(EntityManagerInterface::class);
-
-        // Démarre une transaction : tout ce que le test écrit en base
-        // sera annulé automatiquement à la fin, dans tearDown()
-        $this->em->getConnection()->beginTransaction();
     }
 
     public function testFindsOrphanApplicationByEmail(): void
@@ -65,10 +61,6 @@ class ApplicationRepositoryTest extends KernelTestCase
     protected function tearDown(): void
     {
         parent::tearDown();
-
-        // Annule ce que le test a écrit
-        // La base de test retrouve son état d'avant le test
-        $this->em->getConnection()->rollBack();
         $this->em->close();
     }
 }
