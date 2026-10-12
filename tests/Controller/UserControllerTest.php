@@ -11,12 +11,14 @@ class UserControllerTest extends WebTestCase
 {
     public function testCannotAccessAnotherUsersProfile(): void
     {
+        // Creation du faux navigateur
         $client = static::createClient();
         $container = static::getContainer();
+        // On creer les donnees en base en hashant le mdp
         $em = $container->get(EntityManagerInterface::class);
         $hasher = $container->get(UserPasswordHasherInterface::class);
 
-// Crée deux utilisateurs
+        // Crée deux utilisateurs
         $userA = new User();
         $userA->setEmail('a@example.com')->setFirstName('A')->setLastName('A');
         $userA->setPassword($hasher->hashPassword($userA, 'password123'));
@@ -31,10 +33,11 @@ class UserControllerTest extends WebTestCase
 
         $em->flush();
 
-// Connecte userA, puis essaie d'accéder au profil de userB
+        // Connecte userA, puis essaie d'accéder au profil de userB
         $client->loginUser($userA);
         $client->request('GET', '/user/' . $userB->getId());
 
+        // Verification si le serveur a bien repondu une erreur 403
         $this->assertResponseStatusCodeSame(403);
     }
 
