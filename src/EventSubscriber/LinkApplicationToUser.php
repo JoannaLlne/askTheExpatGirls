@@ -24,12 +24,8 @@ class LinkApplicationToUser implements EventSubscriberInterface
 
     public function onLoginSuccess(LoginSuccessEvent $event): void
     {
-        dump('onLoginSuccess appelé');
         $user = $event->getUser();
-        dump($user->getUserIdentifier());
-
         $dossiersOrphelins = $this->applicationRepository->findOrphelinsByEmail($user->getUserIdentifier());
-        dump(count($dossiersOrphelins));
 
         foreach ($dossiersOrphelins as $dossier) {
             $dossier->setUser($user);

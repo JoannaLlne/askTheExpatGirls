@@ -104,7 +104,6 @@ final class QuestionnaireController extends AbstractController
             //Envoi notification
             try {
                 $adminNotif->notifyFormSubmitted();
-                dump('Email envoyé avec succès');
             } catch (\Throwable $e) {
                 dump('ERREUR : ' . $e->getMessage());
             }
