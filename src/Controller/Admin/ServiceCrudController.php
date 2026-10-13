@@ -5,17 +5,19 @@ namespace App\Controller\Admin;
 use App\Entity\Service;
 use App\Enum\ServiceCategory;
 use App\Enum\ServiceTiming;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
-use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use Symfony\Component\Validator\Constraints\Image;
-use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 
 class ServiceCrudController extends AbstractCrudController
 {
@@ -30,6 +32,8 @@ class ServiceCrudController extends AbstractCrudController
         yield TextField::new('name', 'Name');
         yield TextEditorField::new('description', 'Description');
         yield IntegerField::new('price', 'Price');
+        yield BooleanField::new('archived', 'Archived')->renderAsSwitch(true);
+
 
         yield ChoiceField::new('serviceCategory', 'Service Category')
             ->setChoices(array_combine(
@@ -59,4 +63,18 @@ class ServiceCrudController extends AbstractCrudController
         yield DateTimeField::new('createdAt', 'Created')
             ->hideOnForm();
     }
+
+    public function configureActions(Actions $actions): Actions
+    {
+        return $actions
+            ->update(Crud::PAGE_INDEX, Action::DELETE, function (Action $action) {
+                return $action->displayIf(
+                    static fn (Service $service) => $service->getApplications()->isEmpty()
+                );
+            })
+            ->add(Crud::PAGE_EDIT, Action::DELETE)
+            ->disable(Action::BATCH_DELETE);
+    }
 }
+
+

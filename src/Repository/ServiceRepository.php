@@ -40,6 +40,15 @@ class ServiceRepository extends ServiceEntityRepository
         return $qb->orderBy('s.createdAt', 'DESC')->getQuery()->getResult();
     }
 
+    public function findActiveService(): array
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.archived = false')
+            ->orderBy('s.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
         //    /**
         //     * @return Service[] Returns an array of Service objects
         //     */

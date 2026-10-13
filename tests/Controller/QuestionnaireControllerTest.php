@@ -16,7 +16,7 @@ class QuestionnaireControllerTest extends WebTestCase
         $container = static::getContainer();
         $em = $container->get(EntityManagerInterface::class);
 
-        // Creation service, nécessaire pour le menu déroulant du formulaire
+        // Creation service, nécessaire pour input déroulant du formulaire
         $service = new Service();
         $service->setName('Test service')->setDescription('description test')->setPrice(100);
         $em->persist($service);
@@ -31,7 +31,7 @@ class QuestionnaireControllerTest extends WebTestCase
             'questionnaire[firstName]' => 'Jane',
             'questionnaire[lastName]' => 'Doe',
             'questionnaire[email]' => 'jane.doe@example.com',
-            'questionnaire[nationality]' => 'French',
+            'questionnaire[nationality]' => 'UK',
             'questionnaire[situation]' => 'Student',
             'questionnaire[helpReason]' => 'Stay & Immigration',
             'questionnaire[service]' => (string) $service->getId(),

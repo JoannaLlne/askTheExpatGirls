@@ -44,7 +44,7 @@ class Service
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'service', targetEntity: Application::class)]
+    #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'service')]
     //mappedBy : va voir la propriété service sur l'entité application (qui porte la relation)
     private Collection $applications;
 
@@ -54,10 +54,25 @@ class Service
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(options: ['default' => false])]
+    private bool $archived = false;
+
     public function __construct()
     {
         $this->applications = new ArrayCollection();
     }
+
+    public function getUpdatedAt(): ?\DateTimeImmutable
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
+    {
+        $this->updatedAt = $updatedAt;
+    }
+
+
 
     public function getApplications(): Collection
     {
@@ -191,6 +206,18 @@ class Service
     public function setImage(?string $image): static
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): static
+    {
+        $this->archived = $archived;
 
         return $this;
     }

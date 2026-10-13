@@ -32,7 +32,8 @@ final class QuestionnaireController extends AbstractController
 
         // Le formulaire, associée à l'entité vide
         $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire, [
-            'services'=>$serviceRepository->findAll(),
+            //Trouver les "Services" utilisés dans des "Applications"
+            'services'=>$serviceRepository->findActiveService(),
             'packages'=>$expatPackagesRepository->findAll(),
         ]);
 
