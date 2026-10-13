@@ -16,6 +16,15 @@ class ExpatPackagesRepository extends ServiceEntityRepository
         parent::__construct($registry, ExpatPackages::class);
     }
 
+    public function findActivePackage(): array
+    {
+        return $this->createQueryBuilder('e')
+            ->andWhere('e.archived = false')
+            ->orderBy('e.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
     //    /**
     //     * @return ExpatPackages[] Returns an array of ExpatPackages objects
     //     */

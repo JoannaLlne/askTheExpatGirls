@@ -34,7 +34,7 @@ final class QuestionnaireController extends AbstractController
         $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire, [
             //Trouver les "Services" utilisés dans des "Applications"
             'services'=>$serviceRepository->findActiveService(),
-            'packages'=>$expatPackagesRepository->findAll(),
+            'packages'=>$expatPackagesRepository->findActivePackage(),
         ]);
 
         if ($user = $this->getUser()) {

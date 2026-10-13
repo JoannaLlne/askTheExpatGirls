@@ -6,7 +6,8 @@ use App\Repository\ExpatPackagesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: ExpatPackagesRepository::class)]
 class ExpatPackages
@@ -33,6 +34,9 @@ class ExpatPackages
 
     #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'expatPackage')]
     private Collection $applications;
+
+    #[ORM\Column(options: ['default' => false])]
+    private bool $archived = false;
 
     public function __construct()
     {
@@ -114,6 +118,18 @@ class ExpatPackages
                 $application->setExpatPackage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isArchived(): bool
+    {
+        return $this->archived;
+    }
+
+    public function setArchived(bool $archived): static
+    {
+        $this->archived = $archived;
 
         return $this;
     }
