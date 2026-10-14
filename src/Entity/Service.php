@@ -36,9 +36,11 @@ class Service
     private ?int $price = null;
 
     #[ORM\Column(type: 'json')]
+    #[Assert\NotBlank()]
     private array $serviceCategory = [];
 
     #[ORM\Column(type: 'json')]
+    #[Assert\NotBlank()]
     private array $serviceTiming = [];
 
     #[ORM\Column]

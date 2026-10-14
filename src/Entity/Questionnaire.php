@@ -22,9 +22,23 @@ class Questionnaire
 
     #[ORM\Column(length: 180)]
     #[Assert\NotBlank()]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    private ?string $lastName = null;
+
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
+    #[Assert\Email()]
+    private ?string $email = null;
+
+    #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
     private ?string $nationality = null;
 
     #[ORM\Column(enumType: Situation::class)]
+    #[Assert\NotBlank()]
     private ?Situation $situation = null;
 
     #[ORM\Column(enumType: ServiceCategory::class)]
@@ -37,19 +51,6 @@ class Questionnaire
 
     #[ORM\Column]
     private ?\DateTimeImmutable $submittedAt = null;
-
-    #[ORM\Column(length: 180)]
-    #[Assert\NotBlank()]
-    private ?string $firstName = null;
-
-    #[ORM\Column(length: 180)]
-    #[Assert\NotBlank()]
-    private ?string $lastName = null;
-
-    #[ORM\Column(length: 180)]
-    #[Assert\NotBlank()]
-    #[Assert\Email()]
-    private ?string $email = null;
 
     #[ORM\OneToOne(mappedBy: 'questionnaire', cascade: ['persist', 'remove'])]
     private ?Application $application = null;

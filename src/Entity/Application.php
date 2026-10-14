@@ -7,6 +7,7 @@ use App\Repository\ApplicationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ApplicationRepository::class)]
 class Application
@@ -17,6 +18,7 @@ class Application
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\NotBlank()]
     private ?string $email = null;
 
     #[ORM\Column]
@@ -26,6 +28,7 @@ class Application
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 30, enumType: ApplicationStatus::class)]
+    #[Assert\NotBlank()]
     private ApplicationStatus $status = ApplicationStatus::NEW;
 
     #[ORM\ManyToOne(targetEntity: Service::class, inversedBy: 'applications')]
@@ -156,13 +159,13 @@ class Application
      */
     public function getAppointments(): Collection
     {
-        return $this->appointment;
+        return $this->appointments;
     }
 
     public function addAppointments(Appointment $appointment): static
     {
-        if (!$this->appointment->contains($appointment)) {
-            $this->appointment->add($appointment);
+        if (!$this->appointments->contains($appointment)) {
+            $this->appointments->add($appointment);
             $appointment->setApplication($this);
         }
 
@@ -171,7 +174,7 @@ class Application
 
     public function removeAppointments(Appointment $appointment): static
     {
-        if ($this->appointment->removeElement($appointment)) {
+        if ($this->appointments->removeElement($appointment)) {
             // set the owning side to null (unless already changed)
             if ($appointment->getApplication() === $this) {
                 $appointment->setApplication(null);
