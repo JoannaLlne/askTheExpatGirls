@@ -86,7 +86,7 @@ class ExpatPackages
 
     public function getImage(): ?string
     {
-        return $this->image;
+        return $this->image ?? 'default-packages.jpg';
     }
 
     public function setImage(?string $image): void

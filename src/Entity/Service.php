@@ -200,7 +200,7 @@ class Service
 
     public function getImage(): ?string
     {
-        return $this->image;
+        return $this->image ?? 'default-service.jpg';
     }
 
     public function setImage(?string $image): static
