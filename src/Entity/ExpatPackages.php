@@ -27,7 +27,7 @@ class ExpatPackages
     private ?string $description = null;
 
     #[ORM\Column(nullable: true)]
-    #[Assert\NotBlank()]
+    #[Assert\PositiveOrZero(message: 'The price cannot be negative.')]
     private ?int $price = null;
 
     #[ORM\Column(length: 255, nullable: true)]

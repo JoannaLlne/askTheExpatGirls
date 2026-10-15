@@ -72,6 +72,8 @@
 
                 {% if package.price !== null %}
                     <p class="card-price">{{ package.price }} €</p>
+                {% else %}
+                    <p>On request</p>
                 {% endif %}
 
                 <a href="{{ path('contact_page') }}" class="packages-btn">

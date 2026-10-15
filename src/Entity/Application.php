@@ -8,8 +8,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Context\ExecutionContextInterface;
+
 
 #[ORM\Entity(repositoryClass: ApplicationRepository::class)]
+#[Assert\Callback('validateServiceOrPackage')]
 class Application
 {
     #[ORM\Id]
@@ -18,6 +21,8 @@ class Application
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\Email()]
+    #[Assert\Length(max: 180)]
     #[Assert\NotBlank()]
     private ?string $email = null;
 
@@ -182,5 +187,19 @@ class Application
         }
 
         return $this;
+    }
+
+    // Oblige la sélection d'un service/package pour creer un dossier
+    // $context permet de signaler une erreur de validation
+    public function validateServiceOrPackage(ExecutionContextInterface $context): void
+    {
+        if ($this->service === null && $this->expatPackage === null) {
+            // Message d'erreur à afficher
+            $context->buildViolation('An application must be linked to either a service or a package.')
+                // a quel champ on rattache cette erreur
+                ->atPath('service')
+                // Valide la construction et l'ajoute à la liste des erreurs
+                ->addViolation();
+        }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Enum\AppointmentStatus;
 use App\Repository\AppointmentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: AppointmentRepository::class)]
 class Appointment
@@ -15,14 +16,19 @@ class Appointment
     private ?int $id = null;
 
     #[ORM\Column]
+    #[Assert\NotNull()]
+    #[Assert\GreaterThan('now', message: 'The appointment date must be in the future.')]
     private ?\DateTimeImmutable $date = null;
 
     #[ORM\Column(enumType: AppointmentStatus::class)]
+    #[Assert\NotNull()]
     private ?AppointmentStatus $status = null;
 
     #[ORM\ManyToOne(targetEntity: Application::class, inversedBy: 'appointments')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotNull()]
     private ?Application $application = null;
+
     public function getStatus(): ?AppointmentStatus
     {
         return $this->status;
