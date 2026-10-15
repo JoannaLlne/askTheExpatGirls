@@ -32,15 +32,16 @@ class Service
     private ?string $description = null;
 
     #[ORM\Column]
-    #[Assert\NotBlank()]
+    #[Assert\PositiveOrZero(message: 'The price cannot be negative.')]
     private ?int $price = null;
 
     #[ORM\Column(type: 'json')]
-    #[Assert\NotBlank()]
+    //Choisir au moins une catégorie
+    #[Assert\Count(min: 1, minMessage: 'Please select at least one category.')]
     private array $serviceCategory = [];
 
     #[ORM\Column(type: 'json')]
-    #[Assert\NotBlank()]
+    #[Assert\Count(min: 1, minMessage: 'Please select at least one choice.')]
     private array $serviceTiming = [];
 
     #[ORM\Column]
