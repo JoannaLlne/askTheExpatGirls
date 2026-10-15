@@ -600,7 +600,7 @@ p {
     }
 
     /* FOOTER */
-    .footer-left-adress {
+    .footer-left-address {
         margin-top: 15px;
     }
 
@@ -795,7 +795,7 @@ p {
     }
 
     @media screen and (max-width: 875px) {
-        #footer, .footer-left-adress p {
+        #footer, .footer-left-address p {
             font-size: 0.85rem;
         }
     }
