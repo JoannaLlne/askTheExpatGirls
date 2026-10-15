@@ -280,7 +280,7 @@ p {
     height: auto;
     inset: auto;                   /* on repart de la même taille que la photo */
     top: 0;
-    left: 0;
+    left: 15px;
 }
 
 .header-visual img {
