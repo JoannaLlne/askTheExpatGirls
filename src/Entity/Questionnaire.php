@@ -21,19 +21,23 @@ class Questionnaire
     private ?int $id = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\Length(max: 180)]
     #[Assert\NotBlank()]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\Length(max: 180)]
     #[Assert\NotBlank()]
     private ?string $lastName = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\Length(max: 180)]
     #[Assert\NotBlank()]
     #[Assert\Email()]
     private ?string $email = null;
 
     #[ORM\Column(length: 180)]
+    #[Assert\Length(max: 180)]
     #[Assert\NotBlank()]
     private ?string $nationality = null;
 
