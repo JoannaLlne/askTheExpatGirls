@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Application;
 use App\Entity\Questionnaire;
-use App\Entity\User;
 use App\Enum\ApplicationStatus;
 use App\Form\QuestionnaireType;
 use App\Mailer\AdminNotificationMailer;
@@ -16,25 +15,30 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 final class QuestionnaireController extends AbstractController
 {
 
     #[Route('/questionnaire', name: 'new_questionnaire', methods: ['GET', 'POST'])]
-    public function create(Request $request, EntityManagerInterface $em, NewsletterSubscriptionService $newsletterService,
-                           AdminNotificationMailer $adminNotif,
-                           ServiceRepository $serviceRepository, ExpatPackagesRepository $expatPackagesRepository): Response
-    {
+    public function create(
+        Request $request,
+        EntityManagerInterface $em,
+        NewsletterSubscriptionService $newsletterService,
+        AdminNotificationMailer $adminNotif,
+        ServiceRepository $serviceRepository,
+        ExpatPackagesRepository $expatPackagesRepository,
+        ValidatorInterface $validator
+    ): Response {
         // Entité vide
         $questionnaire = new Questionnaire();
-        $createdAt = new \DateTimeImmutable();
-        $questionnaire->setSubmittedAt($createdAt);
+        $questionnaire->setSubmittedAt(new \DateTimeImmutable());
 
         // Le formulaire, associée à l'entité vide
         $questionnaireForm = $this->createForm(QuestionnaireType::class, $questionnaire, [
             //Trouver les "Services" utilisés dans des "Applications"
-            'services'=>$serviceRepository->findActiveService(),
-            'packages'=>$expatPackagesRepository->findActivePackage(),
+            'services' => $serviceRepository->findActiveService(),
+            'packages' => $expatPackagesRepository->findActivePackage(),
         ]);
 
         if ($user = $this->getUser()) {
@@ -46,24 +50,9 @@ final class QuestionnaireController extends AbstractController
         // récupère les données du form et les injecte dans notre $questionnaire
         $questionnaireForm->handleRequest($request);
 
-        $logFile = __DIR__ . '/../../var/log/debug_questionnaire.log';
-
-        if ($questionnaireForm->isSubmitted()) {
-            file_put_contents($logFile, "[" . date('H:i:s') . "] Formulaire soumis\n", FILE_APPEND);
-            file_put_contents($logFile, "Valide : " . ($questionnaireForm->isValid() ? 'oui' : 'non') . "\n", FILE_APPEND);
-
-            if (!$questionnaireForm->isValid()) {
-                foreach ($questionnaireForm->getErrors(true) as $error) {
-                    file_put_contents($logFile, "Erreur : " . $error->getMessage() . " (champ : " . $error->getOrigin()?->getName() . ")\n", FILE_APPEND);
-                }
-            }
-        } else {
-            file_put_contents($logFile, "[" . date('H:i:s') . "] Formulaire NON soumis (isSubmitted = false)\n", FILE_APPEND);
-        }
-
         // Si formulaire soumis et valide
         if ($questionnaireForm->isSubmitted() && $questionnaireForm->isValid()) {
-            // Si le honeypot est rempli, c'est un bot : on fait semblant que tout s'est bien passé
+            // Si honeypot rempli = bot : on fait semblant que tout s'est bien passé
             if (!empty($questionnaireForm->get('website')->getData())) {
                 return $this->redirectToRoute('questionnaire_thanks');
             }
@@ -76,18 +65,15 @@ final class QuestionnaireController extends AbstractController
                 $newsletterService->subscribe($questionnaire->getEmail());
             }
 
-            $chosen = $questionnaireForm->get('serviceOrPackage')->getData(); // ex: "service-3" ou "package-1"
-            [$type, $id] = explode('-', $chosen);
-
-
-            $application = new Application;
-            $application->setEmail($questionnaireForm->get('email')->getData()); // champ ajouté au formulaire)
+            $application = new Application();
+            $application->setEmail($questionnaireForm->get('email')->getData());
             $application->setQuestionnaire($questionnaire);
-            $application->setService($questionnaireForm->get('service')->getData());            $application->setStatus(ApplicationStatus::NEW);
+            $application->setStatus(ApplicationStatus::NEW);
             $application->setCreatedAt(new \DateTimeImmutable());
             $application->setUpdatedAt(new \DateTimeImmutable());
 
-            $chosen = $questionnaireForm->get('serviceOrPackage')->getData(); // ex: "service-3" ou "package-1"
+            // Récupère service/package choisi
+            $chosen = $questionnaireForm->get('serviceOrPackage')->getData();
             [$type, $id] = explode('-', $chosen);
 
             if ($type === 'service') {
@@ -96,27 +82,33 @@ final class QuestionnaireController extends AbstractController
                 $application->setExpatPackage($expatPackagesRepository->find($id));
             }
 
-            //placer le questionnaire dans le dossier
-            $application->setQuestionnaire($questionnaire);
-            // sauvegarde de dossier en bdd
+            // Validation manuelle : déclenche le Callback service/package
+            $errors = $validator->validate($application);
+            if (count($errors) > 0) {
+                foreach ($errors as $error) {
+                    $this->addFlash('error', $error->getMessage());
+                }
+                return $this->redirectToRoute('new_questionnaire');
+            }
+
             $em->persist($application);
             $em->flush();
 
-            //Envoi notification
+            // Envoi notification
             try {
                 $adminNotif->notifyFormSubmitted();
             } catch (\Throwable $e) {
-                dump('ERREUR : ' . $e->getMessage());
+                // on pourra remplacer par un vrai logger plus tard si besoin
             }
 
             // affiche un message sur la prochaine page si soumission du formulaire
             $request->getSession()->set('inquiry_submitted', true);
             return $this->redirectToRoute('questionnaire_thanks');
         }
-        // affiche le formulaire
+
         return $this->render('questionnaire/questionnaire.html.twig', [
             'questionnaireForm' => $questionnaireForm,
-            'user'=>$user,
+            'user' => $user ?? null,
         ]);
     }
 
