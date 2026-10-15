@@ -313,7 +313,7 @@ p {
 @media screen and (max-width: 680px) {
     .header {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         padding: 30px 30px 60px;
         gap: 40px;
     }
