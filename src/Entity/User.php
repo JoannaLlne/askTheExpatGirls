@@ -32,9 +32,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $lastName = null;
 
     #[ORM\Column(length: 100)]
+    #[Assert\Length(max: 100)]
     #[Assert\NotBlank()]
     #[Assert\Email()]
     private ?string $email = null;
+
+    #[ORM\Column(length: 100, nullable: true)]
+    #[Assert\Regex(pattern: '/^[0-9+\s()-]*$/', message: 'Please enter a valid phone number.')]
+    private ?string $phone = null;
 
     #[ORM\Column(length: 100)]
     private ?string $password = null;
@@ -56,9 +61,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column]
     private bool $isVerified = false;
-
-    #[ORM\Column(length: 100, nullable: true)]
-    private ?string $phone = null;
 
     public function __construct()
     {
