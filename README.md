@@ -55,3 +55,11 @@ Un test précis : _php bin/phpunit tests/NomTest.php_
 --> tests/Controller/
 
 Base de données test automatiquement remise dans son état initial après chaque test grâce à doctrine-test-bundle
+
+## Fonctionnalités
+La prise de rendez-vous peut être désactivée via la variable d'environnement :
+APPOINTMENTS_ENABLED=false
+
+
+## Auteur
+Joanna Lalanne — projet réalisé dans le cadre d'un stage durant une formation de développeur web et web mobile.
