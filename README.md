@@ -5,6 +5,13 @@ Ask the Expat Girls
 Site Internet proposant des services d'aides administratives pour les personnes anglophones
 souhaitant s'expatrier en France.
 
+Les visiteurs peuvent remplir un questionnaire pour décrire leur situation et choisir un service ou 
+un package. Cette soumission crée automatiquement un dossier de suivi, et l'utilisateur peut s'inscrire pour
+y accéder dans un espace personnel, suivre leur avancement, et également prendre rendez-vous.
+
+Un back-office permet aux admins de gérer les services et les packages qu'ils proposent, mais aussi de voir 
+les utilisateurs, les dossiers et les rendez-vous.
+
 ## Pré-requis
 PHP >= 8.2
 Composer
