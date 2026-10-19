@@ -3,11 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Questionnaire;
-use App\Entity\Service;
-use App\Entity\User;
 use App\Enum\ServiceCategory;
 use App\Enum\Situation;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
