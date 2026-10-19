@@ -47,10 +47,6 @@ class Service
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'service')]
-    //mappedBy : va voir la propriété service sur l'entité application (qui porte la relation)
-    private Collection $applications;
-
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
 
@@ -59,6 +55,10 @@ class Service
 
     #[ORM\Column(options: ['default' => false])]
     private bool $archived = false;
+
+    #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'service')]
+    //mappedBy : va voir la propriété service sur l'entité application (qui porte la relation)
+    private Collection $applications;
 
     public function __construct()
     {

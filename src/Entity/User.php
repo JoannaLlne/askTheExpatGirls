@@ -53,14 +53,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
+    #[ORM\Column]
+    private bool $isVerified = false;
+
     /**
      * @var Collection<int, Application>
      */
     #[ORM\OneToMany(targetEntity: Application::class, mappedBy: 'user')]
     private Collection $applications;
-
-    #[ORM\Column]
-    private bool $isVerified = false;
 
     public function __construct()
     {

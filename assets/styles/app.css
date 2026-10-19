@@ -314,7 +314,7 @@ p {
     .header {
         display: flex;
         flex-direction: column;
-        padding: 30px 30px 60px;
+        padding: 30px 30px 10px;
         gap: 40px;
     }
 }
@@ -724,13 +724,6 @@ p {
         }
     }
 
-@media screen and (max-width: 970px) and (min-height: 900px ){
-    #newsletter-band {
-        height: 10vh;
-        gap: 10px;
-    }
-}
-
     @media screen and (max-width: 680px) {
         #newsletter-band {
             height: 22vh;
@@ -743,7 +736,7 @@ p {
 
     @media screen and (max-width: 480px) {
         #newsletter-band {
-        height: 30vh;
+            height: 26vh;
             display: flex;
             align-items: start;
         }
