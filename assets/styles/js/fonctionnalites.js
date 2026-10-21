@@ -1,5 +1,4 @@
-// assets/scripts/fonctionnalites.js (ou l'emplacement où tu l'as créé)
-
+// Mot de passe visible / caché
 function initPasswordToggle() {
     document.querySelectorAll('.password-wrapper').forEach(wrapper => {
         const input = wrapper.querySelector('input');
@@ -10,11 +9,16 @@ function initPasswordToggle() {
         }
         toggle.dataset.bound = 'true';
 
+        const eyeIcon = toggle.querySelector('.fa-eye');
+        const eyeSlashIcon = toggle.querySelector('.fa-eye-slash');
+
         toggle.addEventListener('click', () => {
             const isHidden = input.type === 'password';
             input.type = isHidden ? 'text' : 'password';
+
+            eyeIcon.style.display = isHidden ? 'none' : 'inline-block';
+            eyeSlashIcon.style.display = isHidden ? 'inline-block' : 'none';
             toggle.setAttribute('aria-label', isHidden ? 'Hide password' : 'Show password');
-            toggle.textContent = isHidden ? '🙈' : '👁️';
         });
     });
 }
