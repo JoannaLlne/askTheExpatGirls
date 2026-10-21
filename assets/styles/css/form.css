@@ -351,10 +351,12 @@ th {
     display: flex;
     align-items: center;
 }
+
 .password-wrapper input {
     flex: 1;
     padding-right: 2.5rem;
 }
+
 .toggle-password {
     position: absolute;
     right: .75rem;
@@ -367,6 +369,7 @@ th {
     display: flex;
     align-items: center;
 }
+
 .toggle-password:hover {
     color: var(--beige);
 }
