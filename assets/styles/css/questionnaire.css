@@ -124,7 +124,7 @@
     text-align: center;
     color: #8a8578;
     font-size: 0.55rem;
-    margin: 18px 0 0;
+    margin: 10px 0 0;
 }
 
 @media screen and (max-width: 842px) {
@@ -189,6 +189,19 @@
     position: absolute;
     left: -9999px;
     top: -9999px;
+}
+
+/* Compteur de caractères */
+.char-counter {
+    display: block;
+    text-align: left;
+    font-size: .8rem;
+    color: #8a8578;
+    margin-top: .25rem;
+}
+.char-counter--warning {
+    color: var(--red);
+    font-weight: 600;
 }
 
 #qr-title {
