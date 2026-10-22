@@ -11,10 +11,7 @@
 <div style="max-width: 600px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
 
     <h1>{{ subject }}</h1>
-
-    <div>
-        {{ content|sanitize_html('admin_content') }}
-    </div>
+    <div>{{ content|sanitize_html('admin_content') }}</div>
 
     <hr>
 
@@ -23,9 +20,7 @@
     </p>
 
     <p style="font-size: 12px;">
-        <a href="{{ unsubscribe_url }}">
-            Unsubscribe from the newsletter
-        </a>
+        <a href="{{ unsubscribe_url }}">Unsubscribe from the newsletter</a>
     </p>
 
 </div>
