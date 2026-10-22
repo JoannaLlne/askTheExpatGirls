@@ -13,7 +13,7 @@
     <h1>{{ subject }}</h1>
 
     <div>
-        {{ content|raw }}
+        {{ content|sanitize_html('admin_content') }}
     </div>
 
     <hr>

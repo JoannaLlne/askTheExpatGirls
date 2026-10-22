@@ -115,7 +115,7 @@
 
                     <div class="service-content">
                     <h3>{{ service.name }}</h3>
-                    <p>{{ service.description|raw }}</p>
+                    <p>{{ service.description|sanitize_html('admin_content') }}</p>
                     </div>
                     <p class="card-price">From €{{ service.price }}</p>
                 </article>

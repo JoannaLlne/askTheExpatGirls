@@ -1,0 +1,6 @@
+framework:
+    html_sanitizer:
+        sanitizers:
+            admin_content:
+                allow_safe_elements: true
+                allow_static_elements: true

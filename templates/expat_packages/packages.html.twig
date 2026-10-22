@@ -67,7 +67,7 @@
                     <h3>{{ package.name }}</h3>
 
                     <div class="packages-description">
-                        {{ package.description|raw }}
+                        {{ package.description|sanitize_html('admin_content')}}
                     </div>
 
                 {% if package.price !== null %}
