@@ -4,16 +4,16 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=8.2",
+        "php": ">=8.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "doctrine/doctrine-bundle": "^3.3",
+        "doctrine/doctrine-bundle": "^3.3.3",
         "doctrine/doctrine-migrations-bundle": "^4.0",
-        "doctrine/orm": "^3.6",
-        "easycorp/easyadmin-bundle": "^5.5",
+        "doctrine/orm": "^3.7.5",
+        "easycorp/easyadmin-bundle": "^5.8",
         "phpdocumentor/reflection-docblock": "^6.0",
-        "phpstan/phpdoc-parser": "^2.3",
-        "symfony/apache-pack": "*",
+        "phpstan/phpdoc-parser": "^2.3.9",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "7.4.*",
         "symfony/asset-mapper": "7.4.*",
         "symfony/brevo-mailer": "7.4.*",
@@ -30,7 +30,7 @@
         "symfony/mailer": "7.4.*",
         "symfony/messenger": "7.4.*",
         "symfony/mime": "7.4.*",
-        "symfony/monolog-bundle": "^3.0|^4.0",
+        "symfony/monolog-bundle": "^3.0|^4.1",
         "symfony/notifier": "7.4.*",
         "symfony/process": "7.4.*",
         "symfony/property-access": "7.4.*",
@@ -39,11 +39,11 @@
         "symfony/runtime": "7.4.*",
         "symfony/security-bundle": "7.4.*",
         "symfony/serializer": "7.4.*",
-        "symfony/stimulus-bundle": "^3.4",
+        "symfony/stimulus-bundle": "^3.6",
         "symfony/string": "7.4.*",
         "symfony/translation": "7.4.*",
         "symfony/twig-bundle": "7.4.*",
-        "symfony/ux-turbo": "^3.4",
+        "symfony/ux-turbo": "^3.6",
         "symfony/validator": "7.4.*",
         "symfony/web-link": "7.4.*",
         "symfony/yaml": "7.4.*",
@@ -51,13 +51,15 @@
         "symfonycasts/verify-email-bundle": "^1.18",
         "twig/cssinliner-extra": "^3.26",
         "twig/extra-bundle": "^3.29",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.30"
     },
     "config": {
         "allow-plugins": {
             "php-http/discovery": true,
             "symfony/flex": true,
-            "symfony/runtime": true
+            "symfony/runtime": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "phpstan/extension-installer": true
         },
         "bump-after-update": true,
         "sort-packages": true
@@ -93,7 +95,43 @@
         ],
         "post-update-cmd": [
             "@auto-scripts"
+        ],
+        "composer-validate": "@composer validate --strict --no-check-publish",
+        "lint": [
+            "@php bin/console lint:container",
+            "@php bin/console lint:yaml config --parse-tags",
+            "@php bin/console lint:twig templates",
+            "@php bin/console doctrine:schema:validate --skip-sync"
+        ],
+        "rector-dry-run": "rector process --dry-run",
+        "rector-fix": "rector process",
+        "code-style": "phpcs",
+        "code-style-fix": "phpcbf --runtime-set ignore_non_auto_fixable_on_exit 1",
+        "static-analysis": [
+            "@php bin/console cache:warmup --env=dev",
+            "phpstan analyse --memory-limit=1G"
+        ],
+        "unit": "@php bin/phpunit",
+        "quality": [
+            "Composer\\Config::disableProcessTimeout",
+            "@composer-validate",
+            "@lint",
+            "@rector-dry-run",
+            "@code-style",
+            "@static-analysis",
+            "@unit"
         ]
+    },
+    "scripts-descriptions": {
+        "composer-validate": "Checks that composer.json is valid and strict (for example no unbounded version constraint).",
+        "lint": "Runs Symfony's own checks: service container, YAML config, Twig templates (syntax errors) and Doctrine mapping (without connecting to the database).",
+        "rector-dry-run": "Shows the upgrades Rector would apply (PHP version from composer.json, dead code, type declarations, Symfony/Doctrine/PHPUnit best practices) without touching any file. Run it before rector-fix to review the changes.",
+        "rector-fix": "Applies the changes shown by rector-dry-run directly to the files. Review the result with git diff, then run code-style-fix (Rector does not always follow the coding style).",
+        "code-style": "Checks that the code in src/ and tests/ follows the coding style rules in phpcs.xml.dist (PSR-12 plus rules for PHP 8 syntax, strict_types, sorted use statements...). Does not modify any file: it only lists the errors.",
+        "code-style-fix": "Automatically fixes the style errors found by code-style. Run code-style again afterwards: whatever is left must be fixed by hand.",
+        "static-analysis": "Warms up the Symfony cache, then analyzes the code in src/ and tests/ without running it (PHPStan level 8, see phpstan.dist.neon) to find bugs: wrong types, possibly null values, undefined methods, Doctrine mapping mismatches... Does not modify any file.",
+        "unit": "Runs the PHPUnit test suite (needs the test database, see README).",
+        "quality": "Runs every quality check in order: composer.json validation, Symfony lints, Rector dry run, code style, static analysis, then the test suite. Stops at the first failing check. Run it before every commit."
     },
     "conflict": {
         "symfony/symfony": "*"
@@ -108,11 +146,20 @@
         "dama/doctrine-test-bundle": "^8.7",
         "doctrine/doctrine-fixtures-bundle": "^4.3",
         "fakerphp/faker": "^1.24",
-        "phpunit/phpunit": "^13.3",
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-doctrine": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-symfony": "^2.0",
+        "phpunit/phpunit": "^13.4.5",
+        "rector/rector": "^2.2",
+        "slevomat/coding-standard": "^8.31",
+        "squizlabs/php_codesniffer": "^4.0",
         "symfony/browser-kit": "7.4.*",
         "symfony/css-selector": "7.4.*",
         "symfony/debug-bundle": "7.4.*",
-        "symfony/maker-bundle": "^1.0",
+        "symfony/maker-bundle": "^1.68",
         "symfony/stopwatch": "7.4.*",
         "symfony/web-profiler-bundle": "7.4.*"
     }

@@ -19,7 +19,19 @@
 /.phpunit.cache/
 ###< phpunit/phpunit ###
 
+###> squizlabs/php_codesniffer ###
+/.phpcs-cache
+/phpcs.xml
+###< squizlabs/php_codesniffer ###
+
 ###> symfony/asset-mapper ###
 /public/assets/
 /assets/vendor/
 ###< symfony/asset-mapper ###
+
+# SonarQube scanner working directory and cache
+/.scannerwork/
+/.sonar/
+
+# PHPStan local override (the shared config is phpstan.dist.neon)
+/phpstan.neon

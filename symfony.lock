@@ -71,6 +71,9 @@
             "config/routes/easyadmin.yaml"
         ]
     },
+    "phpstan/phpstan": {
+        "version": "2.3.3"
+    },
     "phpunit/phpunit": {
         "version": "13.3",
         "recipe": {
@@ -85,6 +88,9 @@
             "tests/bootstrap.php",
             "bin/phpunit"
         ]
+    },
+    "squizlabs/php_codesniffer": {
+        "version": "3.13.6"
     },
     "symfony/apache-pack": {
         "version": "1.0",
