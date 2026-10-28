@@ -1,0 +1,13 @@
+parameters:
+    level: 8
+    phpVersion: 80500
+    paths:
+        - src
+        - tests
+    tmpDir: var/cache/phpstan
+    treatPhpDocTypesAsCertain: false
+    checkUninitializedProperties: true
+    symfony:
+        containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml
+    doctrine:
+        objectManagerLoader: tests/object-manager.php
