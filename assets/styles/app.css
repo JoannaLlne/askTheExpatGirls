@@ -4,12 +4,12 @@
 :root {
     --bordeaux: #7A1F2B;
     --red: #b42318;
-    --back: rgb(254 241 242);
+    --back: rgb(254, 241, 242);
     --bandeau : #F4E5E49E;
-    --beige: rgb(189 150 89);
+    --beige: rgb(189, 150, 89);
     --grey: #3D4552;
     --text: #343434;
-    --navy: rgb(23 36 63);
+    --navy: rgb(23, 36, 63);
 }
 
 * {
