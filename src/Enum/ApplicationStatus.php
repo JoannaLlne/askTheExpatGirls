@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App\Enum;
 
@@ -11,7 +12,7 @@ enum ApplicationStatus: string
 
     public function label(): string
     {
-        return match($this) {
+        return match ($this) {
             self::NEW => 'New',
             self::PENDING => 'Pending',
             self::IN_PROGRESS => 'In Progress',
@@ -21,7 +22,7 @@ enum ApplicationStatus: string
 
     public function step(): int
     {
-        return match($this) {
+        return match ($this) {
             self::NEW => 1,
             self::PENDING => 2,
             self::IN_PROGRESS => 3,
