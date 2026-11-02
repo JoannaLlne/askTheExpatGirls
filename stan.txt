@@ -1,0 +1,766 @@
+
+ // Warming up the cache for the dev environment with debug true                
+
+ [OK] Cache for the "dev" environment (debug=true) was successfully warmed.     
+
+ ------ --------------------------------------------------------- 
+  Line   src/Command/CreateAdminCommand.php                       
+ ------ --------------------------------------------------------- 
+  63     Call to sprintf contains 0 placeholders, 1 value given.  
+         🪪  argument.sprintf                                     
+         at src/Command/CreateAdminCommand.php:63                 
+  97     Call to sprintf contains 0 placeholders, 1 value given.  
+         🪪  argument.sprintf                                     
+         at src/Command/CreateAdminCommand.php:97                 
+ ------ --------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/ApplicationCrudController.php                     
+ ------ ----------------------------------------------------------------------- 
+  14     Class App\Controller\Admin\ApplicationCrudController extends generic   
+         class                                                                  
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/ApplicationCrudController.php:14               
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/AppointmentCrudController.php                     
+ ------ ----------------------------------------------------------------------- 
+  13     Class App\Controller\Admin\AppointmentCrudController extends generic   
+         class                                                                  
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/AppointmentCrudController.php:13               
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/ExpatPackagesCrudController.php                   
+ ------ ----------------------------------------------------------------------- 
+  18     Class App\Controller\Admin\ExpatPackagesCrudController extends         
+         generic class                                                          
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/ExpatPackagesCrudController.php:18             
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/NewsletterCampaignCrudController.php              
+ ------ ----------------------------------------------------------------------- 
+  24     Class App\Controller\Admin\NewsletterCampaignCrudController extends    
+         generic class                                                          
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:24        
+  55     Parameter #1 $email of class App\Message\SendNewsletterMessage         
+         constructor expects string, string|null given.                         
+         🪪  argument.type                                                      
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:55        
+  56     Parameter #2 $subject of class App\Message\SendNewsletterMessage       
+         constructor expects string, string|null given.                         
+         🪪  argument.type                                                      
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:56        
+  57     Parameter #3 $content of class App\Message\SendNewsletterMessage       
+         constructor expects string, string|null given.                         
+         🪪  argument.type                                                      
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:57        
+  58     Parameter #4 $unsubscribeToken of class                                
+         App\Message\SendNewsletterMessage constructor expects string,          
+         string|null given.                                                     
+         🪪  argument.type                                                      
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:58        
+  68     Method App\Controller\Admin\NewsletterCampaignCrudController::send()   
+         has parameter $context with generic class                              
+         EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext but does not      
+         specify its types: TEntity                                             
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:68        
+  75     Parameter #1 $campaign of method                                       
+         App\Controller\Admin\NewsletterCampaignCrudController::dispatchCampai  
+         gn() expects App\Entity\NewsletterCampaign, object|null given.         
+         🪪  argument.type                                                      
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:75        
+  84     Parameter #1 $url of method                                            
+         Symfony\Bundle\FrameworkBundle\Controller\AbstractController::redirec  
+         t() expects string, string|null given.                                 
+         🪪  argument.type                                                      
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:84        
+  88     Method                                                                 
+         App\Controller\Admin\NewsletterCampaignCrudController::sendSelected()  
+         has parameter $batchActionDto with generic class                       
+         EasyCorp\Bundle\EasyAdminBundle\Dto\BatchActionDto but does not        
+         specify its types: TEntity                                             
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/NewsletterCampaignCrudController.php:88        
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/NewsletterSubscriberCrudController.php            
+ ------ ----------------------------------------------------------------------- 
+  12     Class App\Controller\Admin\NewsletterSubscriberCrudController extends  
+         generic class                                                          
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/NewsletterSubscriberCrudController.php:12      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/QuestionnaireCrudController.php                   
+ ------ ----------------------------------------------------------------------- 
+  15     Class App\Controller\Admin\QuestionnaireCrudController extends         
+         generic class                                                          
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/QuestionnaireCrudController.php:15             
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/ServiceCrudController.php                         
+ ------ ----------------------------------------------------------------------- 
+  22     Class App\Controller\Admin\ServiceCrudController extends generic       
+         class                                                                  
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/ServiceCrudController.php:22                   
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/Admin/UserCrudController.php                            
+ ------ ----------------------------------------------------------------------- 
+  12     Class App\Controller\Admin\UserCrudController extends generic class    
+         EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController but  
+         does not specify its types: TEntity                                    
+         🪪  missingType.generics                                               
+         at src/Controller/Admin/UserCrudController.php:12                      
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Controller/AppointmentController.php                               
+ ------ ----------------------------------------------------------------------- 
+  45     Parameter #2 $datetime of static method                                
+         DateTimeImmutable::createFromFormat() expects string,                  
+         bool|float|int|string|null given.                                      
+         🪪  argument.type                                                      
+         at src/Controller/AppointmentController.php:45                         
+  70     Cannot call method getId() on                                          
+         Symfony\Component\Security\Core\User\UserInterface|null.               
+         🪪  method.nonObject                                                   
+         at src/Controller/AppointmentController.php:70                         
+  90     Parameter #2 $token of method                                          
+         Symfony\Bundle\FrameworkBundle\Controller\AbstractController::isCsrfT  
+         okenValid() expects string|null, bool|float|int|string|null given.     
+         🪪  argument.type                                                      
+         at src/Controller/AppointmentController.php:90                         
+  99     Cannot call method getId() on                                          
+         Symfony\Component\Security\Core\User\UserInterface|null.               
+         🪪  method.nonObject                                                   
+         at src/Controller/AppointmentController.php:99                         
+ ------ ----------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------- 
+  Line   src/Controller/NewsletterController.php                        
+ ------ --------------------------------------------------------------- 
+  49     Parameter $email of class App\Message\SendNewsletterMessage    
+         constructor expects string, string|null given.                 
+         🪪  argument.type                                              
+         at src/Controller/NewsletterController.php:49                  
+  52     Parameter $unsubscribeToken of class                           
+         App\Message\SendNewsletterMessage constructor expects string,  
+         string|null given.                                             
+         🪪  argument.type                                              
+         at src/Controller/NewsletterController.php:52                  
+ ------ --------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   src/Controller/QuestionnaireController.php                            
+ ------ ---------------------------------------------------------------------- 
+  45     Call to an undefined method                                           
+         Symfony\Component\Security\Core\User\UserInterface::getFirstName().   
+         🪪  method.notFound                                                   
+         at src/Controller/QuestionnaireController.php:45                      
+  46     Call to an undefined method                                           
+         Symfony\Component\Security\Core\User\UserInterface::getLastName().    
+         🪪  method.notFound                                                   
+         at src/Controller/QuestionnaireController.php:46                      
+  47     Call to an undefined method                                           
+         Symfony\Component\Security\Core\User\UserInterface::getEmail().       
+         🪪  method.notFound                                                   
+         at src/Controller/QuestionnaireController.php:47                      
+  65     Parameter #1 $email of method                                         
+         App\Service\NewsletterSubscriptionService::subscribe() expects        
+         string, string|null given.                                            
+         🪪  argument.type                                                     
+         at src/Controller/QuestionnaireController.php:65                      
+  80     Parameter #1 $service of method App\Entity\Application::setService()  
+         expects App\Entity\Service, App\Entity\Service|null given.            
+         🪪  argument.type                                                     
+         at src/Controller/QuestionnaireController.php:80                      
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ---------------------------------------------------------------------- 
+  Line   src/Controller/RegistrationController.php                             
+ ------ ---------------------------------------------------------------------- 
+  60     Parameter #1 $email of method                                         
+         App\Repository\ApplicationRepository::findOrphelinsByEmail() expects  
+         string, string|null given.                                            
+         🪪  argument.type                                                     
+         at src/Controller/RegistrationController.php:60                       
+  68     Method App\Controller\RegistrationController::register() should       
+         return Symfony\Component\HttpFoundation\Response but returns          
+         Symfony\Component\HttpFoundation\Response|null.                       
+         🪪  return.type                                                       
+         at src/Controller/RegistrationController.php:68                       
+ ------ ---------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------- 
+  Line   src/DataFixtures/AppFixtures.php                                   
+ ------ ------------------------------------------------------------------- 
+  67     Parameter #1 $email of method App\Entity\Application::setEmail()   
+         expects string, string|null given.                                 
+         🪪  argument.type                                                  
+         at src/DataFixtures/AppFixtures.php:67                             
+  71     Parameter #1 $createdAt of method                                  
+         App\Entity\Application::setCreatedAt() expects DateTimeImmutable,  
+         DateTimeImmutable|null given.                                      
+         🪪  argument.type                                                  
+         at src/DataFixtures/AppFixtures.php:71                             
+ ------ ------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Entity/Application.php                                             
+ ------ ----------------------------------------------------------------------- 
+  27     Property App\Entity\Application::$email type mapping mismatch:         
+         property can contain string|null but database expects string.          
+         🪪  doctrine.columnType                                                
+         at src/Entity/Application.php:27                                       
+  30     Property App\Entity\Application::$createdAt type mapping mismatch:     
+         property can contain DateTimeImmutable|null but database expects       
+         DateTimeImmutable.                                                     
+         🪪  doctrine.columnType                                                
+         at src/Entity/Application.php:30                                       
+  53     Property App\Entity\Application::$questionnaire type mapping           
+         mismatch: property can contain App\Entity\Questionnaire|null but       
+         database expects App\Entity\Questionnaire.                             
+         🪪  doctrine.associationType                                           
+         at src/Entity/Application.php:53                                       
+  78     Property App\Entity\Application::$status (App\Enum\ApplicationStatus)  
+         does not accept App\Enum\ApplicationStatus|null.                       
+         🪪  assign.propertyType                                                
+         at src/Entity/Application.php:78                                       
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Entity/Appointment.php                                             
+ ------ ----------------------------------------------------------------------- 
+  21     Property App\Entity\Appointment::$date type mapping mismatch:          
+         property can contain DateTimeImmutable|null but database expects       
+         DateTimeImmutable.                                                     
+         🪪  doctrine.columnType                                                
+         at src/Entity/Appointment.php:21                                       
+  25     Property App\Entity\Appointment::$status type mapping mismatch:        
+         property can contain App\Enum\AppointmentStatus|null but database      
+         expects App\Enum\AppointmentStatus.                                    
+         🪪  doctrine.columnType                                                
+         at src/Entity/Appointment.php:25                                       
+  30     Property App\Entity\Appointment::$application type mapping mismatch:   
+         property can contain App\Entity\Application|null but database expects  
+         App\Entity\Application.                                                
+         🪪  doctrine.associationType                                           
+         at src/Entity/Appointment.php:30                                       
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Entity/ExpatPackages.php                                           
+ ------ ----------------------------------------------------------------------- 
+  23     Property App\Entity\ExpatPackages::$name type mapping mismatch:        
+         property can contain string|null but database expects string.          
+         🪪  doctrine.columnType                                                
+         at src/Entity/ExpatPackages.php:23                                     
+  27     Property App\Entity\ExpatPackages::$description type mapping           
+         mismatch: property can contain string|null but database expects        
+         string.                                                                
+         🪪  doctrine.columnType                                                
+         at src/Entity/ExpatPackages.php:27                                     
+  37     Property App\Entity\ExpatPackages::$applications type mapping          
+         mismatch: property can contain Doctrine\Common\Collections\Collection  
+         but database expects Doctrine\Common\Collections\Collection&iterable<  
+         App\Entity\Application>.                                               
+         🪪  doctrine.associationType                                           
+         at src/Entity/ExpatPackages.php:37                                     
+  37     Property App\Entity\ExpatPackages::$applications with generic          
+         interface Doctrine\Common\Collections\Collection does not specify its  
+         types: TKey, T                                                         
+         🪪  missingType.generics                                               
+         at src/Entity/ExpatPackages.php:37                                     
+ ------ ----------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   src/Entity/NewsletterCampaign.php                                   
+ ------ -------------------------------------------------------------------- 
+  19     Property App\Entity\NewsletterCampaign::$subject type mapping       
+         mismatch: property can contain string|null but database expects     
+         string.                                                             
+         🪪  doctrine.columnType                                             
+         at src/Entity/NewsletterCampaign.php:19                             
+  22     Property App\Entity\NewsletterCampaign::$content type mapping       
+         mismatch: property can contain string|null but database expects     
+         string.                                                             
+         🪪  doctrine.columnType                                             
+         at src/Entity/NewsletterCampaign.php:22                             
+  25     Property App\Entity\NewsletterCampaign::$createdAt type mapping     
+         mismatch: property can contain DateTimeImmutable|null but database  
+         expects DateTimeImmutable.                                          
+         🪪  doctrine.columnType                                             
+         at src/Entity/NewsletterCampaign.php:25                             
+ ------ -------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   src/Entity/NewsletterSubscriber.php                                 
+ ------ -------------------------------------------------------------------- 
+  20     Property App\Entity\NewsletterSubscriber::$email type mapping       
+         mismatch: property can contain string|null but database expects     
+         string.                                                             
+         🪪  doctrine.columnType                                             
+         at src/Entity/NewsletterSubscriber.php:20                           
+  23     Property App\Entity\NewsletterSubscriber::$createdAt type mapping   
+         mismatch: property can contain DateTimeImmutable|null but database  
+         expects DateTimeImmutable.                                          
+         🪪  doctrine.columnType                                             
+         at src/Entity/NewsletterSubscriber.php:23                           
+  26     Property App\Entity\NewsletterSubscriber::$unsubscribeToken type    
+         mapping mismatch: property can contain string|null but database     
+         expects string.                                                     
+         🪪  doctrine.columnType                                             
+         at src/Entity/NewsletterSubscriber.php:26                           
+ ------ -------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Entity/Questionnaire.php                                           
+ ------ ----------------------------------------------------------------------- 
+  26     Property App\Entity\Questionnaire::$firstName type mapping mismatch:   
+         property can contain string|null but database expects string.          
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:26                                     
+  31     Property App\Entity\Questionnaire::$lastName type mapping mismatch:    
+         property can contain string|null but database expects string.          
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:31                                     
+  37     Property App\Entity\Questionnaire::$email type mapping mismatch:       
+         property can contain string|null but database expects string.          
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:37                                     
+  42     Property App\Entity\Questionnaire::$nationality type mapping           
+         mismatch: property can contain string|null but database expects        
+         string.                                                                
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:42                                     
+  46     Property App\Entity\Questionnaire::$situation type mapping mismatch:   
+         property can contain App\Enum\Situation|null but database expects      
+         App\Enum\Situation.                                                    
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:46                                     
+  50     Property App\Entity\Questionnaire::$helpReason type mapping mismatch:  
+         property can contain App\Enum\ServiceCategory|null but database        
+         expects App\Enum\ServiceCategory.                                      
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:50                                     
+  57     Property App\Entity\Questionnaire::$submittedAt type mapping           
+         mismatch: property can contain DateTimeImmutable|null but database     
+         expects DateTimeImmutable.                                             
+         🪪  doctrine.columnType                                                
+         at src/Entity/Questionnaire.php:57                                     
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ------------------------------------------------------------------ 
+  Line   src/Entity/ResetPasswordRequest.php                               
+ ------ ------------------------------------------------------------------ 
+  22     Property App\Entity\ResetPasswordRequest::$user type mapping      
+         mismatch: property can contain App\Entity\User|null but database  
+         expects App\Entity\User.                                          
+         🪪  doctrine.associationType                                      
+         at src/Entity/ResetPasswordRequest.php:22                         
+  37     Method App\Entity\ResetPasswordRequest::getUser() should return   
+         App\Entity\User but returns App\Entity\User|null.                 
+         🪪  return.type                                                   
+         at src/Entity/ResetPasswordRequest.php:37                         
+ ------ ------------------------------------------------------------------ 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Entity/Service.php                                                 
+ ------ ----------------------------------------------------------------------- 
+  28     Property App\Entity\Service::$name type mapping mismatch: property     
+         can contain string|null but database expects string.                   
+         🪪  doctrine.columnType                                                
+         at src/Entity/Service.php:28                                           
+  32     Property App\Entity\Service::$description type mapping mismatch:       
+         property can contain string|null but database expects string.          
+         🪪  doctrine.columnType                                                
+         at src/Entity/Service.php:32                                           
+  36     Property App\Entity\Service::$price type mapping mismatch: property    
+         can contain int|null but database expects int.                         
+         🪪  doctrine.columnType                                                
+         at src/Entity/Service.php:36                                           
+  41     Property App\Entity\Service::$serviceCategory type has no value type   
+         specified in iterable type array.                                      
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:41                                           
+  45     Property App\Entity\Service::$serviceTiming type has no value type     
+         specified in iterable type array.                                      
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:45                                           
+  48     Property App\Entity\Service::$createdAt type mapping mismatch:         
+         property can contain DateTimeImmutable|null but database expects       
+         DateTimeImmutable.                                                     
+         🪪  doctrine.columnType                                                
+         at src/Entity/Service.php:48                                           
+  61     Property App\Entity\Service::$applications type mapping mismatch:      
+         property can contain Doctrine\Common\Collections\Collection but        
+         database expects Doctrine\Common\Collections\Collection&iterable<App\  
+         Entity\Application>.                                                   
+         🪪  doctrine.associationType                                           
+         at src/Entity/Service.php:61                                           
+  61     Property App\Entity\Service::$applications with generic interface      
+         Doctrine\Common\Collections\Collection does not specify its types:     
+         TKey, T                                                                
+         🪪  missingType.generics                                               
+         at src/Entity/Service.php:61                                           
+  80     Method App\Entity\Service::getApplications() return type with generic  
+         interface Doctrine\Common\Collections\Collection does not specify its  
+         types: TKey, T                                                         
+         🪪  missingType.generics                                               
+         at src/Entity/Service.php:80                                           
+  85     Method App\Entity\Service::setApplications() has parameter             
+         $applications with generic interface                                   
+         Doctrine\Common\Collections\Collection but does not specify its        
+         types: TKey, T                                                         
+         🪪  missingType.generics                                               
+         at src/Entity/Service.php:85                                           
+  131    Method App\Entity\Service::getServiceCategory() return type has no     
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:131                                          
+  136    Method App\Entity\Service::setServiceCategory() has parameter          
+         $serviceCategory with no value type specified in iterable type array.  
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:136                                          
+  146    Method App\Entity\Service::getServiceCategoryEnums() return type has   
+         no value type specified in iterable type array.                        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:146                                          
+  151    Method App\Entity\Service::getServiceTiming() return type has no       
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:151                                          
+  156    Method App\Entity\Service::setServiceTiming() has parameter            
+         $serviceTiming with no value type specified in iterable type array.    
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:156                                          
+  166    Method App\Entity\Service::getServiceTimingEnums() return type has no  
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/Service.php:166                                          
+  198    Parameter #1 $service of method App\Entity\Application::setService()   
+         expects App\Entity\Service, null given.                                
+         🪪  argument.type                                                      
+         at src/Entity/Service.php:198                                          
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Entity/User.php                                                    
+ ------ ----------------------------------------------------------------------- 
+  27     Property App\Entity\User::$firstName type mapping mismatch: property   
+         can contain string|null but database expects string.                   
+         🪪  doctrine.columnType                                                
+         at src/Entity/User.php:27                                              
+  32     Property App\Entity\User::$lastName type mapping mismatch: property    
+         can contain string|null but database expects string.                   
+         🪪  doctrine.columnType                                                
+         at src/Entity/User.php:32                                              
+  38     Property App\Entity\User::$email type mapping mismatch: property can   
+         contain string|null but database expects string.                       
+         🪪  doctrine.columnType                                                
+         at src/Entity/User.php:38                                              
+  45     Property App\Entity\User::$password type mapping mismatch: property    
+         can contain string|null but database expects string.                   
+         🪪  doctrine.columnType                                                
+         at src/Entity/User.php:45                                              
+  54     Property App\Entity\User::$createdAt type mapping mismatch: property   
+         can contain DateTimeImmutable|null but database expects                
+         DateTimeImmutable.                                                     
+         🪪  doctrine.columnType                                                
+         at src/Entity/User.php:54                                              
+  131    Method App\Entity\User::getUserIdentifier() should return              
+         non-empty-string but returns string.                                   
+         🪪  return.type                                                        
+         at src/Entity/User.php:131                                             
+  139    Method App\Entity\User::setRole() has parameter $role with no value    
+         type specified in iterable type array.                                 
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Entity/User.php:139                                             
+  141    Property App\Entity\User::$role (list<string>) does not accept array.  
+         🪪  assign.propertyType                                                
+         💡  array might not be a list.                                         
+         at src/Entity/User.php:141                                             
+ ------ ----------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/ChangePasswordFormType.php                                  
+ ------ --------------------------------------------------------------------- 
+  15     Class App\Form\ChangePasswordFormType extends generic class          
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/ChangePasswordFormType.php:15                            
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/NewsletterSubscriberType.php                                
+ ------ --------------------------------------------------------------------- 
+  13     Class App\Form\NewsletterSubscriberType extends generic class        
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/NewsletterSubscriberType.php:13                          
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/QuestionnaireType.php                                       
+ ------ --------------------------------------------------------------------- 
+  18     Class App\Form\QuestionnaireType extends generic class               
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/QuestionnaireType.php:18                                 
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/RegistrationFormType.php                                    
+ ------ --------------------------------------------------------------------- 
+  18     Class App\Form\RegistrationFormType extends generic class            
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/RegistrationFormType.php:18                              
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/ResetPasswordRequestFormType.php                            
+ ------ --------------------------------------------------------------------- 
+  11     Class App\Form\ResetPasswordRequestFormType extends generic class    
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/ResetPasswordRequestFormType.php:11                      
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/ServiceFilterType.php                                       
+ ------ --------------------------------------------------------------------- 
+  13     Class App\Form\ServiceFilterType extends generic class               
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/ServiceFilterType.php:13                                 
+ ------ --------------------------------------------------------------------- 
+
+ ------ --------------------------------------------------------------------- 
+  Line   src/Form/UserType.php                                                
+ ------ --------------------------------------------------------------------- 
+  15     Class App\Form\UserType extends generic class                        
+         Symfony\Component\Form\AbstractType but does not specify its types:  
+         TData                                                                
+         🪪  missingType.generics                                             
+         at src/Form/UserType.php:15                                          
+ ------ --------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Mailer/AdminNotificationMailer.php                                 
+ ------ ----------------------------------------------------------------------- 
+  10     Property App\Mailer\AdminNotificationMailer::$adminEmails type has no  
+         value type specified in iterable type array.                           
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Mailer/AdminNotificationMailer.php:10                           
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Repository/ApplicationRepository.php                               
+ ------ ----------------------------------------------------------------------- 
+  20     Method App\Repository\ApplicationRepository::findOrphelinsByEmail()    
+         return type has no value type specified in iterable type array.        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Repository/ApplicationRepository.php:20                         
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Repository/AppointmentRepository.php                               
+ ------ ----------------------------------------------------------------------- 
+  20     Method App\Repository\AppointmentRepository::findBookedHoursForDay()   
+         return type has no value type specified in iterable type array.        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Repository/AppointmentRepository.php:20                         
+  34     Cannot call method format() on DateTimeImmutable|null.                 
+         🪪  method.nonObject                                                   
+         at src/Repository/AppointmentRepository.php:34                         
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Repository/ExpatPackagesRepository.php                             
+ ------ ----------------------------------------------------------------------- 
+  19     Method App\Repository\ExpatPackagesRepository::findActivePackage()     
+         return type has no value type specified in iterable type array.        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Repository/ExpatPackagesRepository.php:19                       
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Repository/QuestionnaireRepository.php                             
+ ------ ----------------------------------------------------------------------- 
+  23     Method App\Repository\QuestionnaireRepository::findById() should       
+         return App\Entity\Questionnaire|null but returns list<App\Entity\Ques  
+         tionnaire>.                                                            
+         🪪  return.type                                                        
+         at src/Repository/QuestionnaireRepository.php:23                       
+  30     Method App\Repository\QuestionnaireRepository::findByEmail() should    
+         return App\Entity\Questionnaire|null but returns list<App\Entity\Ques  
+         tionnaire>.                                                            
+         🪪  return.type                                                        
+         at src/Repository/QuestionnaireRepository.php:30                       
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Repository/ServiceRepository.php                                   
+ ------ ----------------------------------------------------------------------- 
+  21     Method App\Repository\ServiceRepository::findByFilters() return type   
+         has no value type specified in iterable type array.                    
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Repository/ServiceRepository.php:21                             
+  42     Method App\Repository\ServiceRepository::findActiveService() return    
+         type has no value type specified in iterable type array.               
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Repository/ServiceRepository.php:42                             
+ ------ ----------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------------------- 
+  Line   src/Security/Voter/ApplicationVoter.php                             
+ ------ -------------------------------------------------------------------- 
+  10     Class App\Security\Voter\ApplicationVoter extends generic class     
+         Symfony\Component\Security\Core\Authorization\Voter\Voter but does  
+         not specify its types: TAttribute, TSubject                         
+         🪪  missingType.generics                                            
+         at src/Security/Voter/ApplicationVoter.php:10                       
+ ------ -------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Service/AppointmentSlotFinder.php                                  
+ ------ ----------------------------------------------------------------------- 
+  10     Constant App\Service\AppointmentSlotFinder::CLOSED_WEEKDAYS is         
+         unused.                                                                
+         🪪  classConstant.unused                                               
+         💡  See:                                                               
+         https://phpstan.org/developing-extensions/always-used-class-constants  
+         at src/Service/AppointmentSlotFinder.php:10                            
+  19     Method App\Service\AppointmentSlotFinder::getAvailableSlotsForDay()    
+         return type has no value type specified in iterable type array.        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Service/AppointmentSlotFinder.php:19                            
+  44     Method                                                                 
+         App\Service\AppointmentSlotFinder::getAvailableSlotsForNextDays()      
+         return type has no value type specified in iterable type array.        
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Service/AppointmentSlotFinder.php:44                            
+ ------ ----------------------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   src/Twig/EnumExtension.php                                             
+ ------ ----------------------------------------------------------------------- 
+  16     Method App\Twig\EnumExtension::getCases() return type has no value     
+         type specified in iterable type array.                                 
+         🪪  missingType.iterableValue                                          
+         💡  See:                                                               
+         https://phpstan.org/blog/solving-phpstan-no-value-type-specified-in-i  
+         terable-type                                                           
+         at src/Twig/EnumExtension.php:16                                       
+ ------ ----------------------------------------------------------------------- 
+
+ ------ -------------------------------------------------------- 
+  Line   tests/Controller/QuestionnaireControllerTest.php        
+ ------ -------------------------------------------------------- 
+  52     Cannot call method getId() on App\Entity\Service|null.  
+         🪪  method.nonObject                                    
+         at tests/Controller/QuestionnaireControllerTest.php:52  
+ ------ -------------------------------------------------------- 
+
+ ------ ----------------------------------------------------------------------- 
+  Line   tests/bootstrap.php                                                    
+ ------ ----------------------------------------------------------------------- 
+  7      Call to function method_exists() with                                  
+         'Symfony\\Component\\Dotenv\\Dotenv' and 'bootEnv' will always         
+         evaluate to true.                                                      
+         🪪  function.alreadyNarrowedType                                       
+         at tests/bootstrap.php:7                                               
+  15     Expression "\DAMA\DoctrineTestBundle\PHPUnit\PHPUnitExtension::class"  
+         on a separate line does not do anything.                               
+         🪪  expr.resultUnused                                                  
+         at tests/bootstrap.php:15                                              
+ ------ ----------------------------------------------------------------------- 
+
+ [ERROR] Found 108 errors                                                       
+

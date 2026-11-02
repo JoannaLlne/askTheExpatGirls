@@ -3,6 +3,7 @@
 namespace App\Security;
 
 use App\Entity\User;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,6 +17,7 @@ class EmailVerifier
         private VerifyEmailHelperInterface $verifyEmailHelper,
         private MailerInterface $mailer,
         private EntityManagerInterface $entityManager,
+        private UserRepository $userRepository,
     ) {
     }
 
@@ -24,7 +26,8 @@ class EmailVerifier
         $signatureComponents = $this->verifyEmailHelper->generateSignature(
             $verifyEmailRouteName,
             (string) $user->getId(),
-            (string) $user->getEmail()
+            (string) $user->getEmail(),
+            ['id' => $user->getId()]
         );
 
         $context = $email->getContext();
@@ -40,13 +43,31 @@ class EmailVerifier
     /**
      * @throws VerifyEmailExceptionInterface
      */
-    public function handleEmailConfirmation(Request $request, User $user): void
+    public function handleEmailConfirmation(Request $request): void
     {
-        $this->verifyEmailHelper->validateEmailConfirmationFromRequest($request, (string) $user->getId(), (string) $user->getEmail());
+        // Récupération de l'ID transmis dans le lien signé
+        $userId = $request->query->get('id');
 
+        if (!$userId) {
+            throw new \InvalidArgumentException('Missing user ID.');
+        }
+
+        $user = $this->userRepository->find($userId);
+
+        if (!$user) {
+            throw new \InvalidArgumentException('User not found.');
+        }
+
+        // Validation du lien signé
+        $this->verifyEmailHelper->validateEmailConfirmationFromRequest(
+            $request,
+            (string) $user->getId(),
+            (string) $user->getEmail()
+        );
+
+        // Activation du compte
         $user->setIsVerified(true);
 
-        $this->entityManager->persist($user);
         $this->entityManager->flush();
     }
 }
