@@ -16,7 +16,6 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-
     public function configureFields(string $pageName): iterable
     {
         yield IdField::new('id', 'ID');
@@ -31,6 +30,4 @@ class UserCrudController extends AbstractCrudController
         return $actions
             ->disable(Action::NEW, Action::EDIT, Action::DELETE);
     }
-
-
 }
