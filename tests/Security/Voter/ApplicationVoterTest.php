@@ -61,7 +61,7 @@ class ApplicationVoterTest extends TestCase
 
         $this->assertSame(
             VoterInterface::ACCESS_ABSTAIN,
-            $voter->vote($token, $application, ['EDIT']) // attribut non géré par ce Voter
+            $voter->vote($token, $application, ['EDIT']) // action non géré par ce Voter
         );
     }
 }

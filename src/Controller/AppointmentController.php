@@ -24,7 +24,7 @@ class AppointmentController extends AbstractController
     ) {}
 
     #[Route('', name: 'appointment_book', methods: ['GET', 'POST'])]
-//Voter pour vérifier que le getUser est bien $user qui est connecté
+    //Voter pour vérifier que le getUser est bien $user qui est connecté
     #[IsGranted('VIEW', subject: 'application')]
     public function book(Application $application, Request $request,
                          AppointmentSlotFinder $slotFinder, EntityManagerInterface $em): Response
