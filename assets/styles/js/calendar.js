@@ -6,7 +6,7 @@ function initCalendar() {
     const nextButton = document.getElementById('nextMonth');
     const appointmentForm = document.querySelector('.appointment-form');
 
-    /* Si on est pas sur la calendrier, rien ne se passe */
+    /* Si on est pas sur la calendrier, nothing happen */
     if (
         !calendarDays ||
         !currentMonthElement ||
