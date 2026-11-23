@@ -174,5 +174,5 @@ if (document.readyState === 'loading') {
     initCalendar();
 }
 
-// Navigation avec Symfony UX Turbo
+// Navi with Symfony UX Turbo
 document.addEventListener('turbo:load', initCalendar);
