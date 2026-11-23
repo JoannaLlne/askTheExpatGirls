@@ -151,7 +151,7 @@ function initCalendar() {
     });
 
     renderCalendar();
-    // Validation du formulaire, placée ici pour profiter du même garde-fou
+    // Validation du form, placée ici pour profiter du même garde-fou
     // que le reste du calendrier, et réexécutée proprement à chaque navigation Turbo
     if (appointmentForm && !appointmentForm.dataset.validationBound) {
         appointmentForm.dataset.validationBound = 'true';
@@ -167,7 +167,7 @@ function initCalendar() {
     }
 }
 
-// Chargement classique
+// Classic loading
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initCalendar);
 } else {
